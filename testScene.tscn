@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://blfxb5rtscgct"]
+
+[ext_resource type="PackedScene" uid="uid://cwgj5t7rvtafd" path="res://addons/Kenney/Furniture/FBX format/floorFull.fbx" id="1_4311h"]
+[ext_resource type="PackedScene" uid="uid://cr2ersq7g6q6f" path="res://addons/TPC_test/Scenes/Characters/player.tscn" id="2_srljm"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="floorFull" parent="." instance=ExtResource("1_4311h")]
+
+[node name="Player" parent="." instance=ExtResource("2_srljm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45493, 2, 1.18373)

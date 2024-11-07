@@ -15,7 +15,7 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var player_mesh : Node3D = $felix
 @onready var spring_arm_pivot : Node3D = $SpringArmPivot
-@onready var animator : AnimationTree = $AnimationTree
+@onready var animator : AnimationTree = $felix/AnimationTree
 
 func _physics_process(delta):
 	var move_direction : Vector3 = Vector3.ZERO

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://fcoq2kw4j4mj"]
+
+[ext_resource type="Script" path="res://addons/TPC_test/Scenes/Characters/felix.gd" id="1_uqdop"]
+[ext_resource type="PackedScene" uid="uid://cp6yxnovk8uel" path="res://felixblend.tscn" id="3_gbb1p"]
+[ext_resource type="Script" path="res://addons/TPC_test/Scripts/Characters/SpringArmPivot.gd" id="4_6mfkb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k6p7c"]
+radius = 0.283343
+height = 1.84319
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_uqdop")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908729, 0)
+shape = SubResource("CapsuleShape3D_k6p7c")
+
+[node name="SpringArmPivot" type="Node3D" parent="."]
+script = ExtResource("4_6mfkb")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31667, 0)
+spring_length = 2.0
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="SpringArmPivot/SpringArm3D"]
+
+[node name="untitled" parent="." instance=ExtResource("3_gbb1p")]

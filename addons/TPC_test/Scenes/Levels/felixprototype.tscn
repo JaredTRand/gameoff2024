@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bp6hr65xmyrby"]
+[gd_scene load_steps=18 format=3 uid="uid://bp6hr65xmyrby"]
 
 [ext_resource type="Texture2D" uid="uid://doyodkg1ds7td" path="res://addons/TPC_test/Assets/Textures/Sky.png" id="1_edl5f"]
 [ext_resource type="Texture2D" uid="uid://b8q44ipg8a3cq" path="res://addons/TPC_test/Assets/Textures/Black.png" id="2_n12tp"]
 [ext_resource type="Texture2D" uid="uid://gwt4mrbmdv01" path="res://addons/TPC_test/Assets/Textures/Orange.png" id="3_imn7q"]
 [ext_resource type="Texture2D" uid="uid://dkpqh8de7tb3n" path="res://addons/TPC_test/Assets/Textures/Green.png" id="4_bptv0"]
 [ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="5_htbjo"]
-[ext_resource type="Script" path="res://addons/TPC_test/Scenes/Characters/felix.gd" id="6_ubuwk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6c4vd"]
 panorama = ExtResource("1_edl5f")
@@ -97,4 +96,3 @@ shape = SubResource("ConcavePolygonShape3D_rit6o")
 
 [node name="Player" parent="." instance=ExtResource("5_htbjo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335149, 2.38419e-07, 0.582592)
-script = ExtResource("6_ubuwk")

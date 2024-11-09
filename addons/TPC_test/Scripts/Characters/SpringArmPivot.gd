@@ -1,5 +1,9 @@
 extends Node3D
 
+@export var scroll_max : float = 7.5
+@export var scroll_min : float = 1.0
+@export var scroll_inter : float = 0.1
+
 @export_group("FOV")
 @export var change_fov_on_run : bool
 @export var normal_fov : float = 75.0
@@ -14,10 +18,21 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
+	_process_springarm_scroll()
+		
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * 0.005)
 		spring_arm.rotate_x(-event.relative.y * 0.005)
 		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/4, PI/4)
+
+func _process_springarm_scroll():
+	if Input.is_action_just_pressed("camera_zoom_in"):
+		if spring_arm.spring_length > scroll_min:
+			spring_arm.spring_length -= scroll_inter
+	elif Input.is_action_just_pressed("camera_zoom_out"):
+		if spring_arm.spring_length < scroll_max:
+			spring_arm.spring_length += scroll_inter
+	
 
 func _physics_process(_delta):
 	if change_fov_on_run:

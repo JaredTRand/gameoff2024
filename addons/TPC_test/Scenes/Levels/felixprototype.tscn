@@ -96,3 +96,7 @@ shape = SubResource("ConcavePolygonShape3D_rit6o")
 
 [node name="Player" parent="." instance=ExtResource("5_htbjo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335149, 2.38419e-07, 0.582592)
+walk_speed = 2.0
+run_speed = 5.0
+jump_strength = 15.0
+gravity = 50.0

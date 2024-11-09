@@ -123,6 +123,7 @@ func _physics_process(_delta):
 
 func tweenCameraToMarker() :
 	_camera.global_position = lerp(_camera.global_position, _camera_marker.global_position, camera_speed)
+		
 
 func _process_horizontal_rotation_input() :
 	if InputMap.has_action("tp_camera_right") and InputMap.has_action("tp_camera_left") :

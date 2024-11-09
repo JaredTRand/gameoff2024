@@ -23,6 +23,10 @@ const ANIMATION_BLEND : float = 7.0
 @onready var eyecast:RayCast3D  = $felix/Eyecast
 
 @onready var move_direction : Vector3 = Vector3.ZERO
+@onready var debug_panel = $UserInterface/DebugPanel
+
+var jump_count:int = 0
+var jump_count_max:int = 2
 
 func _physics_process(delta):
 	move_direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
@@ -48,11 +52,18 @@ func _physics_process(delta):
 	
 
 	if is_jumping:
+		jump_count += 1
+		if jump_count <= 2:
+			velocity.y = jump_strength
+			snap_vector = Vector3.ZERO
+	elif not is_on_floor() and Input.is_action_just_pressed("player_jump") and jump_count <= jump_count_max:
 		velocity.y = jump_strength
 		snap_vector = Vector3.ZERO
 	elif just_landed:
+		jump_count = 0
 		snap_vector = Vector3.DOWN
-	
+	debug_panel.add_property("jump_count", jump_count)
+	debug_panel.add_property("velocity", velocity)
 	apply_floor_snap()
 	move_and_slide()
 	animate(delta)
@@ -71,6 +82,7 @@ func animate(delta):
 		else:
 			animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), -1.0, delta * ANIMATION_BLEND))
 	else:
+		if velocity.y > 0
 		animator.set("parameters/ground_air_transition/transition_request", "air")
 
 

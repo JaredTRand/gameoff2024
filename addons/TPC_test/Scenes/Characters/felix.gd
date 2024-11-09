@@ -21,6 +21,7 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var headcast:RayCast3D = $felix/Headcast
 @onready var eyecast:RayCast3D  = $felix/Eyecast
+@onready var interact_ray:ShapeCast3D = $felix/interact_ray
 
 @onready var move_direction : Vector3 = Vector3.ZERO
 @onready var debug_panel = $UserInterface/DebugPanel
@@ -82,10 +83,26 @@ func animate(delta):
 		else:
 			animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), -1.0, delta * ANIMATION_BLEND))
 	else:
-		if velocity.y > 0
 		animator.set("parameters/ground_air_transition/transition_request", "air")
+		
+		if velocity.y > 0:
+			animator.set("parameters/jf_blend/blend_amount", lerp(animator.get("parameters/jf_blend/blend_amount"), -1.0, delta * ANIMATION_BLEND))
+		else:
+			animator.set("parameters/jf_blend/blend_amount", lerp(animator.get("parameters/jf_blend/blend_amount"), 0.0, delta * ANIMATION_BLEND))
+
 
 
 func _process_raycasts():
 	var can_ledge_grab = not headcast.is_colliding() and eyecast.is_colliding()
 	
+	# INTERACT
+	if interact_ray.is_colliding():
+		var collision_count = interact_ray.get_collision_count()
+		var collider
+		for i in collision_count:
+			if interact_ray.get_collider(i).is_in_group("interactable"):
+				collider = interact_ray.get_collider(i).is_in_group("interactable")
+				debug_panel.add_property("interacting", true)
+				break
+		if not collider:
+			debug_panel.add_property("interacting", false)

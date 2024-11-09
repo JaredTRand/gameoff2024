@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://ovvdhs1wpji7"]
+[gd_scene load_steps=31 format=4 uid="uid://ovvdhs1wpji7"]
 
 [ext_resource type="Script" path="res://addons/TPC_test/Scenes/Characters/felix.gd" id="1_yxq00"]
 [ext_resource type="Material" uid="uid://lhbweyif244p" path="res://Felix/model/cat001.tres" id="2_4s7ui"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b0xx0p7kdhbma" path="res://Felix/UI/UIanddebugPanel.tscn" id="5_5lnlg"]
 [ext_resource type="Script" path="res://Felix/scripts/state_machine/state_machine.gd" id="6_3wa72"]
 [ext_resource type="Script" path="res://Felix/scripts/state_machine/walking.gd" id="7_ir35k"]
+[ext_resource type="Texture2D" uid="uid://b3kx2md7ubkqx" path="res://Felix/assets/thoughtbubs.png" id="8_5ws5c"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_i4ti0"]
 resource_name = "Cylinder_004_001"
@@ -494,8 +495,8 @@ nodes/jf_blend/position = Vector2(-80, 624)
 nodes/output/position = Vector2(736, 368)
 node_connections = [&"ground_air_transition", 0, &"iwr_blend", &"ground_air_transition", 1, &"jf_blend", &"iwr_blend", 0, &"Idle", &"iwr_blend", 1, &"Walk", &"iwr_blend", 2, &"Run", &"jf_blend", 0, &"Animation", &"jf_blend", 1, &"Air", &"output", 0, &"ground_air_transition"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_o0gnk"]
-size = Vector3(1, 5, 3.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_36une"]
+size = Vector3(1, 2, 2)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k6p7c"]
 radius = 0.283343
@@ -1404,11 +1405,12 @@ target_position = Vector3(0, 0, 1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.33552, 0)
 target_position = Vector3(0, 0, 1.5)
 
-[node name="interact_ray" type="ShapeCast3D" parent="felix"]
-transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 2.1269, 1.76167)
-shape = SubResource("BoxShape3D_o0gnk")
-exclude_parent = false
-target_position = Vector3(0, 0.5, 0)
+[node name="interact_area" type="Area3D" parent="felix"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="interact_collision" type="CollisionShape3D" parent="felix/interact_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+shape = SubResource("BoxShape3D_36une")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908729, 0)
@@ -1434,3 +1436,12 @@ felix = NodePath("..")
 script = ExtResource("7_ir35k")
 
 [node name="IDLE" type="Node" parent="STATE_MACHINE"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, -0.0203538, 2.8469, 0)
+visible = false
+billboard = 1
+texture = ExtResource("8_5ws5c")
+
+[connection signal="body_entered" from="felix/interact_area" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="felix/interact_area" to="." method="_on_interact_area_body_exited"]

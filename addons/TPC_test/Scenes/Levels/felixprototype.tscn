@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bp6hr65xmyrby"]
+[gd_scene load_steps=21 format=3 uid="uid://bp6hr65xmyrby"]
 
 [ext_resource type="Texture2D" uid="uid://doyodkg1ds7td" path="res://addons/TPC_test/Assets/Textures/Sky.png" id="1_edl5f"]
 [ext_resource type="Texture2D" uid="uid://b8q44ipg8a3cq" path="res://addons/TPC_test/Assets/Textures/Black.png" id="2_n12tp"]
 [ext_resource type="Texture2D" uid="uid://gwt4mrbmdv01" path="res://addons/TPC_test/Assets/Textures/Orange.png" id="3_imn7q"]
+[ext_resource type="Script" path="res://world/interactable/interaction.gd" id="3_k7mp0"]
 [ext_resource type="Texture2D" uid="uid://dkpqh8de7tb3n" path="res://addons/TPC_test/Assets/Textures/Green.png" id="4_bptv0"]
 [ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="5_htbjo"]
 
@@ -84,7 +85,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 3)
 mesh = SubResource("BoxMesh_rk2de")
 skeleton = NodePath("../Wall/StaticBody3D")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="intertest"]
+[node name="StaticBody3D" type="StaticBody3D" parent="intertest" groups=["interactable"]]
+script = ExtResource("3_k7mp0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="intertest/StaticBody3D"]
 shape = SubResource("BoxShape3D_wcogp")
@@ -114,3 +116,9 @@ walk_speed = 2.0
 run_speed = 5.0
 jump_strength = 15.0
 gravity = 50.0
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93368, 1.32274, 3)
+billboard = 1
+no_depth_test = true
+text = "TEXT TEST"

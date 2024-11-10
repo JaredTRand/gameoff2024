@@ -25,6 +25,8 @@ const ANIMATION_BLEND : float = 7.0
 @onready var move_direction : Vector3 = Vector3.ZERO
 @onready var debug_panel = $UserInterface/DebugPanel
 
+@onready var thought_bubble = $thought_bubble
+
 var jump_count:int = 0
 var jump_count_max:int = 2
 
@@ -90,15 +92,15 @@ func animate(delta):
 		animator.set("parameters/ground_air_transition/transition_request", "air")
 		
 		if velocity.y > 0:
-			animator.set("parameters/jf_blend/blend_amount", lerp(animator.get("parameters/jf_blend/blend_amount"), -1.0, delta * ANIMATION_BLEND))
-		else:
 			animator.set("parameters/jf_blend/blend_amount", lerp(animator.get("parameters/jf_blend/blend_amount"), 0.0, delta * ANIMATION_BLEND))
+		else:
+			animator.set("parameters/jf_blend/blend_amount", lerp(animator.get("parameters/jf_blend/blend_amount"), 1.0, delta * ANIMATION_BLEND))
 
-
+func think(thought):
+	thought_bubble.think(thought)
 
 func _process_raycasts():
 	var can_ledge_grab = not headcast.is_colliding() and eyecast.is_colliding()
-
 
 func _on_interact_area_body_entered(body):
 	if not body.is_in_group("interactable"): return

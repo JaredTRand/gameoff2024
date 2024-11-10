@@ -1,9 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3aus3ceccucv"]
+[gd_scene load_steps=7 format=3 uid="uid://b3aus3ceccucv"]
 
 [ext_resource type="Texture2D" uid="uid://wubc7rleuqr0" path="res://Felix/assets/thoughtbubs_con.png" id="1_dciku"]
 [ext_resource type="Script" path="res://Felix/assets/thought_bubble.gd" id="1_rf4v0"]
 
+[sub_resource type="Animation" id="Animation_bca8v"]
+resource_name = "pop_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_241kf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n1ro7"]
+resource_name = "pop_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.6, 0.6, 0.6), Vector3(0.4, 0.4, 0.4), Vector3(0.55, 0.55, 0.55), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqpv8"]
+_data = {
+"RESET": SubResource("Animation_241kf"),
+"pop_in": SubResource("Animation_bca8v"),
+"pop_out": SubResource("Animation_n1ro7")
+}
+
 [node name="thought_bubble" type="Node3D"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 script = ExtResource("1_rf4v0")
 
 [node name="text" type="Label3D" parent="."]
@@ -15,10 +69,23 @@ outline_modulate = Color(1, 1, 1, 1)
 text = "testing test and test and then tttttttttttuygkjgkjhgkjhgkjgjkh jhgkjhg kjhg hk  jhgkjgkhkgj kjh gkj jh "
 outline_size = 127
 horizontal_alignment = 0
-width = 5.515
+vertical_alignment = 2
+line_spacing = 2.0
+autowrap_mode = 3
 
 [node name="bub_dots" type="Sprite3D" parent="."]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 centered = false
 billboard = 2
 texture = ExtResource("1_dciku")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gqpv8")
+}
+
+[node name="hide_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="hide_timer" to="." method="_on_hide_timer_timeout"]

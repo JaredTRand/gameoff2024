@@ -3,6 +3,7 @@ extends StaticBody3D
 @export var interaction_type:String
 @export var interaction_name:String
 @export var interaction_cooldown_time:float = 3.0
+@export var thought:String
 
 @onready var hover_text:Label3D = $"../../hover_text"
 var hover_text_canbevisible = true
@@ -10,17 +11,14 @@ var hover_text_canbevisible = true
 @onready var interaction_cooldown:Timer = Timer.new()
 var in_player_interact_area = false
 
+@onready var felix = get_tree().get_first_node_in_group("player")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(interaction_cooldown)
 	interaction_cooldown.wait_time = interaction_cooldown_time
 	interaction_cooldown.one_shot = true
 	interaction_cooldown.connect("timeout", _on_interaction_cooldown_timeout)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func interact_with_on():
 	in_player_interact_area = true
@@ -37,6 +35,9 @@ func interact():
 	hover_text.visible = false
 	hover_text_canbevisible = false
 	interaction_cooldown.start()
+	
+	if thought:
+		felix.think(thought)
 
 func _on_interaction_cooldown_timeout():
 	hover_text_canbevisible = true

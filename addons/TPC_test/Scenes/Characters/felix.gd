@@ -4,7 +4,7 @@ const LERP_VALUE : float = 0.15
 
 var snap_vector : Vector3 = Vector3.DOWN
 var speed : float
-
+var can_interact:bool = false
 var can_ledge_grab:bool = false
 
 @export_group("Movement variables")
@@ -28,6 +28,8 @@ const ANIMATION_BLEND : float = 7.0
 var jump_count:int = 0
 var jump_count_max:int = 2
 
+var cur_interactable_obj
+
 func _physics_process(delta):
 	move_direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
 	move_direction.z = Input.get_action_strength("player_backward") - Input.get_action_strength("player_forward")
@@ -46,7 +48,10 @@ func _physics_process(delta):
 	if move_direction:
 		player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, atan2(velocity.x, velocity.z), LERP_VALUE)
 		
-	
+	if Input.is_action_just_pressed("player_interact"):
+		if cur_interactable_obj:
+			cur_interactable_obj.interact()
+		
 	var just_landed := is_on_floor() and snap_vector == Vector3.ZERO
 	var is_jumping := is_on_floor() and Input.is_action_just_pressed("player_jump")
 	
@@ -94,13 +99,20 @@ func animate(delta):
 func _process_raycasts():
 	var can_ledge_grab = not headcast.is_colliding() and eyecast.is_colliding()
 
+
 func _on_interact_area_body_entered(body):
 	if not body.is_in_group("interactable"): return
+	
 	debug_panel.add_property("interacting", true)
+	can_interact = true
 	body.interact_with_on()
+	cur_interactable_obj = body
 
 
 func _on_interact_area_body_exited(body):
 	if not body.is_in_group("interactable"): return
+	
 	debug_panel.add_property("interacting", false)
+	can_interact = false
 	body.interact_with_off()
+	cur_interactable_obj = null

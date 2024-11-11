@@ -103,6 +103,7 @@ mesh = SubResource("BoxMesh_plpqy")
 script = ExtResource("3_k7mp0")
 interaction_type = "Touch"
 interaction_name = "The Wall"
+thought = "Why the hell am I touching a wall?"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_v7prx")

@@ -476,23 +476,23 @@ input_1/reset = true
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_dppes"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_h8fbi"]
-graph_offset = Vector2(-564.908, 885.22)
+graph_offset = Vector2(-600.829, 627.889)
 nodes/Air/node = SubResource("AnimationNodeAnimation_r8sh6")
-nodes/Air/position = Vector2(-336, 768)
+nodes/Air/position = Vector2(-368, 1152)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_6050g")
 nodes/Animation/position = Vector2(-336, 976)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_esec8")
-nodes/Idle/position = Vector2(-336, 1184)
+nodes/Idle/position = Vector2(-352, 416)
 nodes/Run/node = SubResource("AnimationNodeAnimation_41juu")
-nodes/Run/position = Vector2(-336, 1392)
+nodes/Run/position = Vector2(-368, 592)
 nodes/Walk/node = SubResource("AnimationNodeAnimation_eg1uw")
-nodes/Walk/position = Vector2(-336, 1616)
+nodes/Walk/position = Vector2(-640, 512)
 nodes/ground_air_transition/node = SubResource("AnimationNodeTransition_7o3pa")
 nodes/ground_air_transition/position = Vector2(224, 656)
 nodes/iwr_blend/node = SubResource("AnimationNodeBlend3_uwmpg")
-nodes/iwr_blend/position = Vector2(16, 1312)
+nodes/iwr_blend/position = Vector2(-32, 464)
 nodes/jf_blend/node = SubResource("AnimationNodeBlend2_dppes")
-nodes/jf_blend/position = Vector2(16, 704)
+nodes/jf_blend/position = Vector2(-16, 1008)
 nodes/output/position = Vector2(496, 672)
 node_connections = [&"ground_air_transition", 0, &"iwr_blend", &"ground_air_transition", 1, &"jf_blend", &"iwr_blend", 0, &"Idle", &"iwr_blend", 1, &"Walk", &"iwr_blend", 2, &"Run", &"jf_blend", 0, &"Animation", &"jf_blend", 1, &"Air", &"output", 0, &"ground_air_transition"]
 
@@ -1395,7 +1395,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/ground_air_transition/current_state = "air"
 parameters/ground_air_transition/transition_request = ""
 parameters/ground_air_transition/current_index = 1
-parameters/iwr_blend/blend_amount = 0.0
+parameters/iwr_blend/blend_amount = 1.0
 parameters/jf_blend/blend_amount = 0.0
 
 [node name="Eyecast" type="RayCast3D" parent="felix"]

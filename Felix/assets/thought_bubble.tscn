@@ -3,6 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://wubc7rleuqr0" path="res://Felix/assets/thoughtbubs_con.png" id="1_dciku"]
 [ext_resource type="Script" path="res://Felix/assets/thought_bubble.gd" id="1_rf4v0"]
 
+[sub_resource type="Animation" id="Animation_241kf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_bca8v"]
 resource_name = "pop_in"
 length = 0.5
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.5, 0.5, 0.5), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_241kf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_n1ro7"]

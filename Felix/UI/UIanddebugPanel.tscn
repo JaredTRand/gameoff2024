@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0xx0p7kdhbma"]
+[gd_scene load_steps=6 format=3 uid="uid://b0xx0p7kdhbma"]
 
 [ext_resource type="Script" path="res://Felix/UI/debug.gd" id="1_el8vf"]
+[ext_resource type="Script" path="res://Felix/UI/hotbar/hot_bar.gd" id="2_4olvw"]
+[ext_resource type="Texture2D" uid="uid://dnqejamcrwn8b" path="res://Felix/UI/hotbar/hotbar_empty.jpg" id="2_mlvt6"]
+[ext_resource type="Script" path="res://Felix/UI/hotbar_slot.gd" id="4_0fhqg"]
 
 [sub_resource type="Theme" id="Theme_wdf0f"]
 MarginContainer/constants/margin_bottom = 10
@@ -31,3 +34,58 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DebugPanel/MarginContainer"]
 layout_mode = 2
+
+[node name="HotBar" type="HBoxContainer" parent="." groups=["hotbar"]]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -374.0
+offset_top = -100.0
+offset_right = 374.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_4olvw")
+
+[node name="hotbar_slot1" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = ExtResource("2_mlvt6")
+script = ExtResource("4_0fhqg")
+
+[node name="hotbar_slot2" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = ExtResource("2_mlvt6")
+script = ExtResource("4_0fhqg")
+
+[node name="hotbar_slot3" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = ExtResource("2_mlvt6")
+script = ExtResource("4_0fhqg")
+
+[node name="hotbar_slot4" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = ExtResource("2_mlvt6")
+script = ExtResource("4_0fhqg")
+
+[node name="hotbar_slot5" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = ExtResource("2_mlvt6")
+script = ExtResource("4_0fhqg")
+
+[node name="hotbar_slot6" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = ExtResource("2_mlvt6")
+script = ExtResource("4_0fhqg")
+
+[node name="hotbar_slot7" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = ExtResource("2_mlvt6")
+script = ExtResource("4_0fhqg")
+
+[node name="hotbar_slot8" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = ExtResource("2_mlvt6")
+script = ExtResource("4_0fhqg")

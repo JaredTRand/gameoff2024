@@ -27,6 +27,8 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var thought_bubble = $thought_bubble
 
+@onready var hotbar = $UserInterface/ItemList
+
 var jump_count:int = 0
 var jump_count_max:int = 1
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bp6hr65xmyrby"]
+[gd_scene load_steps=23 format=3 uid="uid://bp6hr65xmyrby"]
 
 [ext_resource type="Texture2D" uid="uid://doyodkg1ds7td" path="res://addons/TPC_test/Assets/Textures/Sky.png" id="1_edl5f"]
 [ext_resource type="Texture2D" uid="uid://b8q44ipg8a3cq" path="res://addons/TPC_test/Assets/Textures/Black.png" id="2_n12tp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dkpqh8de7tb3n" path="res://addons/TPC_test/Assets/Textures/Green.png" id="4_bptv0"]
 [ext_resource type="PackedScene" uid="uid://do0j7tvga0yx0" path="res://world/assets/key/key.tscn" id="5_bcxb4"]
 [ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="5_htbjo"]
+[ext_resource type="PackedScene" uid="uid://dumv7xay0qg6r" path="res://Felix/assets/hover_text.tscn" id="8_ss1mk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6c4vd"]
 panorama = ExtResource("1_edl5f")
@@ -125,12 +126,7 @@ walk_speed = 4.5
 jump_strength = 15.0
 gravity = 50.0
 
-[node name="hover_text" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93368, 1.32274, 3)
-visible = false
-billboard = 1
-no_depth_test = true
-text = "TEXT TEST"
-
 [node name="Key" parent="." instance=ExtResource("5_bcxb4")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.267029, 0.672914, 5.67645)
+
+[node name="hover_text" parent="." instance=ExtResource("8_ss1mk")]

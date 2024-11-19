@@ -51,7 +51,6 @@ interaction_name = "Key"
 thought = "A key! I wonder what this unlocks..."
 pickup_able = true
 inv_img = ExtResource("3_w86lf")
-item_scene = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191345, 0, -1.86865)

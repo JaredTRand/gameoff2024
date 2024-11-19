@@ -11,7 +11,7 @@ extends StaticBody3D
 
 
 
-@onready var hover_text:Label3D = $"../../hover_text"
+
 var hover_text_canbevisible = true
 
 @onready var interaction_cooldown:Timer = Timer.new()
@@ -19,6 +19,7 @@ var in_player_interact_area = false
 
 @onready var felix = get_tree().get_first_node_in_group("player")
 @onready var hotbar = get_tree().get_first_node_in_group("hotbar")
+@onready var hover_text:Label3D = $hover_text
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,10 @@ func _ready():
 	interaction_cooldown.wait_time = interaction_cooldown_time
 	interaction_cooldown.one_shot = true
 	interaction_cooldown.connect("timeout", _on_interaction_cooldown_timeout)
+	
+	if not hover_text:
+		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
+		add_child(hover_text)
 
 func interact_with_on():
 	in_player_interact_area = true

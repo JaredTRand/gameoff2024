@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=4 uid="uid://d4gprrw881y3p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4grm"]
+resource_name = "wood"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.952921, 0.798667, 0.660025, 1)
+emission_enabled = true
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_75eax"]
+_surfaces = [{
+"aabb": AABB(-10, 0, 0, 10, 0.5, 10),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAQAEAAIABAABAAUAAAAGAAMABgAAAAcABgABAAMAAQAGAAUAAAAEAAcABAAAAAIABAAGAAcABgAEAAUA"),
+"name": "wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAD8AACBBAAAAAAAAAD8AAAAAAAAAAAAAAAAAACBBAAAgwQAAAD8AAAAAAAAgwQAAAD8AACBBAAAgwQAAAAAAACBBAAAgwQAAAAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6ewwg"]
+resource_name = "floorFull"
+_surfaces = [{
+"aabb": AABB(-10, 0, 0, 10, 0.5, 10),
+"attribute_data": PackedByteArray("AAAAAAAAgD/2eh3C4O93vwAAAADg73e/9nodwgAAgD8AAAAA9noZwvZ6HUIAAIA/AAAAAAAAgD/2eh1C9noZwgAAAAAAAIA/9nodwvZ6GcIAAAAA9noZwvZ6HcIAAIA/9nodwgAAgD8AAAAA4O93vwAAAAAAAIA/9nodwuDvd78AAAAAAACAP/Z6HULg73e/9nodQgAAgD8AAAAA4O93vwAAAADg73e/9nodQgAAgD8AAAAAAACAP/Z6HULg73e/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABQAEAAcACAAJAAoACQAIAAsADAANAA4ADQAMAA8AEAARABIAEQAQABMAFAAVABYAFQAUABcA"),
+"material": SubResource("StandardMaterial3D_l4grm"),
+"name": "wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAD8AACBBAAAAAAAAAD8AAAAAAAAAAAAAAAAAACBBAAAAAAAAAD8AACBBAAAgwQAAAD8AAAAAAAAAAAAAAD8AAAAAAAAgwQAAAD8AACBBAAAAAAAAAAAAAAAAAAAgwQAAAAAAACBBAAAAAAAAAAAAACBBAAAgwQAAAAAAAAAAAAAgwQAAAAAAACBBAAAAAAAAAD8AACBBAAAAAAAAAAAAACBBAAAgwQAAAD8AACBBAAAAAAAAAAAAAAAAAAAgwQAAAD8AAAAAAAAgwQAAAAAAAAAAAAAAAAAAAD8AAAAAAAAgwQAAAD8AAAAAAAAgwQAAAAAAACBBAAAgwQAAAAAAAAAAAAAgwQAAAD8AACBB////f/////////9//////////3//////////f///////f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//3//f////7//f/9/////v/9//3////+//3//f////7//////AAD/v/////8AAP+//////wAA/7//////AAD/vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_75eax")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f3016"]
+data = PackedVector3Array(0, 0, 0, 0, 0.5, 10, 0, 0.5, 0, 0, 0.5, 10, 0, 0, 0, 0, 0, 10, 0, 0.5, 10, -10, 0.5, 0, 0, 0.5, 0, -10, 0.5, 0, 0, 0.5, 10, -10, 0.5, 10, 0, 0, 0, -10, 0, 10, 0, 0, 10, -10, 0, 10, 0, 0, 0, -10, 0, 0, -10, 0, 10, 0, 0.5, 10, 0, 0, 10, 0, 0.5, 10, -10, 0, 10, -10, 0.5, 10, 0, 0, 0, -10, 0.5, 0, -10, 0, 0, -10, 0.5, 0, 0, 0, 0, 0, 0.5, 0, -10, 0.5, 0, -10, 0, 10, -10, 0, 0, -10, 0, 10, -10, 0.5, 0, -10, 0.5, 10)
+
+[node name="floorFull" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_6ewwg")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_f3016")

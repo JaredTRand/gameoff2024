@@ -43,14 +43,14 @@ size = Vector3(2.32709, 1, 5.9873)
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_5gb25")
 skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
 script = ExtResource("2_vfton")
-interaction_type = "Pickup"
-interaction_name = "Key"
+interaction_type = "Pick up"
+interaction_name = "key"
 thought = "A key! I wonder what this unlocks..."
 pickup_able = true
 inv_img = ExtResource("3_w86lf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191345, 0, -1.86865)

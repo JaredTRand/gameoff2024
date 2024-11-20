@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends MeshInstance3D
 
 @export var interaction_type:String
 @export var interaction_name:String
@@ -8,6 +8,7 @@ extends StaticBody3D
 @export var pickup_able:bool = false
 @export var inv_img:CompressedTexture2D
 @export var item_scene:PackedScene
+@export var hvr_txt_size:int = 300
 
 
 
@@ -19,7 +20,7 @@ var in_player_interact_area = false
 
 @onready var felix = get_tree().get_first_node_in_group("player")
 @onready var hotbar = get_tree().get_first_node_in_group("hotbar")
-@onready var hover_text:Label3D = $hover_text
+@onready var hover_text:Label3D = get_tree().get_first_node_in_group("hover_text")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +32,7 @@ func _ready():
 	if not hover_text:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
 		add_child(hover_text)
+		hover_text.font_size = hvr_txt_size
 
 func interact_with_on():
 	in_player_interact_area = true
@@ -54,7 +56,7 @@ func interact():
 	if pickup_able:
 		var success = hotbar.add_item(inv_img, interaction_name)
 		if success: 
-			self.get_parent().queue_free()
+			self.queue_free()
 
 func _on_interaction_cooldown_timeout():
 	hover_text_canbevisible = true

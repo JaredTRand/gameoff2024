@@ -26,6 +26,7 @@ enabled=PackedStringArray("res://addons/third-person-camera/plugin.cfg", "res://
 [global_group]
 
 hovertext=""
+interactable=""
 
 [input]
 

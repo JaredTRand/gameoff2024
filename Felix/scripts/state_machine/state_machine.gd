@@ -23,8 +23,8 @@ func _physics_process(delta):
 		
 	if not felix.is_on_floor(): 
 		change_states(STATES.IN_AIR)
-		if felix.can_ledge_grab and CURRENT_STATE == STATES.LEDGE_GRAB:
-			change_states(STATES.LEDGE_GRAB)
+		#if felix.can_ledge_grab and CURRENT_STATE == STATES.LEDGE_GRAB:
+			#change_states(STATES.LEDGE_GRAB)
 
 	debug_panel.add_property("STATE", STATES.find_key(CURRENT_STATE))
 

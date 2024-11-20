@@ -114,8 +114,8 @@ func _on_interact_area_body_entered(body):
 	
 	debug_panel.add_property("interacting", true)
 	can_interact = true
-	body.interact_with_on()
-	cur_interactable_obj = body
+	body.get_parent().interact_with_on()
+	cur_interactable_obj = body.get_parent()
 
 
 func _on_interact_area_body_exited(body):
@@ -123,5 +123,5 @@ func _on_interact_area_body_exited(body):
 	
 	debug_panel.add_property("interacting", false)
 	can_interact = false
-	body.interact_with_off()
+	body.get_parent().interact_with_off()
 	cur_interactable_obj = null

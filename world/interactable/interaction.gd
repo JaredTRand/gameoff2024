@@ -20,7 +20,7 @@ var in_player_interact_area = false
 
 @onready var felix = get_tree().get_first_node_in_group("player")
 @onready var hotbar = get_tree().get_first_node_in_group("hotbar")
-@onready var hover_text:Label3D = get_tree().get_first_node_in_group("hover_text")
+var hover_text:Label3D 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,7 +29,7 @@ func _ready():
 	interaction_cooldown.one_shot = true
 	interaction_cooldown.connect("timeout", _on_interaction_cooldown_timeout)
 	
-	if not hover_text:
+	if hover_text == null:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
 		add_child(hover_text)
 		hover_text.font_size = hvr_txt_size

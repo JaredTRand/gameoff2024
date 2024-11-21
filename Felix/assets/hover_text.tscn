@@ -5,4 +5,4 @@ visible = false
 billboard = 1
 no_depth_test = true
 text = "TEXT TESTf"
-font_size = 300
+font_size = 80

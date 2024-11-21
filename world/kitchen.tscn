@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://bygkp6m5pu0fp"]
+[gd_scene load_steps=55 format=4 uid="uid://bygkp6m5pu0fp"]
 
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="1_8muie"]
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_vxmsc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c7rp0xrkr246h" path="res://addons/Kenney/Furniture/FBX format/kitchenCabinetUpper.fbx" id="12_3w6ak"]
 [ext_resource type="PackedScene" uid="uid://cosmpbb5hfcta" path="res://addons/Kenney/Furniture/FBX format/kitchenCoffeeMachine.fbx" id="13_c38m3"]
 [ext_resource type="PackedScene" uid="uid://dk5m6cvg3s1kr" path="res://addons/Kenney/Furniture/FBX format/kitchenBlender.fbx" id="14_qx6pg"]
+[ext_resource type="PackedScene" uid="uid://c86rcuhbfec1u" path="res://world/assets/badcrowbar/badcrowbar.tscn" id="15_liafs"]
 [ext_resource type="PackedScene" uid="uid://bewwea234b3sk" path="res://world/chair_rounded.tscn" id="16_sxee1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0enx"]
@@ -274,7 +275,6 @@ emission_energy_multiplier = 0.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghjg0"]
 resource_name = "_defaultMat"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 emission_enabled = true
 emission_energy_multiplier = 0.0
 
@@ -747,8 +747,141 @@ points = PackedVector3Array(-20.2886, 7.04345, 0, -20.2886, 8.27175, 0, -19.0612
 [node name="kitchen" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.5, 0, -60)
 
+[node name="Key" parent="." instance=ExtResource("7_hgdlj")]
+transform = Transform3D(-0.1, 0, 8.7423e-09, 0, 0.1, 0, -8.7423e-09, 0, -0.1, -6.5, 1, -16)
+
 [node name="furniture" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="kitchenCabinetCornerInner2" type="MeshInstance3D" parent="furniture"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -5.5, 0.5, 25)
+mesh = SubResource("ArrayMesh_h257i")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenCabinetCornerInner2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/kitchenCabinetCornerInner2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3urot")
+
+[node name="kitchenCabinetDrawer2" parent="furniture" instance=ExtResource("5_0pyim")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.6, 0.5, 25)
+
+[node name="kitchenCabinetDrawer3" parent="furniture" instance=ExtResource("5_0pyim")]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 7.4, 0.5, 25.1)
+
+[node name="kitchenCabinet" parent="furniture" instance=ExtResource("6_yqsjy")]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -5.6, 0.5, 16.4)
+
+[node name="kitchenCabinet3" type="Node3D" parent="furniture"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -5.6, 0.5, 12.4)
+
+[node name="kitchenCabinet" type="MeshInstance3D" parent="furniture/kitchenCabinet3"]
+mesh = SubResource("ArrayMesh_u1rkh")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenCabinet3/kitchenCabinet"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/kitchenCabinet3/kitchenCabinet/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_yhfb5")
+
+[node name="door" type="MeshInstance3D" parent="furniture/kitchenCabinet3/kitchenCabinet"]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -0.26844, 0.85086, 0.299999)
+mesh = SubResource("ArrayMesh_4wb42")
+skeleton = NodePath("")
+script = ExtResource("6_ffnav")
+interaction_type = "Inspect"
+interaction_name = "Cabinet"
+thought = "It's stuck. Maybe I can find something to pry it open."
+hvr_txt_size = 150
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door" groups=["interactable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e2jsv")
+
+[node name="kitchenCabinet2" parent="furniture" instance=ExtResource("6_yqsjy")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1.2, 0.5, 25.1)
+
+[node name="kitchenSink2" type="MeshInstance3D" parent="furniture"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.6, 0.5, 20.7)
+mesh = SubResource("ArrayMesh_xar3p")
+skeleton = NodePath("")
+
+[node name="door" type="MeshInstance3D" parent="furniture/kitchenSink2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.268442, 0.85086, 0.3)
+mesh = SubResource("ArrayMesh_klrnt")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenSink2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/kitchenSink2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1nru4")
+
+[node name="kitchenFridgeLarge" parent="furniture" instance=ExtResource("8_m4rh7")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 12.6, 0.5, 26.1)
+
+[node name="kitchenCabinetUpperLow" parent="furniture" instance=ExtResource("10_m4cf4")]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 9.3, 9.95, 27.4)
+
+[node name="kitchenCabinetUpperLow2" parent="furniture" instance=ExtResource("10_m4cf4")]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 13.6, 9.95, 27.4)
+
+[node name="kitchenCabinetUpperDouble" parent="furniture" instance=ExtResource("11_mgqsd")]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 5, 8, 27.4)
+
+[node name="kitchenCabinetUpper" parent="furniture" instance=ExtResource("12_3w6ak")]
+transform = Transform3D(1, 0, -1.7683e-07, 0, 1, 0, 1.7683e-07, 0, 1, 0.699997, 8, 27.4)
+
+[node name="kitchenCabinetUpperDouble2" parent="furniture" instance=ExtResource("11_mgqsd")]
+transform = Transform3D(1, 0, -1.17225e-07, 0, 1, 0, 1.17225e-07, 0, 1, -3.6, 8, 27.4)
+
+[node name="kitchenCabinetUpperDouble3" parent="furniture" instance=ExtResource("11_mgqsd")]
+transform = Transform3D(-1.60937e-07, 0, -1, 0, 1, 0, 1, 0, -1.60937e-07, -7.9, 8, 27.4)
+
+[node name="kitchenCoffeeMachine" parent="furniture" instance=ExtResource("13_c38m3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.49999, 4.7, 14.3)
+
+[node name="kitchenBlender" parent="furniture" instance=ExtResource("14_qx6pg")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.5, 4.7, 29)
+
+[node name="kitchenStoveElectric2" type="MeshInstance3D" parent="furniture"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 3.1, 0.5, 25.1)
+mesh = SubResource("ArrayMesh_y8768")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenStoveElectric2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/kitchenStoveElectric2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_13j8x")
+
+[node name="tableCrossCloth2" type="MeshInstance3D" parent="furniture"]
+transform = Transform3D(5.50764e-08, 0, 0.42, 0, 0.42, 0, -0.42, 0, 5.50764e-08, 9.50001, 0.5, -4)
+mesh = SubResource("ArrayMesh_t4fa5")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/tableCrossCloth2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/tableCrossCloth2/StaticBody3D"]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_uxqin")
+
+[node name="chairRounded" parent="furniture" instance=ExtResource("16_sxee1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.7, 0.5, -4)
+
+[node name="chairRounded2" parent="furniture" instance=ExtResource("16_sxee1")]
+transform = Transform3D(1, 0, -1.7683e-07, 0, 1, 0, 1.7683e-07, 0, 1, 12.7, 0.5, 4.5)
+
+[node name="chairRounded3" parent="furniture" instance=ExtResource("16_sxee1")]
+transform = Transform3D(-2.20541e-07, 0, -1, 0, 1, 0, 1, 0, -2.20541e-07, 10.7, 0.5, 3.3)
+
+[node name="chairRounded4" parent="furniture" instance=ExtResource("16_sxee1")]
+transform = Transform3D(-2.20541e-07, 0, -1, 0, 1, 0, 1, 0, -2.20541e-07, 10.7, 0.5, -0.700001)
+
+[node name="chairRounded5" parent="furniture" instance=ExtResource("16_sxee1")]
+transform = Transform3D(3.07964e-07, 0, 1, 0, 1, 0, -1, 0, 3.07964e-07, 12.7, 0.5, -2.7)
+
+[node name="chairRounded6" parent="furniture" instance=ExtResource("16_sxee1")]
+transform = Transform3D(3.07964e-07, 0, 1, 0, 1, 0, -1, 0, 3.07964e-07, 12.7, 0.5, 1.3)
 
 [node name="floor" type="Node3D" parent="."]
 
@@ -858,133 +991,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
 [node name="floorFull18" parent="ceiling" instance=ExtResource("1_8muie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -30)
 
-[node name="kitchenCabinetCornerInner2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -5.5, 0.5, 5)
-mesh = SubResource("ArrayMesh_h257i")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="kitchenCabinetCornerInner2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="kitchenCabinetCornerInner2/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_3urot")
-
-[node name="kitchenCabinetDrawer2" parent="." instance=ExtResource("5_0pyim")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.6, 0.5, 5)
-
-[node name="kitchenCabinetDrawer3" parent="." instance=ExtResource("5_0pyim")]
-transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 7.4, 0.5, 5.1)
-
-[node name="kitchenCabinet" parent="." instance=ExtResource("6_yqsjy")]
-
-[node name="kitchenCabinet3" type="Node3D" parent="."]
-transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -5.6, 0.5, -7.60003)
-
-[node name="kitchenCabinet" type="MeshInstance3D" parent="kitchenCabinet3"]
-mesh = SubResource("ArrayMesh_u1rkh")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="kitchenCabinet3/kitchenCabinet"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="kitchenCabinet3/kitchenCabinet/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_yhfb5")
-
-[node name="door" type="MeshInstance3D" parent="kitchenCabinet3/kitchenCabinet"]
-transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -0.26844, 0.85086, 0.299999)
-mesh = SubResource("ArrayMesh_4wb42")
-skeleton = NodePath("")
-script = ExtResource("6_ffnav")
-interaction_type = "Inspect"
-interaction_name = "Cabinet"
-thought = "It's stuck. Maybe I can find something to pry it open."
-hvr_txt_size = 200
-
-[node name="StaticBody3D" type="StaticBody3D" parent="kitchenCabinet3/kitchenCabinet/door" groups=["interactable"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="kitchenCabinet3/kitchenCabinet/door/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_e2jsv")
-
-[node name="Key" parent="kitchenCabinet3/kitchenCabinet" instance=ExtResource("7_hgdlj")]
-transform = Transform3D(1.31134e-08, 0, -0.1, 0, 0.1, 0, 0.1, 0, 1.31134e-08, -8.39997, 0.5, 0.900003)
-
-[node name="kitchenCabinet2" parent="." instance=ExtResource("6_yqsjy")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1.2, 0.5, 5.09997)
-
-[node name="kitchenSink2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.6, 0.5, 0.699959)
-mesh = SubResource("ArrayMesh_xar3p")
-skeleton = NodePath("")
-
-[node name="door" type="MeshInstance3D" parent="kitchenSink2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.268442, 0.85086, 0.3)
-mesh = SubResource("ArrayMesh_klrnt")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="kitchenSink2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="kitchenSink2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_1nru4")
-
-[node name="kitchenFridgeLarge" parent="." instance=ExtResource("8_m4rh7")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 12.6, 0.5, 6.1)
-
-[node name="kitchenCabinetUpperLow" parent="." instance=ExtResource("10_m4cf4")]
-transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 9.3, 9.95, 7.4)
-
-[node name="kitchenCabinetUpperLow2" parent="." instance=ExtResource("10_m4cf4")]
-transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 13.6, 9.95, 7.4)
-
-[node name="kitchenCabinetUpperDouble" parent="." instance=ExtResource("11_mgqsd")]
-transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 5, 8, 7.4)
-
-[node name="kitchenCabinetUpper" parent="." instance=ExtResource("12_3w6ak")]
-transform = Transform3D(1, 0, -1.7683e-07, 0, 1, 0, 1.7683e-07, 0, 1, 0.699997, 8, 7.4)
-
-[node name="kitchenCabinetUpperDouble2" parent="." instance=ExtResource("11_mgqsd")]
-transform = Transform3D(1, 0, -1.17225e-07, 0, 1, 0, 1.17225e-07, 0, 1, -3.6, 8, 7.4)
-
-[node name="kitchenCabinetUpperDouble3" parent="." instance=ExtResource("11_mgqsd")]
-transform = Transform3D(-1.60937e-07, 0, -1, 0, 1, 0, 1, 0, -1.60937e-07, -7.9, 8, 7.4)
-
-[node name="kitchenCoffeeMachine" parent="." instance=ExtResource("13_c38m3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.49999, 4.7, -5.70003)
-
-[node name="kitchenBlender" parent="." instance=ExtResource("14_qx6pg")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.5, 4.7, 8.99999)
-
-[node name="kitchenStoveElectric2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 3.1, 0.5, 5.1)
-mesh = SubResource("ArrayMesh_y8768")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="kitchenStoveElectric2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="kitchenStoveElectric2/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_13j8x")
-
-[node name="tableCrossCloth2" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.50764e-08, 0, 0.42, 0, 0.42, 0, -0.42, 0, 5.50764e-08, 9.50001, 0.5, -24)
-mesh = SubResource("ArrayMesh_t4fa5")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="tableCrossCloth2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tableCrossCloth2/StaticBody3D"]
-transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_uxqin")
-
-[node name="chairRounded" parent="." instance=ExtResource("16_sxee1")]
-
-[node name="chairRounded2" parent="." instance=ExtResource("16_sxee1")]
-transform = Transform3D(1, 0, -1.7683e-07, 0, 1, 0, 1.7683e-07, 0, 1, 12.7, 0.5, -15.5)
-
-[node name="chairRounded3" parent="." instance=ExtResource("16_sxee1")]
-transform = Transform3D(-2.20541e-07, 0, -1, 0, 1, 0, 1, 0, -2.20541e-07, 10.7, 0.5, -16.7)
-
-[node name="chairRounded4" parent="." instance=ExtResource("16_sxee1")]
-transform = Transform3D(-2.20541e-07, 0, -1, 0, 1, 0, 1, 0, -2.20541e-07, 10.7, 0.5, -20.7)
-
-[node name="chairRounded5" parent="." instance=ExtResource("16_sxee1")]
-transform = Transform3D(3.07964e-07, 0, 1, 0, 1, 0, -1, 0, 3.07964e-07, 12.7, 0.5, -22.7)
-
-[node name="chairRounded6" parent="." instance=ExtResource("16_sxee1")]
-transform = Transform3D(3.07964e-07, 0, 1, 0, 1, 0, -1, 0, 3.07964e-07, 12.7, 0.5, -18.7)
+[node name="Cube" parent="." instance=ExtResource("15_liafs")]
+transform = Transform3D(0.2, -1.74846e-08, 1.74846e-08, 1.74846e-08, -8.74228e-09, -0.2, 1.74846e-08, 0.2, -8.74228e-09, 0, 0.6, -5.3)
+interaction_type = "Pick up"
+interaction_name = "Crrowbar"
+thought = "Who makes a crowbar for cats anyway?"
+pickup_able = true

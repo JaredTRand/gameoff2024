@@ -47,8 +47,8 @@ func _physics_process(delta):
 	else:
 		speed = walk_speed
 	
-	velocity.x = move_direction.x * speed
-	velocity.z = move_direction.z * speed
+	velocity.x = move_direction.normalized().x * speed
+	velocity.z = move_direction.normalized().z * speed
 	
 	if move_direction:
 		player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, atan2(velocity.x, velocity.z), LERP_VALUE)
@@ -101,9 +101,9 @@ func animate(delta):
 		# check if animation is finished before moving to the fall animation
 		if velocity.y > 0:
 			if jump_count == 1:
-				animator.set("parameters/jf_blend/blend_amount", lerp(animator.get("parameters/jf_blend/blend_amount"), -1.0, delta * ANIMATION_BLEND))
-			elif jump_count == 2:
 				animator.set("parameters/jf_blend/blend_amount", lerp(animator.get("parameters/jf_blend/blend_amount"), 0.0, delta * ANIMATION_BLEND))
+			elif jump_count >= 2:
+				animator.set("parameters/jf_blend/blend_amount", lerp(animator.get("parameters/jf_blend/blend_amount"), -1.0, delta * ANIMATION_BLEND))
 		else:
 			animator.set("parameters/jf_blend/blend_amount", lerp(animator.get("parameters/jf_blend/blend_amount"), 1.0, delta * ANIMATION_BLEND))
 

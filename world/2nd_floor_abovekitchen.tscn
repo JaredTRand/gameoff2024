@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8f81824g182q"]
+
+[ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="1_qv4wp"]
+[ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="2_25jco"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="wall20" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27.7, 13, -1.52588e-05)
+
+[node name="wall23" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27.7, 13, 9.99998)
+
+[node name="wall24" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.7, 13, 9.99998)
+
+[node name="wall25" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9.7, 13, 9.99998)
+
+[node name="wall26" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.299999, 13, 9.99998)
+
+[node name="wall27" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.3, 13, 9.99998)
+
+[node name="wall28" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -10.3, 13, -1.52588e-05)
+
+[node name="wall29" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -10.3, 13, -10)
+
+[node name="wall30" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -10.3, 13, -20)
+
+[node name="wall31" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -10.3, 13, -30)
+
+[node name="wall21" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27.7, 13, -10)
+
+[node name="wall22" parent="." instance=ExtResource("1_qv4wp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27.7, 13, -20)
+
+[node name="ceiling" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 12.9, 0)
+
+[node name="floorFull" parent="ceiling" instance=ExtResource("2_25jco")]
+
+[node name="floorFull2" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="floorFull3" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="floorFull4" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+
+[node name="floorFull5" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="floorFull6" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+
+[node name="floorFull7" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+
+[node name="floorFull8" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -30)
+
+[node name="floorFull13" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="floorFull14" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -10)
+
+[node name="floorFull17" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
+
+[node name="floorFull18" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -30)
+
+[node name="floorFull19" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30)
+
+[node name="floorFull20" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -7.62939e-06)
+
+[node name="floorFull21" parent="ceiling" instance=ExtResource("2_25jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.3, 30, 0, -3.00002)

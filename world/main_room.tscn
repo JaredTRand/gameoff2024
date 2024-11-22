@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=9 format=3 uid="uid://dui3sqsargabd"]
 
 [ext_resource type="PackedScene" uid="uid://dumv7xay0qg6r" path="res://Felix/assets/hover_text.tscn" id="2_5wv4w"]
 [ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="2_tbhhi"]
 [ext_resource type="PackedScene" uid="uid://y8encr4rb4df" path="res://world/LivingRoom.tscn" id="2_w5bkr"]
 [ext_resource type="PackedScene" uid="uid://bygkp6m5pu0fp" path="res://world/kitchen.tscn" id="3_pohuf"]
+[ext_resource type="PackedScene" uid="uid://b8f81824g182q" path="res://world/2nd_floor_abovekitchen.tscn" id="4_ulc2q"]
+[ext_resource type="PackedScene" uid="uid://df01vm10omhij" path="res://world/2ndfloor_abovelivingroom.tscn" id="5_2d8ca"]
+[ext_resource type="PackedScene" uid="uid://com5il1110o3b" path="res://addons/Kenney/Furniture/scenes/ceiling_fan.tscn" id="6_ov6uc"]
 [ext_resource type="PackedScene" uid="uid://do0j7tvga0yx0" path="res://world/assets/key/key.tscn" id="7_yj8eo"]
 
 [node name="LEVEL" type="Node3D"]
@@ -15,6 +18,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0359, 0.5, -10.404)
 
 [node name="kitchen" parent="." instance=ExtResource("3_pohuf")]
 
+[node name="2ndfloor_abovekitchen" parent="." instance=ExtResource("4_ulc2q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.5, 0, -60)
+
+[node name="2ndfloor_abovelivingroom" parent="." instance=ExtResource("5_2d8ca")]
+
 [node name="sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 12.6, 7)
 omni_range = 21.77
@@ -23,3 +31,9 @@ omni_range = 21.77
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 18, 1, -5)
 
 [node name="hover_text" parent="." instance=ExtResource("2_5wv4w")]
+
+[node name="ceilingFan" parent="." instance=ExtResource("6_ov6uc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 13, -2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.258819, 0.482963, -0.836516, -1.49012e-08, 0.866025, 0.5, 0.965926, 0.12941, -0.224144, -37.1357, 12.9, 0)

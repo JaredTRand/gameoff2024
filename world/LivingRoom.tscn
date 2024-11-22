@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://y8encr4rb4df"]
+[gd_scene load_steps=31 format=4 uid="uid://y8encr4rb4df"]
 
 [ext_resource type="PackedScene" uid="uid://brtq66og04p34" path="res://addons/Kenney/Furniture/scenes/table_coffee.tscn" id="1_x61qm"]
 [ext_resource type="PackedScene" uid="uid://di2gqj3v1a3ft" path="res://addons/Kenney/Furniture/FBX format/pottedPlant.fbx" id="2_7a3kg"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://du8ses7a47ykm" path="res://addons/Kenney/Furniture/scenes/wall_window_slide.tscn" id="7_oyvum"]
 [ext_resource type="PackedScene" uid="uid://dipjlso0oiul0" path="res://addons/Kenney/Furniture/scenes/wall_doorway_wide.tscn" id="8_nr2g8"]
 [ext_resource type="PackedScene" uid="uid://c3ebf68t32kqk" path="res://addons/Kenney/Furniture/scenes/wall_half.tscn" id="9_q0uc3"]
-[ext_resource type="PackedScene" uid="uid://com5il1110o3b" path="res://addons/Kenney/Furniture/scenes/ceiling_fan.tscn" id="10_xll5a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nguq6"]
 resource_name = "carpetBlue"
@@ -490,59 +489,3 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15, 0,
 
 [node name="wallHalf2" parent="wall" instance=ExtResource("9_q0uc3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -30)
-
-[node name="ceiling" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 12.9, 0)
-
-[node name="ceilingFan" parent="ceiling" instance=ExtResource("10_xll5a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0.1, -2)
-
-[node name="floorFull" parent="ceiling" instance=ExtResource("5_mw5sh")]
-
-[node name="floorFull2" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
-
-[node name="floorFull3" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
-
-[node name="floorFull4" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
-
-[node name="floorFull5" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
-
-[node name="floorFull6" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
-
-[node name="floorFull7" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
-
-[node name="floorFull8" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -30)
-
-[node name="floorFull13" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
-
-[node name="floorFull14" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -10)
-
-[node name="floorFull15" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
-
-[node name="floorFull16" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -10)
-
-[node name="floorFull17" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
-
-[node name="floorFull18" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -30)
-
-[node name="floorFull19" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -20)
-
-[node name="floorFull20" parent="ceiling" instance=ExtResource("5_mw5sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ceiling"]
-transform = Transform3D(-0.258819, 0.482963, -0.836516, -1.49012e-08, 0.866025, 0.5, 0.965926, 0.12941, -0.224144, -36.8357, 0, 0)

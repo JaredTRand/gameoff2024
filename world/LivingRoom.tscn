@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://y8encr4rb4df"]
+[gd_scene load_steps=32 format=4 uid="uid://y8encr4rb4df"]
 
 [ext_resource type="PackedScene" uid="uid://brtq66og04p34" path="res://addons/Kenney/Furniture/scenes/table_coffee.tscn" id="1_x61qm"]
 [ext_resource type="PackedScene" uid="uid://di2gqj3v1a3ft" path="res://addons/Kenney/Furniture/FBX format/pottedPlant.fbx" id="2_7a3kg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://du8ses7a47ykm" path="res://addons/Kenney/Furniture/scenes/wall_window_slide.tscn" id="7_oyvum"]
 [ext_resource type="PackedScene" uid="uid://dipjlso0oiul0" path="res://addons/Kenney/Furniture/scenes/wall_doorway_wide.tscn" id="8_nr2g8"]
 [ext_resource type="PackedScene" uid="uid://c3ebf68t32kqk" path="res://addons/Kenney/Furniture/scenes/wall_half.tscn" id="9_q0uc3"]
+[ext_resource type="PackedScene" uid="uid://com5il1110o3b" path="res://addons/Kenney/Furniture/scenes/ceiling_fan.tscn" id="10_xll5a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nguq6"]
 resource_name = "carpetBlue"
@@ -489,3 +490,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15, 0,
 
 [node name="wallHalf2" parent="wall" instance=ExtResource("9_q0uc3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -30)
+
+[node name="ceilingFan" parent="." instance=ExtResource("10_xll5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 13, -2)

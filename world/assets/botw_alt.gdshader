@@ -32,28 +32,28 @@ void fragment(){
 void light(){
 	float NdotL = dot(NORMAL, LIGHT);
 	float VdotL = dot(VIEW, LIGHT);
-	
+
 	// Creating Basic Lighting and Shadows
 	float step_lit = step(shadow_size, NdotL);
 	float step_dark = step(NdotL, shadow_size);
 	vec3 light_buffer = clamp(vec3(step_lit), 0.0, 1.0) * ATTENUATION * ALBEDO * LIGHT_COLOR;
 	vec3 shadow_buffer = ALBEDO * step_dark;
 	vec3 basic_toon = light_buffer + shadow_buffer;
-	
+
 	// Back Halo Shine
 	float halo_fresnel = fresnel(3.0, NORMAL, VIEW);
 	vec3 backhalo = vec3(step(backhalo_size, halo_fresnel * -VdotL));
 	backhalo *= ALBEDO;
-	
+
 	// Side Shine
 	float ss_buffer = -((-VdotL-0.5) + (NdotL-0.3)*4.0);
 	ss_buffer = clamp(ss_buffer, 0.2, 1.1);
 	ss_buffer = step(ss_buffer, fresnel(8.0, NORMAL, VIEW));
 	vec3 side_shine = vec3(ss_buffer) * ALBEDO * side_shine_strength;
-	
+
 	vec3 final_light = backhalo + basic_toon;
 	final_light += side_shine;
-	
+
 	// Specular Brushed Lighting
 	float specular_buffer = UV.y;
 	specular_buffer += (contrast(texture(specular_brush_texture, UV.xx * 10.0 * specular_tex_size).rgb, 0.4).r - specular_offset);
@@ -63,7 +63,7 @@ void light(){
 	specular_buffer *= contrast(texture(specular_brush_texture, UV.xx * 12.0).rgb, 0.9).r;
 	specular_buffer = step(0.2, specular_buffer);
 	specular_buffer *= clamp(VdotL * NdotL, 0.0, 1.0) * clamp(NdotL, 0.0, 1.0);
-	
+
 	// Shade Fresnel for Hair
 	if (use_shade_fresnel){
 		float shade_fresnel = fresnel(3.0, NORMAL, VIEW);
@@ -73,7 +73,7 @@ void light(){
 			final_light *= 1.0 - shade_fresnel_darkness;
 		}
 	}
-	
+
 	DIFFUSE_LIGHT += final_light * clamp(LIGHT_COLOR, 0.0, 1.0);
 	SPECULAR_LIGHT = vec3(specular_buffer) * specular_strength * ALBEDO;
 }

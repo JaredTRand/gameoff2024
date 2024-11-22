@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://bygkp6m5pu0fp"]
+[gd_scene load_steps=60 format=4 uid="uid://bygkp6m5pu0fp"]
 
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="1_8muie"]
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_vxmsc"]
@@ -158,10 +158,24 @@ shadow_mesh = SubResource("ArrayMesh_2liv3")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yhfb5"]
 data = PackedVector3Array(0, 4.5, 4.5, -4.3, 4.5, 4.2, 0, 4.5, 4.2, -4.3, 4.5, 4.2, 0, 4.5, 4.5, -4.3, 4.5, 4.5, -4.3, 3.9, 4.5, 0, 4.5, 4.5, 0, 3.9, 4.5, 0, 4.5, 4.5, -4.3, 3.9, 4.5, -4.3, 4.5, 4.5, 0, 3.9, 0, -4.3, 3.9, 0.2, 0, 3.9, 0.2, -4.3, 3.9, 0.2, 0, 3.9, 0, -4.3, 3.9, 0, 0, 4.2, 4.2, 0, 4.5, 4.5, 0, 4.5, 4.2, 0, 4.2, 4.2, 0, 3.9, 4.5, 0, 4.5, 4.5, 0, 4.2, 4.2, 0, 3.9, 0.2, 0, 3.9, 4.5, 0, 4.2, 4.2, 0, 3.9, 0, 0, 3.9, 0.2, 0, 3.9, 0, 0, 4.2, 4.2, 0, 4.2, 0, -4.3, 4.2, 0, -4.3, 3.9, 0.2, -4.3, 3.9, 0, -4.3, 3.9, 0.2, -4.3, 4.2, 0, -4.3, 4.2, 4.2, -4.3, 3.9, 0.2, -4.3, 4.2, 4.2, -4.3, 3.9, 4.5, -4.3, 3.9, 4.5, -4.3, 4.2, 4.2, -4.3, 4.5, 4.2, -4.3, 3.9, 4.5, -4.3, 4.5, 4.2, -4.3, 4.5, 4.5, 0, 3.9, 0, -4.3, 4.2, 0, -4.3, 3.9, 0, -4.3, 4.2, 0, 0, 3.9, 0, 0, 4.2, 0, 0, 4.2, 4.2, -4.3, 4.5, 4.2, -4.3, 4.2, 4.2, -4.3, 4.5, 4.2, 0, 4.2, 4.2, 0, 4.5, 4.2, 0, 4.2, 4.2, -4.3, 4.2, 0, 0, 4.2, 0, -4.3, 4.2, 0, 0, 4.2, 4.2, -4.3, 4.2, 4.2, 0, 0, 0.4, -4.3, 0, 4.5, 0, 0, 4.5, -4.3, 0, 4.5, 0, 0, 0.4, -4.3, 0, 0.4, -0.2684, 2.3754, 4, -4.0316, 2.3754, 0.4, -0.2684, 2.3754, 0.4, -4.0316, 2.3754, 0.4, -0.2684, 2.3754, 4, -4.0316, 2.3754, 4, -0.2684, 0.8509, 4, -4.0316, 0.8509, 0.2, -0.2684, 0.8509, 0.2, -4.0316, 0.8509, 0.2, -0.2684, 0.8509, 4, -4.0316, 0.8509, 4, -0.2684, 2.3754, 4, -4.0316, 3.6316, 4, -4.0316, 2.3754, 4, -4.0316, 3.6316, 4, -0.2684, 2.3754, 4, -0.2684, 3.6316, 4, -0.2684, 3.6316, 0.2, -4.0316, 3.6316, 4, -0.2684, 3.6316, 4, -4.0316, 3.6316, 4, -0.2684, 3.6316, 0.2, -4.0316, 3.6316, 0.2, 0, 0.5824, 0.2, -4.3, 0.5824, 0.4, 0, 0.5824, 0.4, -4.3, 0.5824, 0.4, 0, 0.5824, 0.2, -4.3, 0.5824, 0.2, -4.0316, 2.3754, 0.4, -4.0316, 3.6316, 0.2, -4.0316, 0.8509, 0.2, -4.0316, 3.6316, 0.2, -4.0316, 2.3754, 0.4, -4.0316, 3.6316, 4, -4.0316, 3.6316, 4, -4.0316, 2.3754, 0.4, -4.0316, 2.3754, 4, -4.0316, 0.8509, 0.2, -4.0316, 2.107, 0.4, -4.0316, 2.3754, 0.4, -4.0316, 2.107, 0.4, -4.0316, 0.8509, 0.2, -4.0316, 0.8509, 4, -4.0316, 2.107, 0.4, -4.0316, 0.8509, 4, -4.0316, 2.107, 4, 0, 0, 0.4, -4.3, 0.5824, 0.4, -4.3, 0, 0.4, -4.3, 0.5824, 0.4, 0, 0, 0.4, 0, 0.5824, 0.4, -4.3, 0.5824, 0.4, -4.3, 0, 4.5, -4.3, 0, 0.4, -4.3, 0.5824, 0.4, -4.3, 3.9, 4.5, -4.3, 0, 4.5, -4.3, 0.5824, 0.4, -4.3, 3.9, 0.2, -4.3, 3.9, 4.5, -4.3, 3.9, 0.2, -4.3, 0.5824, 0.4, -4.3, 0.5824, 0.2, 0, 0.5824, 0.2, 0, 3.9, 4.5, 0, 3.9, 0.2, 0, 3.9, 4.5, 0, 0.5824, 0.2, 0, 0.5824, 0.4, 0, 3.9, 4.5, 0, 0.5824, 0.4, 0, 0, 0.4, 0, 3.9, 4.5, 0, 0, 0.4, 0, 0, 4.5, -0.2684, 0.8509, 4, -4.0316, 2.107, 4, -4.0316, 0.8509, 4, -4.0316, 2.107, 4, -0.2684, 0.8509, 4, -0.2684, 2.107, 4, 0, 3.9, 4.5, -4.3, 3.9, 0.2, 0, 3.9, 0.2, -4.3, 3.9, 0.2, 0, 3.9, 4.5, -4.3, 3.9, 4.5, -4.3, 0, 4.5, 0, 3.9, 4.5, 0, 0, 4.5, 0, 3.9, 4.5, -4.3, 0, 4.5, -4.3, 3.9, 4.5, -0.2684, 2.107, 0.4, -4.0316, 2.107, 4, -0.2684, 2.107, 4, -4.0316, 2.107, 4, -0.2684, 2.107, 0.4, -4.0316, 2.107, 0.4, -0.2684, 2.107, 0.4, -4.0316, 2.3754, 0.4, -4.0316, 2.107, 0.4, -4.0316, 2.3754, 0.4, -0.2684, 2.107, 0.4, -0.2684, 2.3754, 0.4, -0.2684, 2.107, 0.4, -0.2684, 0.8509, 0.2, -0.2684, 3.6316, 0.2, -0.2684, 0.8509, 0.2, -0.2684, 2.107, 0.4, -0.2684, 0.8509, 4, -0.2684, 0.8509, 4, -0.2684, 2.107, 0.4, -0.2684, 2.107, 4, -0.2684, 3.6316, 0.2, -0.2684, 2.3754, 0.4, -0.2684, 2.107, 0.4, -0.2684, 2.3754, 0.4, -0.2684, 3.6316, 0.2, -0.2684, 3.6316, 4, -0.2684, 2.3754, 0.4, -0.2684, 3.6316, 4, -0.2684, 2.3754, 4, -4.0316, 0.8509, 0.2, -4.3, 0.5824, 0.2, 0, 0.5824, 0.2, -4.3, 0.5824, 0.2, -4.0316, 0.8509, 0.2, -4.3, 3.9, 0.2, -4.3, 3.9, 0.2, -4.0316, 0.8509, 0.2, -4.0316, 3.6316, 0.2, -4.3, 3.9, 0.2, -4.0316, 3.6316, 0.2, -0.2684, 3.6316, 0.2, 0, 0.5824, 0.2, -0.2684, 0.8509, 0.2, -4.0316, 0.8509, 0.2, -0.2684, 0.8509, 0.2, 0, 0.5824, 0.2, 0, 3.9, 0.2, -0.2684, 0.8509, 0.2, 0, 3.9, 0.2, -0.2684, 3.6316, 0.2, -0.2684, 3.6316, 0.2, 0, 3.9, 0.2, -4.3, 3.9, 0.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jlfh"]
+resource_name = "wood"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.952921, 0.798667, 0.660025, 1)
+emission_enabled = true
+emission_energy_multiplier = 0.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bgdm"]
 resource_name = "woodDark"
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.842287, 0.70556, 0.58297, 1)
+emission_enabled = true
+emission_energy_multiplier = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqsr1"]
+resource_name = "metal"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.875925, 0.917687, 0.925891, 1)
 emission_enabled = true
 emission_energy_multiplier = 0.0
 
@@ -207,7 +221,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 54,
 "index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABQAEAAcACAAJAAoACQAIAAsADAANAA4ADQAMAA8AEAARABIAEQAQABMAFAAVABYAFQAUABcAFwAUABgAFwAYABkAFgAaABQAGgAWABsAGgAbABkAGQAbABcA"),
-"material": SubResource("StandardMaterial3D_6bwqa"),
+"material": SubResource("StandardMaterial3D_1jlfh"),
 "name": "wood",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -231,7 +245,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 42,
 "index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABQAEAAcACAAJAAoACQAIAAsACQALAAwADQAOAA8ADgANABAAEQASABMAEgARABQAEgAUABUAFgAXABgAFwAWABkA"),
-"material": SubResource("StandardMaterial3D_5ajpy"),
+"material": SubResource("StandardMaterial3D_iqsr1"),
 "name": "metal",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -243,6 +257,43 @@ shadow_mesh = SubResource("ArrayMesh_4yltj")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e2jsv"]
 data = PackedVector3Array(-3.7631, 0, 0.1, 0, 2.7807, 0.1, 0, 0, 0.1, 0, 2.7807, 0.1, -3.7631, 0, 0.1, -3.7631, 2.7807, 0.1, 0, 0, -0.1, -3.7631, 0, 0.1, 0, 0, 0.1, -3.7631, 0, 0.1, 0, 0, -0.1, -3.7631, 0, -0.1, 0, 2.7807, 0.1, -3.7631, 2.7807, -0.1, 0, 2.7807, -0.1, -3.7631, 2.7807, -0.1, 0, 2.7807, 0.1, -3.7631, 2.7807, 0.1, -3.7631, 2.7807, -0.1, -3.7631, 0, 0.1, -3.7631, 0, -0.1, -3.7631, 0, 0.1, -3.7631, 2.7807, -0.1, -3.7631, 2.7807, 0.1, 0, 0, -0.1, 0, 2.7807, 0.1, 0, 2.7807, -0.1, 0, 2.7807, 0.1, 0, 0, -0.1, 0, 0, 0.1, -3.3097, 2.1773, -0.1, -3.5597, 0.2034, -0.1, -0.2034, 0.2034, -0.1, -3.5597, 0.2034, -0.1, -3.3097, 2.1773, -0.1, -3.5597, 2.5773, -0.1, -3.5597, 2.5773, -0.1, -3.3097, 2.1773, -0.1, -3.3097, 2.3773, -0.1, -3.5597, 2.5773, -0.1, -3.3097, 2.3773, -0.1, -2.5097, 2.3773, -0.1, -0.2034, 0.2034, -0.1, -2.5097, 2.1773, -0.1, -3.3097, 2.1773, -0.1, -2.5097, 2.1773, -0.1, -0.2034, 0.2034, -0.1, -0.2034, 2.5773, -0.1, -2.5097, 2.1773, -0.1, -0.2034, 2.5773, -0.1, -2.5097, 2.3773, -0.1, -2.5097, 2.3773, -0.1, -0.2034, 2.5773, -0.1, -3.5597, 2.5773, -0.1, -3.5597, 0.2034, -0.1, -3.7631, 0, -0.1, 0, 0, -0.1, -3.7631, 0, -0.1, -3.5597, 0.2034, -0.1, -3.7631, 2.7807, -0.1, -3.7631, 2.7807, -0.1, -3.5597, 0.2034, -0.1, -3.5597, 2.5773, -0.1, -3.7631, 2.7807, -0.1, -3.5597, 2.5773, -0.1, -0.2034, 2.5773, -0.1, 0, 0, -0.1, -0.2034, 0.2034, -0.1, -3.5597, 0.2034, -0.1, -0.2034, 0.2034, -0.1, 0, 0, -0.1, 0, 2.7807, -0.1, -0.2034, 0.2034, -0.1, 0, 2.7807, -0.1, -0.2034, 2.5773, -0.1, -0.2034, 2.5773, -0.1, 0, 2.7807, -0.1, -3.7631, 2.7807, -0.1, -2.5097, 2.1773, -0.3, -3.3097, 2.2773, -0.3, -3.3097, 2.1773, -0.3, -3.3097, 2.2773, -0.3, -2.5097, 2.1773, -0.3, -2.5097, 2.2773, -0.3, -2.5097, 2.1773, -0.3, -3.3097, 2.1773, -0.1, -2.5097, 2.1773, -0.1, -3.3097, 2.1773, -0.1, -2.5097, 2.1773, -0.3, -3.3097, 2.1773, -0.3, -3.3097, 2.2773, -0.3, -3.3097, 2.1773, -0.1, -3.3097, 2.1773, -0.3, -3.3097, 2.1773, -0.1, -3.3097, 2.2773, -0.3, -3.3097, 2.3773, -0.2, -3.3097, 2.1773, -0.1, -3.3097, 2.3773, -0.2, -3.3097, 2.3773, -0.1, -2.5097, 2.3773, -0.1, -3.3097, 2.3773, -0.2, -2.5097, 2.3773, -0.2, -3.3097, 2.3773, -0.2, -2.5097, 2.3773, -0.1, -3.3097, 2.3773, -0.1, -2.5097, 2.1773, -0.3, -2.5097, 2.3773, -0.2, -2.5097, 2.2773, -0.3, -2.5097, 2.3773, -0.2, -2.5097, 2.1773, -0.3, -2.5097, 2.1773, -0.1, -2.5097, 2.3773, -0.2, -2.5097, 2.1773, -0.1, -2.5097, 2.3773, -0.1, -2.5097, 2.2773, -0.3, -3.3097, 2.3773, -0.2, -3.3097, 2.2773, -0.3, -3.3097, 2.3773, -0.2, -2.5097, 2.2773, -0.3, -2.5097, 2.3773, -0.2)
+
+[sub_resource type="Animation" id="Animation_4v5bx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.174533, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cd6pn"]
+resource_name = "open"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.174533, 0), Vector3(0, -2.00713, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oimig"]
+_data = {
+"RESET": SubResource("Animation_4v5bx"),
+"open": SubResource("Animation_cd6pn")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcdnv"]
 resource_name = "wood"
@@ -792,12 +843,19 @@ script = ExtResource("6_ffnav")
 interaction_type = "Inspect"
 interaction_name = "Cabinet"
 thought = "It's stuck. Maybe I can find something to pry it open."
+unlock_thought = "It's open!"
+locked = true
 hvr_txt_size = 150
 
 [node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door" groups=["interactable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_e2jsv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="furniture/kitchenCabinet3/kitchenCabinet/door"]
+libraries = {
+"": SubResource("AnimationLibrary_oimig")
+}
 
 [node name="kitchenCabinet2" parent="furniture" instance=ExtResource("6_yqsjy")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1.2, 0.5, 25.1)

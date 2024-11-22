@@ -115,6 +115,7 @@ func _process_raycasts():
 
 func _on_interact_area_body_entered(body):
 	if not body.is_in_group("interactable"): return
+	if not body.get_parent().has_method("interact_with_off"): return
 	
 	debug_panel.add_property("interacting", true)
 	can_interact = true
@@ -124,6 +125,7 @@ func _on_interact_area_body_entered(body):
 
 func _on_interact_area_body_exited(body):
 	if not body.is_in_group("interactable"): return
+	if not body.get_parent().has_method("interact_with_off"): return
 	
 	debug_panel.add_property("interacting", false)
 	can_interact = false

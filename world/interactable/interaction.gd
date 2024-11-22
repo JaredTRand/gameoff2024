@@ -4,11 +4,16 @@ extends MeshInstance3D
 @export var interaction_name:String
 @export var interaction_cooldown_time:float = 3.0
 @export var thought:String
+@export var unlock_thought:String
 
 @export var pickup_able:bool = false
+@export var locked:bool = false
 @export var inv_img:CompressedTexture2D
 @export var item_scene:PackedScene
 @export var hvr_txt_size:int = 300
+
+
+@onready var animator:AnimationPlayer = find_child("AnimationPlayer")
 
 
 
@@ -57,6 +62,13 @@ func interact():
 		var success = hotbar.add_item(inv_img, interaction_name)
 		if success: 
 			self.queue_free()
+	
+	if locked:
+		if unlock_thought: 
+			felix.think(unlock_thought)
+		locked = false
+		animator.play("open")
+		set_script(null)
 
 func _on_interaction_cooldown_timeout():
 	hover_text_canbevisible = true

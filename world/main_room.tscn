@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=10 format=3 uid="uid://dui3sqsargabd"]
 
 [ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="2_tbhhi"]
 [ext_resource type="PackedScene" uid="uid://y8encr4rb4df" path="res://world/LivingRoom.tscn" id="2_w5bkr"]
 [ext_resource type="PackedScene" uid="uid://bygkp6m5pu0fp" path="res://world/kitchen.tscn" id="3_pohuf"]
 [ext_resource type="PackedScene" uid="uid://b8f81824g182q" path="res://world/2nd_floor_abovekitchen.tscn" id="4_ulc2q"]
 [ext_resource type="PackedScene" uid="uid://df01vm10omhij" path="res://world/2ndfloor_abovelivingroom.tscn" id="5_2d8ca"]
-[ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="6_ah4yh"]
+[ext_resource type="PackedScene" uid="uid://b5bldny0t6xr2" path="res://3rdfloor_abovekitchen.tscn" id="6_3js08"]
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="6_blkgg"]
+[ext_resource type="PackedScene" uid="uid://daafxi686sbsr" path="res://3rdfloor_abovelivingroom.tscn" id="7_ntybd"]
 [ext_resource type="PackedScene" uid="uid://do0j7tvga0yx0" path="res://world/assets/key/key.tscn" id="7_yj8eo"]
 
 [node name="LEVEL" type="Node3D"]
@@ -19,60 +20,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0359, 0.5, -10.404)
 [node name="kitchen" parent="." instance=ExtResource("3_pohuf")]
 
 [node name="2ndfloor_abovekitchen" parent="." instance=ExtResource("4_ulc2q")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.5, 0, -60)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.2, 0, -60)
 
 [node name="2ndfloor_abovelivingroom" parent="." instance=ExtResource("5_2d8ca")]
 
-[node name="3rdfloor" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -50)
+[node name="3rdfloor_abovekitchen" parent="." instance=ExtResource("6_3js08")]
 
-[node name="floorFull21" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 13, 0)
-
-[node name="floorFull22" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 13, 0)
-
-[node name="floorFull23" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 13, 0)
-
-[node name="floorFull24" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
-
-[node name="floorFull25" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 13, -10)
-
-[node name="floorFull26" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 13, -10)
-
-[node name="floorFull27" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 13, -10)
-
-[node name="floorFull28" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -10)
-
-[node name="floorFull29" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 13, -20)
-
-[node name="floorFull30" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 13, -20)
-
-[node name="floorFull31" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 13, -20)
-
-[node name="floorFull32" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -20)
-
-[node name="floorFull33" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 13, -20)
-
-[node name="floorFull34" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 13, -20)
-
-[node name="floorFull35" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 13, -20)
-
-[node name="floorFull36" parent="3rdfloor" instance=ExtResource("6_ah4yh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -20)
+[node name="3rdfloor_abovelivingroom" parent="." instance=ExtResource("7_ntybd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 26, -10)
 
 [node name="tunnels" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.5, 0, -60)

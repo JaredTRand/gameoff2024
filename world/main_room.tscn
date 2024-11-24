@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://b8f81824g182q" path="res://world/2nd_floor_abovekitchen.tscn" id="4_ulc2q"]
 [ext_resource type="PackedScene" uid="uid://df01vm10omhij" path="res://world/2ndfloor_abovelivingroom.tscn" id="5_2d8ca"]
 [ext_resource type="PackedScene" uid="uid://b5bldny0t6xr2" path="res://3rdfloor_abovekitchen.tscn" id="6_3js08"]
-[ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="6_blkgg"]
 [ext_resource type="PackedScene" uid="uid://daafxi686sbsr" path="res://3rdfloor_abovelivingroom.tscn" id="7_ntybd"]
 [ext_resource type="PackedScene" uid="uid://do0j7tvga0yx0" path="res://world/assets/key/key.tscn" id="7_yj8eo"]
+[ext_resource type="PackedScene" uid="uid://bev14i8g048ol" path="res://duct.tscn" id="9_8fa60"]
 
 [node name="LEVEL" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_tbhhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0359, 0.5, -10.404)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0359, 0.5, -38.404)
 
 [node name="livingRoom" parent="." instance=ExtResource("2_w5bkr")]
 
@@ -32,41 +32,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 26, -10)
 [node name="tunnels" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.5, 0, -60)
 
-[node name="wall11" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(6.48804e-07, -2.28199e-08, -1, -0.778942, -0.200294, 5.05039e-08, -2.90705, 0.0536687, -2.36715e-07, -12, 12.875, -20.1898)
+[node name="duct" parent="tunnels" instance=ExtResource("9_8fa60")]
+transform = Transform3D(-4.07325e-08, 2.26267e-08, -1, 0.258819, 0.965926, 1.13133e-08, 0.965926, -0.258819, -4.52008e-08, -11.4, 14.667, 0.999992)
 
-[node name="wall14" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(6.48804e-07, -2.28199e-08, -1, -0.778942, -0.200294, 5.05039e-08, -2.90705, 0.0536687, -2.36715e-07, -10.1, 12.875, -20.1898)
-
-[node name="wall12" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(2.54143e-07, 0.16, -6.63381e-08, -0.778941, -6.75551e-09, -0.965926, -2.90705, 1.57978e-08, 0.258819, -12.5, 10.3636, -19.5169)
-
-[node name="wall13" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(2.54143e-07, 0.16, -6.63381e-08, -0.778941, -6.75551e-09, -0.965926, -2.90705, 1.57978e-08, 0.258819, -12.5, 13.2614, -20.2934)
-
-[node name="wall15" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(-2.90705, 0.0536687, -1.93004e-07, -0.778942, -0.200294, 5.05039e-08, -5.44947e-07, 1.45047e-08, 1, -10.6173, 20.775, 11.8775)
-
-[node name="wall16" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(-2.90705, 0.0536687, -1.93004e-07, -0.778942, -0.200294, 5.05039e-08, -5.44947e-07, 1.45047e-08, 1, -10.6174, 20.775, 9.97751)
-
-[node name="wall17" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(-2.90705, 8.80396e-09, 0.258819, -0.778941, -6.75551e-09, -0.965926, -1.15464e-07, -0.16, 6.94181e-08, -9.94442, 18.2636, 12.3775)
-
-[node name="wall18" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(-2.90705, 8.80396e-09, 0.258819, -0.778941, -6.75551e-09, -0.965926, -1.15464e-07, -0.16, 6.94181e-08, -10.7209, 21.1614, 12.3775)
-
-[node name="wall19" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(-0.216691, 1.44643e-08, -1.49012e-07, 3.00407e-08, -1.03674e-08, -1, -8.95891e-09, -0.32, 4.67914e-08, -12.5209, 21.0614, 12.4775)
-
-[node name="wall21" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(-0.281698, 1.0125e-08, -1.49012e-07, 3.9053e-08, -7.25716e-09, -1, -1.16466e-08, -0.224, 4.67914e-08, -12.5209, 18.1614, 12.4775)
-
-[node name="wall22" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(-0.281698, -9.45772e-09, -2.36434e-07, 1.29803e-08, -0.224, 9.05028e-08, -6.36798e-08, 1.70485e-08, 1, -12.5209, 20.7614, 12.4775)
-
-[node name="wall20" parent="tunnels" instance=ExtResource("6_blkgg")]
-transform = Transform3D(4.74151e-08, 1.76079e-08, -1, 0.260029, 1.3511e-08, 1.92723e-07, 1.19818e-08, -0.32, -4.06313e-08, -12.0209, 20.5614, 12.4775)
+[node name="duct2" parent="tunnels" instance=ExtResource("9_8fa60")]
+transform = Transform3D(-1.74846e-08, -3.55271e-15, -1, 0, 1, -2.66454e-15, 0.4, -3.10588e-22, -4.37114e-08, -11.4, 11.6, -15.0001)
 
 [node name="sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 12.6, 7)

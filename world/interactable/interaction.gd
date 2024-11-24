@@ -69,6 +69,8 @@ func interact():
 		locked = false
 		animator.play("open")
 		set_script(null)
+	else:
+		animator.play("open")
 
 func _on_interaction_cooldown_timeout():
 	hover_text_canbevisible = true

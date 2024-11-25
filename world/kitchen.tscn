@@ -1428,4 +1428,4 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_6s4kc")
 
 [node name="grate" parent="." instance=ExtResource("19_nvsk5")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -11.5, 10, -20)
+transform = Transform3D(1.31134e-07, 0, 0.6, 0, 0.75, 0, -1, 0, 7.86804e-08, -11.3, 10.3, -19.9)

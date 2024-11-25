@@ -15,10 +15,15 @@ func _process(delta):
 	pass
 
 func think(text):
+	if text == "" or text == null:
+		cancel_think()
+		return
 	animations.play("pop_out")
 	textbox.text = text
 	hide_timer.start()
 
+func cancel_think():
+	animations.play("RESET")
 
 func _on_hide_timer_timeout():
 	animations.play("pop_in")

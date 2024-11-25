@@ -1148,11 +1148,11 @@ script = ExtResource("6_ffnav")
 interaction_type = "Inspect"
 interaction_name = "Cabinet"
 thought = "It's stuck. Maybe I can find something to pry it open."
-unlock_thought = "It's open!"
 hvr_txt_size = 150
 openable = true
 locked = true
 unlocked_with = "Crowbar"
+unlock_thought = "It's open!"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door" groups=["interactable"]]
 

@@ -4,7 +4,7 @@ extends MeshInstance3D
 @export var interaction_name:String
 @export var interaction_cooldown_time:float = 3.0
 @export var thought:String
-@export var unlock_thought:String
+
 @export var hvr_txt_size:int = 300
 
 @export_group("Pickup")
@@ -15,6 +15,7 @@ extends MeshInstance3D
 @export var openable:bool = false
 @export var locked:bool = false
 @export var unlocked_with:String
+@export var unlock_thought:String = ""
 
 @onready var animator:AnimationPlayer = find_child("AnimationPlayer")
 
@@ -66,8 +67,7 @@ func interact():
 	if openable:
 		if locked:
 			if hotbar.is_in_hotbar(unlocked_with):
-				if unlock_thought: 
-					felix.think(unlock_thought)
+				felix.think(unlock_thought)
 				locked = false
 				animator.play("open")
 				set_script(null)

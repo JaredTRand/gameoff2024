@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=19 format=3 uid="uid://dui3sqsargabd"]
 
 [ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="2_tbhhi"]
 [ext_resource type="PackedScene" uid="uid://y8encr4rb4df" path="res://world/LivingRoom.tscn" id="2_w5bkr"]
@@ -11,6 +11,28 @@
 [ext_resource type="PackedScene" uid="uid://bev14i8g048ol" path="res://world/duct.tscn" id="9_8fa60"]
 [ext_resource type="PackedScene" uid="uid://cpb6ju30vop3g" path="res://world/duct_vcurve.tscn" id="9_js8gr"]
 [ext_resource type="PackedScene" uid="uid://h0gwt40qtp5i" path="res://world/duct_hcurve.tscn" id="10_vw6cw"]
+[ext_resource type="PackedScene" uid="uid://bostd4fyeholt" path="res://world/grate.tscn" id="11_c5a8c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fvr5"]
+albedo_color = Color(0.587751, 0.587751, 0.58775, 1)
+metallic = 1.0
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="BoxMesh_kgkfm"]
+material = SubResource("StandardMaterial3D_2fvr5")
+size = Vector3(8, 2, 2.4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1f5lf"]
+points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k678c"]
+points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ck5c"]
+points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ssrx"]
+points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
 
 [node name="LEVEL" type="Node3D"]
 
@@ -49,9 +71,6 @@ transform = Transform3D(-1.25234e-07, -2.16671e-08, 1, 0.859034, 0.939693, 2.256
 [node name="duct6" parent="tunnels" instance=ExtResource("9_8fa60")]
 transform = Transform3D(-7.25709e-09, 8.23326e-09, 1, 1.35183e-08, 1, -2.26267e-08, -0.162755, -1.49012e-07, -4.07325e-08, 46.291, 50.285, -52.324)
 
-[node name="duct7" parent="tunnels" instance=ExtResource("9_8fa60")]
-transform = Transform3D(2.16965, 1.49012e-07, -2.97889e-09, 1.8021e-07, 0.999999, -2.26267e-08, -1.9044e-09, 8.23327e-09, 1, 15.689, 50.285, -58.624)
-
 [node name="duct8" parent="tunnels" instance=ExtResource("9_8fa60")]
 transform = Transform3D(5.22412e-09, 8.23326e-09, -0.03, -9.73135e-09, 0.999999, 6.78801e-10, 0.117161, -1.49012e-07, 1.22198e-09, -9.81099, 50.285, -58.6241)
 
@@ -81,6 +100,129 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 46.392
 
 [node name="duct_hcurve3" parent="tunnels" instance=ExtResource("10_vw6cw")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 46.317, 50.29, -54.509)
+
+[node name="finalducts" type="Node3D" parent="tunnels"]
+transform = Transform3D(-0.759378, -1.49011e-07, 9.04017e-08, 6.30736e-08, 0.999999, -2.26267e-08, -6.57204e-08, -8.23328e-09, -1, 41.784, 50.285, -58.661)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="tunnels/finalducts"]
+transform = Transform3D(-3.0096, 7.82311e-08, -1.73356e-07, -1.78814e-07, -0.20736, 9.87361e-08, -5.44947e-07, 1.45047e-08, 1, 12.1007, 1.49373, -0.022498)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, -8.35486e-16, 0, -3.21077e-14, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_1f5lf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="tunnels/finalducts"]
+transform = Transform3D(-3.0096, 7.82311e-08, -1.73356e-07, -1.78814e-07, -0.20736, 9.87361e-08, -5.44947e-07, 1.45047e-08, 1, 12.1007, -1.50626, -0.0224983)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts/MeshInstance3D2/StaticBody3D"]
+transform = Transform3D(1, -8.35486e-16, 0, -3.21077e-14, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_k678c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="tunnels/finalducts"]
+transform = Transform3D(-3.0096, 7.82311e-08, -1.90692e-07, -5.44947e-07, 2.35687e-08, 1.1, 1.78814e-07, 0.20736, -1.56692e-07, 12.1007, -0.00626373, -1.0225)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts/MeshInstance3D3/StaticBody3D"]
+transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_6ck5c")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="tunnels/finalducts"]
+transform = Transform3D(-3.0096, 7.82311e-08, -1.90692e-07, -5.44947e-07, 2.35687e-08, 1.1, 1.78814e-07, 0.20736, -1.56692e-07, 12.1007, -0.00626373, -1.0225)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts/MeshInstance3D5/StaticBody3D"]
+transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_6ck5c")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="tunnels/finalducts"]
+transform = Transform3D(-3.0096, 7.82311e-08, -1.90692e-07, -5.44947e-07, 2.35687e-08, 1.1, 1.78814e-07, 0.20736, -1.56692e-07, 12.1007, -0.00626755, 0.977502)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts/MeshInstance3D4/StaticBody3D"]
+transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_6ssrx")
+
+[node name="finalducts2" type="Node3D" parent="tunnels"]
+transform = Transform3D(-1.25297, -1.49011e-07, 9.04017e-08, 1.04071e-07, 0.999999, -2.26267e-08, -1.08439e-07, -8.23328e-09, -1, 20.184, 50.285, -58.661)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="tunnels/finalducts2"]
+transform = Transform3D(-3.762, 7.82311e-08, -1.73356e-07, -2.23518e-07, -0.20736, 9.87361e-08, -6.81184e-07, 1.45047e-08, 1, 12.1007, 1.49373, -0.022498)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts2/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts2/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, -8.35486e-16, 0, -3.21077e-14, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_1f5lf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="tunnels/finalducts2"]
+transform = Transform3D(-3.64162, 7.82311e-08, -1.73356e-07, -2.16365e-07, -0.20736, 9.87361e-08, -6.59386e-07, 1.45047e-08, 1, 11.7815, -1.50624, -0.0224983)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts2/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts2/MeshInstance3D2/StaticBody3D"]
+transform = Transform3D(1, -8.35486e-16, 0, -3.21077e-14, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_k678c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="tunnels/finalducts2"]
+transform = Transform3D(-3.0096, 7.82311e-08, -1.90692e-07, -5.44947e-07, 2.35687e-08, 1.1, 1.78814e-07, 0.20736, -1.56692e-07, 12.1007, -0.00626373, -1.0225)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts2/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts2/MeshInstance3D3/StaticBody3D"]
+transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_6ck5c")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="tunnels/finalducts2"]
+transform = Transform3D(-3.0096, 7.82311e-08, -1.90692e-07, -5.44947e-07, 2.35687e-08, 1.1, 1.78814e-07, 0.20736, -1.56692e-07, 12.1007, -0.00626373, -1.0225)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts2/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts2/MeshInstance3D5/StaticBody3D"]
+transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_6ck5c")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="tunnels/finalducts2"]
+transform = Transform3D(-3.762, 7.82311e-08, -1.90692e-07, -6.81184e-07, 2.35687e-08, 1.1, 2.23517e-07, 0.20736, -1.56692e-07, 12.1007, -0.00626755, 0.977502)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts2/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts2/MeshInstance3D4/StaticBody3D"]
+transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_6ssrx")
+
+[node name="grate" parent="tunnels" instance=ExtResource("11_c5a8c")]
+transform = Transform3D(-1.62921e-07, 0, -1.41, 0, 0.75, 0, 1, 0, -2.29718e-07, 21.7, 49, -57.5)
+hvr_txt_size = 100
+openable = true
+locked = true
+unlocked_with = "Crowbar"
 
 [node name="sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 12.6, 7)

@@ -13,10 +13,20 @@ var can_ledge_grab:bool = false
 @export var jump_strength : float = 15.0
 @export var gravity : float = 50.0
 
+@export_group("Camera variables")
+@export var mouse_sensitivity: float = 0.05
+@export var min_pitch: float = -89.9
+@export var max_pitch: float = 50
+@export var min_yaw: float = 0
+@export var max_yaw: float = 360
+@export var scroll_mult:float = .1
+@export var scroll_max:float = 10
+@export var scroll_min:float = 2
+
+
 const ANIMATION_BLEND : float = 7.0
 
 @onready var player_mesh : Node3D = $felix
-@onready var spring_arm_pivot : Node3D = $SpringArmPivot
 @onready var animator : AnimationTree = $felix/AnimationTree
 
 @onready var headcast:RayCast3D = $felix/Headcast
@@ -29,16 +39,56 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var hotbar = $UserInterface/ItemList
 
+@onready var _player_pcam: PhantomCamera3D
+
 var jump_count:int = 0
 var jump_count_max:int = 1
 
 var cur_interactable_obj
 var pre_pos
 
-func _physics_process(delta):
+func _ready():
+	_player_pcam = owner.get_node("%PlayerPhantomCamera3D")
+	
+	if _player_pcam.get_follow_mode() == _player_pcam.FollowMode.THIRD_PERSON:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _unhandled_input(event):
+	if is_instance_valid(_player_pcam):
+			_set_pcam_rotation(_player_pcam, event)
+			
+	var sp_length = _player_pcam.spring_length
+	if Input.is_action_just_pressed("camera_zoom_in") and sp_length > scroll_min:
+		_player_pcam.spring_length -= scroll_mult
+	if Input.is_action_just_pressed("camera_zoom_out") and sp_length < scroll_max:
+		_player_pcam.spring_length += scroll_mult
+
+func _set_pcam_rotation(pcam: PhantomCamera3D, event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var pcam_rotation_degrees: Vector3
+
+		# Assigns the current 3D rotation of the SpringArm3D node - so it starts off where it is in the editor
+		pcam_rotation_degrees = pcam.get_third_person_rotation_degrees()
+
+		# Change the X rotation
+		pcam_rotation_degrees.x -= event.relative.y * mouse_sensitivity
+
+		# Clamp the rotation in the X axis so it go over or under the target
+		pcam_rotation_degrees.x = clampf(pcam_rotation_degrees.x, min_pitch, max_pitch)
+
+		# Change the Y rotation value
+		pcam_rotation_degrees.y -= event.relative.x * mouse_sensitivity
+
+		# Sets the rotation to fully loop around its target, but witout going below or exceeding 0 and 360 degrees respectively
+		pcam_rotation_degrees.y = wrapf(pcam_rotation_degrees.y, min_yaw, max_yaw)
+
+		# Change the SpringArm3D node's rotation and rotate around its target
+		pcam.set_third_person_rotation_degrees(pcam_rotation_degrees)
+
+func _physics_process(delta):	
 	move_direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
 	move_direction.z = Input.get_action_strength("player_backward") - Input.get_action_strength("player_forward")
-	move_direction = move_direction.rotated(Vector3.UP, spring_arm_pivot.rotation.y)
+	move_direction = move_direction.rotated(Vector3.UP, _player_pcam._follow_spring_arm.rotation.y)
 	
 	velocity.y -= gravity * delta
 	

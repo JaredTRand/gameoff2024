@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://daafxi686sbsr"]
+[gd_scene load_steps=5 format=3 uid="uid://daafxi686sbsr"]
 
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="1_0jgd2"]
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_3jrs1"]
 [ext_resource type="PackedScene" uid="uid://bnmmicrfrouv6" path="res://addons/Kenney/Furniture/FBX format/doorwayOpen.fbx" id="3_bvtqu"]
+[ext_resource type="PackedScene" uid="uid://com5il1110o3b" path="res://addons/Kenney/Furniture/scenes/ceiling_fan.tscn" id="4_0uliq"]
 
 [node name="3rdfloor_abovelivingroom" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 25.9, -10)
@@ -203,3 +204,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1.05, 0, -1, 0, -4.37114e-08, -15
 
 [node name="doorwayOpen" parent="." instance=ExtResource("3_bvtqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6, 0.5, -30.7)
+
+[node name="ceilingFan" parent="." instance=ExtResource("4_0uliq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 26, -2)

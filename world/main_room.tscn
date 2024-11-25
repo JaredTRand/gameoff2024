@@ -1,7 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=27 format=3 uid="uid://dui3sqsargabd"]
 
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_qns0x"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_vxnf4"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_7tyqq"]
 [ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="2_tbhhi"]
 [ext_resource type="PackedScene" uid="uid://y8encr4rb4df" path="res://world/scenes/LivingRoom.tscn" id="2_w5bkr"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="3_27eo0"]
 [ext_resource type="PackedScene" uid="uid://bygkp6m5pu0fp" path="res://world/scenes/kitchen.tscn" id="3_pohuf"]
 [ext_resource type="PackedScene" uid="uid://b8f81824g182q" path="res://world/scenes/2nd_floor_abovekitchen.tscn" id="4_ulc2q"]
 [ext_resource type="PackedScene" uid="uid://df01vm10omhij" path="res://world/scenes/2ndfloor_abovelivingroom.tscn" id="5_2d8ca"]
@@ -12,6 +16,34 @@
 [ext_resource type="PackedScene" uid="uid://cpb6ju30vop3g" path="res://world/scenes/duct_vcurve.tscn" id="9_js8gr"]
 [ext_resource type="PackedScene" uid="uid://h0gwt40qtp5i" path="res://world/scenes/duct_hcurve.tscn" id="10_vw6cw"]
 [ext_resource type="PackedScene" uid="uid://bostd4fyeholt" path="res://world/scenes/grate.tscn" id="11_c5a8c"]
+
+[sub_resource type="Resource" id="Resource_eoher"]
+script = ExtResource("2_7tyqq")
+duration = 0.3
+transition = 2
+ease = 1
+
+[sub_resource type="Resource" id="Resource_hv6d0"]
+script = ExtResource("3_27eo0")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_bxk44"]
+dof_blur_far_distance = 5.99
+dof_blur_near_distance = 0.05
+dof_blur_amount = 0.21
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ss4nr"]
+dof_blur_far_distance = 5.99
+dof_blur_near_distance = 0.05
+dof_blur_amount = 0.21
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fvr5"]
 albedo_color = Color(0.587751, 0.587751, 0.58775, 1)
@@ -35,6 +67,32 @@ points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2,
 points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
 
 [node name="LEVEL" type="Node3D"]
+
+[node name="PlayerPhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.499999, 0, -0.5, 0.866023, 16.0359, 3.5, -34.9399)
+script = ExtResource("1_vxnf4")
+priority = 10
+follow_mode = 6
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_eoher")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_hv6d0")
+attributes = SubResource("CameraAttributesPractical_bxk44")
+follow_offset = Vector3(0, 1, 0)
+follow_damping = true
+follow_distance = 4.0
+spring_length = 4.0
+
+[node name="MainCamera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 16.0359, 3.5, -34.9399)
+attributes = SubResource("CameraAttributesPractical_ss4nr")
+
+[node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_qns0x")
 
 [node name="Player" parent="." instance=ExtResource("2_tbhhi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0359, 0.5, -38.404)

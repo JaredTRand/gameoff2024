@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://ovvdhs1wpji7"]
+[gd_scene load_steps=42 format=4 uid="uid://ovvdhs1wpji7"]
 
 [ext_resource type="Script" path="res://addons/TPC_test/Scenes/Characters/felix.gd" id="1_yxq00"]
 [ext_resource type="Material" uid="uid://lhbweyif244p" path="res://Felix/model/cat001.tres" id="2_4s7ui"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://Felix/scripts/state_machine/walking.gd" id="7_ir35k"]
 [ext_resource type="Texture2D" uid="uid://b3kx2md7ubkqx" path="res://Felix/assets/thoughtbubs.png" id="8_5ws5c"]
 [ext_resource type="PackedScene" uid="uid://b3aus3ceccucv" path="res://Felix/assets/thought_bubble.tscn" id="9_bou7y"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="9_lybf3"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_n8o6b"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="11_11xvo"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="12_5njog"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_i4ti0"]
 resource_name = "Cylinder_004_001"
@@ -538,6 +542,38 @@ size = Vector3(1, 2, 2)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k6p7c"]
 radius = 0.283343
 height = 1.84319
+
+[sub_resource type="Resource" id="Resource_4qrv5"]
+script = ExtResource("10_n8o6b")
+duration = 0.3
+transition = 2
+ease = 1
+
+[sub_resource type="Resource" id="Resource_wfro1"]
+script = ExtResource("11_11xvo")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_dxr2o"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 5.99
+dof_blur_near_enabled = true
+dof_blur_near_distance = 0.05
+dof_blur_amount = 0.21
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_tr45u"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 5.99
+dof_blur_near_enabled = true
+dof_blur_near_distance = 0.05
+dof_blur_amount = 0.21
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_yxq00")
@@ -1473,6 +1509,30 @@ texture = ExtResource("8_5ws5c")
 
 [node name="thought_bubble" parent="." instance=ExtResource("9_bou7y")]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.03683, 0)
+
+[node name="PlayerPhantomCamera3D" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.499999, 0, -0.5, 0.866023, 0, 1.75, 3.03108)
+script = ExtResource("9_lybf3")
+priority = 10
+follow_mode = 6
+tween_resource = SubResource("Resource_4qrv5")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_wfro1")
+attributes = SubResource("CameraAttributesPractical_dxr2o")
+follow_damping = true
+follow_distance = 3.5
+spring_length = 3.5
+
+[node name="MainCamera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.75, 3.03108)
+attributes = SubResource("CameraAttributesPractical_tr45u")
+
+[node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("12_5njog")
 
 [connection signal="body_entered" from="felix/interact_area" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="felix/interact_area" to="." method="_on_interact_area_body_exited"]

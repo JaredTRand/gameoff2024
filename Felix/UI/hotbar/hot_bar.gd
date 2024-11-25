@@ -8,6 +8,11 @@ func add_item(image, newname):
 	empty_child.add_item(image, newname) 
 	return true
 	
+func remove_item(itemname):
+	for child in get_children():
+		if child.item_name == itemname:
+			child.remove_item()
+	
 func get_empty_child():
 	var emptyChild
 	for child in get_children():
@@ -16,3 +21,9 @@ func get_empty_child():
 			break
 	
 	return emptyChild
+
+func is_in_hotbar(itemname):
+	for child in get_children():
+		if child.item_name == itemname:
+			return true
+	return false

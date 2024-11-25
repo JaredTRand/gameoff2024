@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=12 format=3 uid="uid://dui3sqsargabd"]
 
 [ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="2_tbhhi"]
 [ext_resource type="PackedScene" uid="uid://y8encr4rb4df" path="res://world/LivingRoom.tscn" id="2_w5bkr"]
 [ext_resource type="PackedScene" uid="uid://bygkp6m5pu0fp" path="res://world/kitchen.tscn" id="3_pohuf"]
 [ext_resource type="PackedScene" uid="uid://b8f81824g182q" path="res://world/2nd_floor_abovekitchen.tscn" id="4_ulc2q"]
 [ext_resource type="PackedScene" uid="uid://df01vm10omhij" path="res://world/2ndfloor_abovelivingroom.tscn" id="5_2d8ca"]
-[ext_resource type="PackedScene" uid="uid://b5bldny0t6xr2" path="res://3rdfloor_abovekitchen.tscn" id="6_3js08"]
-[ext_resource type="PackedScene" uid="uid://daafxi686sbsr" path="res://3rdfloor_abovelivingroom.tscn" id="7_ntybd"]
+[ext_resource type="PackedScene" uid="uid://b5bldny0t6xr2" path="res://world/3rdfloor_abovekitchen.tscn" id="6_3js08"]
+[ext_resource type="PackedScene" uid="uid://daafxi686sbsr" path="res://world/3rdfloor_abovelivingroom.tscn" id="7_ntybd"]
 [ext_resource type="PackedScene" uid="uid://do0j7tvga0yx0" path="res://world/assets/key/key.tscn" id="7_yj8eo"]
-[ext_resource type="PackedScene" uid="uid://bev14i8g048ol" path="res://duct.tscn" id="9_8fa60"]
+[ext_resource type="PackedScene" uid="uid://bev14i8g048ol" path="res://world/duct.tscn" id="9_8fa60"]
+[ext_resource type="PackedScene" uid="uid://cpb6ju30vop3g" path="res://world/duct_vcurve.tscn" id="9_js8gr"]
+[ext_resource type="PackedScene" uid="uid://h0gwt40qtp5i" path="res://world/duct_hcurve.tscn" id="10_vw6cw"]
 
 [node name="LEVEL" type="Node3D"]
 
@@ -32,11 +34,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 26, -10)
 [node name="tunnels" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.5, 0, -60)
 
-[node name="duct" parent="tunnels" instance=ExtResource("9_8fa60")]
-transform = Transform3D(-4.07325e-08, 2.26267e-08, -1, 0.258819, 0.965926, 1.13133e-08, 0.965926, -0.258819, -4.52008e-08, -11.4, 14.667, 0.999992)
-
 [node name="duct2" parent="tunnels" instance=ExtResource("9_8fa60")]
-transform = Transform3D(-1.74846e-08, -3.55271e-15, -1, 0, 1, -2.66454e-15, 0.4, -3.10588e-22, -4.37114e-08, -11.4, 11.6, -15.0001)
+transform = Transform3D(-1.57361e-08, -3.55271e-15, -1, 0, 1, -2.66454e-15, 0.36, -3.10588e-22, -4.37114e-08, -11.4, 11.6, -15.6001)
+
+[node name="duct3" parent="tunnels" instance=ExtResource("9_8fa60")]
+transform = Transform3D(-3.09568e-08, 2.26267e-08, -1, 0.196703, 0.965926, 1.13133e-08, 0.734104, -0.258819, -4.52008e-08, -11.4, 14.1, -1.00014)
+
+[node name="duct4" parent="tunnels" instance=ExtResource("9_8fa60")]
+transform = Transform3D(1.9028, -0.258819, -1.48944e-09, 0.509853, 0.965926, 1.13133e-08, -2.93385e-09, -1.13133e-08, 1, 17.507, 22.962, 13.613)
+
+[node name="duct5" parent="tunnels" instance=ExtResource("9_8fa60")]
+transform = Transform3D(-1.25234e-07, -2.16671e-08, 1, 0.859034, 0.939693, 2.25696e-08, -2.36018, 0.34202, -4.07426e-08, 46.291, 39.762, -20.652)
+
+[node name="duct6" parent="tunnels" instance=ExtResource("9_8fa60")]
+transform = Transform3D(-7.25709e-09, 8.23326e-09, 1, 1.35183e-08, 1, -2.26267e-08, -0.162755, -1.49012e-07, -4.07325e-08, 46.291, 50.285, -52.324)
+
+[node name="duct7" parent="tunnels" instance=ExtResource("9_8fa60")]
+transform = Transform3D(2.16965, 1.49012e-07, -2.97889e-09, 1.8021e-07, 0.999999, -2.26267e-08, -1.9044e-09, 8.23327e-09, 1, 15.689, 50.285, -58.624)
+
+[node name="duct8" parent="tunnels" instance=ExtResource("9_8fa60")]
+transform = Transform3D(5.22412e-09, 8.23326e-09, -0.03, -9.73135e-09, 0.999999, 6.78801e-10, 0.117161, -1.49012e-07, 1.22198e-09, -9.81099, 50.285, -58.6241)
+
+[node name="duct_vcurve" parent="tunnels" instance=ExtResource("9_js8gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.504, 16.732, 8.5)
+
+[node name="duct_vcurve2" parent="tunnels" instance=ExtResource("9_js8gr")]
+transform = Transform3D(-1, 6.47961e-08, -1.71867e-07, -1.07071e-07, -0.965926, 0.258819, -1.4924e-07, 0.258819, 0.965926, -11.245, 11.526, -10.534)
+
+[node name="duct_vcurve3" parent="tunnels" instance=ExtResource("9_js8gr")]
+transform = Transform3D(-1.05529e-07, 0.258819, 0.965926, -1.07071e-07, -0.965926, 0.258819, 1, -7.61094e-08, 1.29645e-07, -6.007, 16.594, 13.474)
+
+[node name="duct_hcurve" parent="tunnels" instance=ExtResource("10_vw6cw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.405, 16.681, 9.474)
+
+[node name="duct_vcurve4" parent="tunnels" instance=ExtResource("9_js8gr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 41.179, 29.376, 13.748)
+
+[node name="duct_vcurve5" parent="tunnels" instance=ExtResource("9_js8gr")]
+transform = Transform3D(1, -8.74228e-08, 8.74228e-08, -1.07071e-07, -0.965926, 0.258819, 6.18173e-08, -0.258819, -0.965926, 46.153, 29.226, 8.251)
+
+[node name="duct_hcurve2" parent="tunnels" instance=ExtResource("10_vw6cw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42.153, 29.313, 13.649)
+
+[node name="duct_vcurve6" parent="tunnels" instance=ExtResource("9_js8gr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 46.392, 50.337, -49.654)
+
+[node name="duct_hcurve3" parent="tunnels" instance=ExtResource("10_vw6cw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 46.317, 50.29, -54.509)
 
 [node name="sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 12.6, 7)

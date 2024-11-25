@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnqejamcrwn8b"
-path.s3tc="res://.godot/imported/hotbar_empty.jpg-e61b185d34419d16fdb441f563f5b4b7.s3tc.ctex"
+uid="uid://cyhp000hhv3ut"
+path.s3tc="res://.godot/imported/hotbar_crowbar.jpg-b55eea0f5953867356363e9b4dd5e838.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Felix/UI/hotbar/hotbar_empty.jpg"
-dest_files=["res://.godot/imported/hotbar_empty.jpg-e61b185d34419d16fdb441f563f5b4b7.s3tc.ctex"]
+source_file="res://Felix/UI/hotbar/itemimages/hotbar_crowbar.jpg"
+dest_files=["res://.godot/imported/hotbar_crowbar.jpg-b55eea0f5953867356363e9b4dd5e838.s3tc.ctex"]
 
 [params]
 

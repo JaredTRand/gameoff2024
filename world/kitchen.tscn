@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://bygkp6m5pu0fp"]
+[gd_scene load_steps=85 format=4 uid="uid://bygkp6m5pu0fp"]
 
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="1_8muie"]
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_vxmsc"]
@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://bewwea234b3sk" path="res://world/chair_rounded.tscn" id="16_sxee1"]
 [ext_resource type="PackedScene" uid="uid://d2l5x60v41hlg" path="res://addons/Kenney/Furniture/FBX format/doorwayFront.fbx" id="17_au5c7"]
 [ext_resource type="PackedScene" uid="uid://dxkc3gamoewvk" path="res://world/shelf.tscn" id="18_nk1j6"]
+[ext_resource type="Texture2D" uid="uid://cyhp000hhv3ut" path="res://Felix/UI/hotbar/itemimages/hotbar_crowbar.jpg" id="19_4xmn4"]
 [ext_resource type="PackedScene" uid="uid://bostd4fyeholt" path="res://world/grate.tscn" id="19_nvsk5"]
+[ext_resource type="PackedScene" uid="uid://c1ksm4haqn4ty" path="res://addons/Kenney/Furniture/FBX format/rugRectangle.fbx" id="20_nhfpd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0enx"]
 resource_name = "wood"
@@ -1147,8 +1149,10 @@ interaction_type = "Inspect"
 interaction_name = "Cabinet"
 thought = "It's stuck. Maybe I can find something to pry it open."
 unlock_thought = "It's open!"
-locked = true
 hvr_txt_size = 150
+openable = true
+locked = true
+unlocked_with = "Crowbar"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door" groups=["interactable"]]
 
@@ -1411,9 +1415,10 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 19.3, 0,
 [node name="Cube" parent="." instance=ExtResource("15_liafs")]
 transform = Transform3D(0.2, -1.74846e-08, 1.74846e-08, 1.74846e-08, -8.74228e-09, -0.2, 1.74846e-08, 0.2, -8.74228e-09, 0, 0.6, -5.3)
 interaction_type = "Pick up"
-interaction_name = "Crrowbar"
+interaction_name = "Crowbar"
 thought = "Who makes a crowbar for cats anyway?"
 pickup_able = true
+inv_img = ExtResource("19_4xmn4")
 
 [node name="stairs" type="Node3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 19.55, 0, -21)
@@ -1428,4 +1433,11 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_6s4kc")
 
 [node name="grate" parent="." instance=ExtResource("19_nvsk5")]
-transform = Transform3D(1.31134e-07, 0, 0.6, 0, 0.75, 0, -1, 0, 7.86804e-08, -11.3, 10.3, -19.9)
+transform = Transform3D(7.54979e-08, 0, 0.6, 0, 0.75, 0, -1, 0, 4.52987e-08, -11.3, 10.3, -19.9)
+hvr_txt_size = 100
+openable = true
+locked = true
+unlocked_with = "Crowbar"
+
+[node name="rugRectangle" parent="." instance=ExtResource("20_nhfpd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.5, 0.425, -12)

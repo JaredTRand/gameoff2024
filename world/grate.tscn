@@ -55,6 +55,7 @@ script = ExtResource("1_27wwy")
 interaction_type = "Open"
 interaction_name = "Grate"
 thought = "It won't budge"
+hvr_txt_size = 150
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)

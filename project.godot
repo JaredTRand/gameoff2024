@@ -15,13 +15,18 @@ run/main_scene="res://world/main_room.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
 [display]
 
 window/size/mode=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/third-person-camera/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/third-person-camera/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
 
 [global_group]
 

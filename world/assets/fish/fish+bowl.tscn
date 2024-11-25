@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxisinmybewjp"]
+
+[ext_resource type="PackedScene" uid="uid://bfm0cr6vgc0h1" path="res://world/assets/fish/bowl.glb" id="1_phd2s"]
+[ext_resource type="PackedScene" uid="uid://bthbm2ait177e" path="res://world/assets/fish/fish.tscn" id="2_i0ic5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xp1sv"]
+points = PackedVector3Array(0.805883, 4.50084, 8.07232, -1.62478, 7.4597, -8.67229, -1.62435, 8.26919, -8.67, 8.672, 7.4597, -1.62473, -2.69, 14.5808, 4.40363, -5.09223, 1.03256, -1.06949, -8.66146, 8.81169, 1.35314, 3.48286, 0.228075, -1.87319, -1.47097, 14.6, -4.9063, 6.1257, 12.5235, 3.9948, 5.35205, 9.87059, -6.69006, 6.9335, 4.53001, 4.26536, -5.6332, 6.65956, 6.7054, -7.23554, 10.4086, -4.28692, 4.90621, 14.5998, -1.47094, 1.61194, 10.1471, 8.33427, -1.33748, 0.239023, 3.74427, 2.41477, 3.16728, -6.97861, -6.14556, 4.52504, -5.34367, -6.96945, 12.5543, 2.1429, -7.23263, 3.44445, 2.14176, -1.87251, 1.57673, -5.6192, 7.24573, 3.70448, -2.68373, 4.55044, 1.30485, 3.21198, -4.28681, 10.4085, 7.23535, 6.72363, 8.80349, 5.64684, 2.68997, 14.5807, 4.40358, -4.90629, 14.6, -1.47097, 1.87539, 12.2842, -7.23461, 8.07235, 11.2278, -0.268067, -8.3629, 5.57385, -1.61748, -3.7342, 3.19458, 6.40197)
+
+[node name="bowl" instance=ExtResource("1_phd2s")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="12985_Fish_bowl_v1_l1" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="12985_Fish_bowl_v1_l1/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_xp1sv")
+
+[node name="Node3D" parent="." index="1" instance=ExtResource("2_i0ic5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3, 8, 2)

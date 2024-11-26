@@ -3,6 +3,7 @@ extends Node
 
 var dialogue_on = false
 var met_fish = false
+var fish_introduction = false
 @onready var phantom_cams
 @onready var look_at:PhantomCamera3D
 

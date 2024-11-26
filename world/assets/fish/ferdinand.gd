@@ -1,17 +1,15 @@
-extends Node3D
+extends "res://world/interactable/interaction.gd"
 
+@onready var resource = load("res://world/dialogue/tipfish1.dialogue")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+func interact():
+	hover_text.visible = false
+	hover_text_canbevisible = false
+	interaction_cooldown.start()
+	
+	if not GameState.fish_introduction:
+		DialogueManager.show_dialogue_balloon(resource, "introduction") 
 
 func _on_tipfish_1_area_entered(area):
-	if not GameState.met_fish:
-		var resource = load("res://world/dialogue/tipfish1.dialogue")
+	if not GameState.met_fish: 
 		DialogueManager.show_dialogue_balloon(resource, "comehere") 

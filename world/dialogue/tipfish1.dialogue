@@ -10,3 +10,41 @@ Ferdinand: Come over here.
 do GameState.swap_camera("felix")
 set GameState.dialogue_on = false
 => END
+
+
+~ introduction
+set GameState.dialogue_on = true
+set GameState.met_fish = true
+set GameState.fish_introduction = true
+
+do GameState.swap_camera("fish")
+Ferdinand: You trying to get outside again?
+
+do GameState.swap_camera("felix")
+Felix: Yeah. It’s weird. It's hard to find a way out today.
+
+do GameState.swap_camera("fish")
+Ferdinand: Human isn’t happy since last time.
+Ferdinand: They locked the joint up and hid away the keys.
+
+do GameState.swap_camera("felix")
+Felix: I just wanted to go sleep in the sun!
+
+do GameState.swap_camera("fish")
+Ferdinand: …
+Ferdinand: A little birdie might have told me of a way out.
+
+do GameState.swap_camera("felix")
+Felix: Really?!
+
+do GameState.swap_camera("fish")
+Ferdinand: Yes… I do recall something like that…
+Ferdinand: My memory’s feeling a little fuzzy though.
+Ferdinand: Some flakes might clear things up a little.
+
+do GameState.swap_camera("felix")
+Felix: Yeah, yeah, fine.
+
+do GameState.swap_camera("felix")
+set GameState.dialogue_on = false
+=> END

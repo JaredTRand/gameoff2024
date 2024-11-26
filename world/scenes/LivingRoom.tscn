@@ -330,9 +330,9 @@ points = PackedVector3Array(0, 2.7, 1.99989, -1.55797, 2.31916, 2.7, -0.757312, 
 
 [sub_resource type="Resource" id="Resource_bb3ny"]
 script = ExtResource("12_dg21a")
-duration = 0.3
+duration = 1.5
 transition = 2
-ease = 1
+ease = 2
 
 [sub_resource type="Resource" id="Resource_v62f6"]
 script = ExtResource("13_pnrbp")
@@ -349,7 +349,6 @@ far = 4000.0
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fn52a"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
-dof_blur_amount = 0.21
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8w8tr"]
 size = Vector3(10, 12.1, 1.585)
@@ -526,6 +525,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 13, -2)
 
 [node name="Ferdinand" parent="." instance=ExtResource("11_x3agi")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -8, 2.7, -25)
+hvr_txt_size = 150
 
 [node name="FishPhantomCamera" type="Node3D" parent="." node_paths=PackedStringArray("follow_target") groups=["phantomcams"]]
 unique_name_in_owner = true

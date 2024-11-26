@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://y8encr4rb4df"]
+[gd_scene load_steps=40 format=4 uid="uid://y8encr4rb4df"]
 
 [ext_resource type="PackedScene" uid="uid://brtq66og04p34" path="res://addons/Kenney/Furniture/scenes/table_coffee.tscn" id="1_x61qm"]
 [ext_resource type="PackedScene" uid="uid://di2gqj3v1a3ft" path="res://addons/Kenney/Furniture/FBX format/pottedPlant.fbx" id="2_7a3kg"]
@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dipjlso0oiul0" path="res://addons/Kenney/Furniture/scenes/wall_doorway_wide.tscn" id="8_nr2g8"]
 [ext_resource type="PackedScene" uid="uid://c3ebf68t32kqk" path="res://addons/Kenney/Furniture/scenes/wall_half.tscn" id="9_q0uc3"]
 [ext_resource type="PackedScene" uid="uid://com5il1110o3b" path="res://addons/Kenney/Furniture/scenes/ceiling_fan.tscn" id="10_xll5a"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="11_medlu"]
 [ext_resource type="PackedScene" uid="uid://bxisinmybewjp" path="res://world/assets/fish/fish+bowl.tscn" id="11_x3agi"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_dg21a"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="13_pnrbp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nguq6"]
 resource_name = "carpetBlue"
@@ -325,6 +328,29 @@ shadow_mesh = SubResource("ArrayMesh_c6jbm")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_slc7d"]
 points = PackedVector3Array(0, 2.7, 1.99989, -1.55797, 2.31916, 2.7, -0.757312, 2.31916, 2.49993, 0, 0, 1.99989, 0, 2.7, 0, -4.1, 2.7, 1.99989, -1.55797, 1.08122, 2.7, -2.54243, 2.31916, 2.7, -0.757312, 0.380579, 2.49993, 0, 0, 0, -4.1, 0, 1.99989, -4.1, 2.7, 0, -3.34309, 2.31916, 2.49993, -2.54243, 1.08122, 2.7, -3.34309, 0.380579, 2.49993, -3.02002, 0, 0, -4.1, 0, 0.0999021, -4.1, 2.30673, 0)
 
+[sub_resource type="Resource" id="Resource_bb3ny"]
+script = ExtResource("12_dg21a")
+duration = 0.3
+transition = 2
+ease = 1
+
+[sub_resource type="Resource" id="Resource_v62f6"]
+script = ExtResource("13_pnrbp")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fn52a"]
+dof_blur_far_distance = 5.99
+dof_blur_near_distance = 0.05
+dof_blur_amount = 0.21
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8w8tr"]
 size = Vector3(10, 12.1, 1.585)
 
@@ -500,6 +526,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 13, -2)
 
 [node name="Ferdinand" parent="." instance=ExtResource("11_x3agi")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -8, 2.7, -25)
+
+[node name="FishPhantomCamera" type="Node3D" parent="." node_paths=PackedStringArray("follow_target") groups=["phantomcams"]]
+unique_name_in_owner = true
+transform = Transform3D(-0.231748, -0.259963, 0.937393, 0, 0.96363, 0.267238, -0.972776, 0.0619319, -0.223319, -6.87513, 3.86569, -25.118)
+script = ExtResource("11_medlu")
+priority = 10
+follow_mode = 6
+follow_target = NodePath("../Ferdinand")
+tween_resource = SubResource("Resource_bb3ny")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_v62f6")
+attributes = SubResource("CameraAttributesPractical_fn52a")
+follow_offset = Vector3(0, 0.845, 0.15)
+follow_damping = true
+follow_distance = 1.2
+spring_length = 1.2
+metadata/name = "fish"
 
 [node name="tipfish1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -29)

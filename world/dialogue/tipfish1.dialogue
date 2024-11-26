@@ -1,8 +1,12 @@
 ~ comehere
 set GameState.dialogue_on = true
 set GameState.met_fish = true
+do GameState.swap_camera("fish")
+
 Ferdinand: Pssssst.
 Ferdinand: Hey.
 Ferdinand: Come over here.
+
+do GameState.swap_camera("felix")
 set GameState.dialogue_on = false
 => END

@@ -34,7 +34,6 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var move_direction : Vector3 = Vector3.ZERO
 
-
 @onready var thought_bubble = $thought_bubble
 
 @onready var hotbar = %UserInterface/HotBar

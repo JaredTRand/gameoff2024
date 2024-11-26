@@ -12,6 +12,6 @@ func _process(delta):
 
 
 func _on_tipfish_1_area_entered(area):
-	var resource = load("res://world/dialogue/tipfish1.dialogue")
-	#var dialogue_line = await DialogueManager.get_next_dialogue_line(resource, "comehere")
-	DialogueManager.show_dialogue_balloon(resource, "comehere") 
+	if not GameState.met_fish:
+		var resource = load("res://world/dialogue/tipfish1.dialogue")
+		DialogueManager.show_dialogue_balloon(resource, "comehere") 

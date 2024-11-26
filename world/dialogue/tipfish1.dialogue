@@ -1,0 +1,8 @@
+~ comehere
+set GameState.dialogue_on = true
+set GameState.met_fish = true
+Ferdinand: Pssssst.
+Ferdinand: Hey.
+Ferdinand: Come over here.
+set GameState.dialogue_on = false
+=> END

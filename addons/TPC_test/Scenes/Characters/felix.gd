@@ -33,11 +33,12 @@ const ANIMATION_BLEND : float = 7.0
 @onready var eyecast:RayCast3D  = $felix/Eyecast
 
 @onready var move_direction : Vector3 = Vector3.ZERO
-@onready var debug_panel = $UserInterface/DebugPanel
+
 
 @onready var thought_bubble = $thought_bubble
 
-@onready var hotbar = $UserInterface/ItemList
+@onready var hotbar = %UserInterface/HotBar
+@onready var debug_panel = $UserInterface/DebugPanel
 
 @onready var _player_pcam: PhantomCamera3D
 
@@ -85,53 +86,69 @@ func _set_pcam_rotation(pcam: PhantomCamera3D, event: InputEvent) -> void:
 		# Change the SpringArm3D node's rotation and rotate around its target
 		pcam.set_third_person_rotation_degrees(pcam_rotation_degrees)
 
-func _physics_process(delta):	
-	move_direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
-	move_direction.z = Input.get_action_strength("player_backward") - Input.get_action_strength("player_forward")
-	move_direction = move_direction.rotated(Vector3.UP, _player_pcam._follow_spring_arm.rotation.y)
-	
-	velocity.y -= gravity * delta
-	
-	if Input.is_action_pressed("player_sprint"):
-		speed = run_speed
+func _physics_process(delta):
+	if GameState.dialogue_on:
+		move_direction.x = 0
+		move_direction.z = 0
+		move_direction = move_direction.rotated(Vector3.UP, _player_pcam._follow_spring_arm.rotation.y)
+		
+		velocity.y -= gravity * delta
+		velocity.x = move_direction.normalized().x 
+		velocity.z = move_direction.normalized().z
+		
+		if move_direction:
+			player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, atan2(velocity.x, velocity.z), LERP_VALUE)
+		
+		apply_floor_snap()
+		move_and_slide()
+		animate(delta)
+		_process_raycasts()
 	else:
-		speed = walk_speed
+		move_direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
+		move_direction.z = Input.get_action_strength("player_backward") - Input.get_action_strength("player_forward")
+		move_direction = move_direction.rotated(Vector3.UP, _player_pcam._follow_spring_arm.rotation.y)
 	
-	velocity.x = move_direction.normalized().x * speed
-	velocity.z = move_direction.normalized().z * speed
-	
-	if move_direction:
-		player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, atan2(velocity.x, velocity.z), LERP_VALUE)
+		velocity.y -= gravity * delta
 		
-	if Input.is_action_just_pressed("player_interact"):
-		if cur_interactable_obj:
-			cur_interactable_obj.interact()
+		if Input.is_action_pressed("player_sprint"):
+			speed = run_speed
+		else:
+			speed = walk_speed
 		
-	var just_landed := is_on_floor() and snap_vector == Vector3.ZERO
-	var is_jumping := is_on_floor() and Input.is_action_just_pressed("player_jump")
-	
-
-	if is_jumping:
-		jump_count += 1
-		if jump_count <= jump_count_max:
+		velocity.x = move_direction.normalized().x * speed
+		velocity.z = move_direction.normalized().z * speed
+		
+		if move_direction:
+			player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, atan2(velocity.x, velocity.z), LERP_VALUE)
+			
+		if Input.is_action_just_pressed("player_interact"):
+			if cur_interactable_obj:
+				cur_interactable_obj.interact()
+			
+		var just_landed := is_on_floor() and snap_vector == Vector3.ZERO
+		var is_jumping := is_on_floor() and Input.is_action_just_pressed("player_jump")
+		
+		if is_jumping:
+			jump_count += 1
+			if jump_count <= jump_count_max:
+				velocity.y = jump_strength
+				snap_vector = Vector3.ZERO
+		elif not is_on_floor() and Input.is_action_just_pressed("player_jump") and jump_count <= jump_count_max:
+			jump_count += 1
 			velocity.y = jump_strength
 			snap_vector = Vector3.ZERO
-	elif not is_on_floor() and Input.is_action_just_pressed("player_jump") and jump_count <= jump_count_max:
-		jump_count += 1
-		velocity.y = jump_strength
-		snap_vector = Vector3.ZERO
-	elif just_landed:
-		jump_count = 0
-		snap_vector = Vector3.DOWN
-	debug_panel.add_property("jump_count", jump_count)
-	debug_panel.add_property("velocity", velocity)
-	if pre_pos:
-		debug_panel.add_property("speed!", (global_position - pre_pos).length())
-	pre_pos = global_position
-	apply_floor_snap()
-	move_and_slide()
-	animate(delta)
-	_process_raycasts()
+		elif just_landed:
+			jump_count = 0
+			snap_vector = Vector3.DOWN
+		debug_panel.add_property("jump_count", jump_count)
+		debug_panel.add_property("velocity", velocity)
+		if pre_pos:
+			debug_panel.add_property("speed!", (global_position - pre_pos).length())
+		pre_pos = global_position
+		apply_floor_snap()
+		move_and_slide()
+		animate(delta)
+		_process_raycasts()
 
 
 func animate(delta):

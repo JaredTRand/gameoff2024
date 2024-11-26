@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameState="*res://world/dialogue/GameState.gd"
+
+[dialogue_manager]
+
+general/custom_test_scene_path="res://world/dialogue/TestDialogue.tscn"
+general/balloon_path="res://world/dialogue/balloon.tscn"
 
 [display]
 
@@ -85,6 +91,10 @@ player_interact={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://world/dialogue/tipfish1.dialogue")
 
 [shader_globals]
 

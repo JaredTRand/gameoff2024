@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://du72chbu4dnh4"
+path="res://.godot/imported/tipfish1.dialogue-f4df86fae38962c5e52fa80b918df23d.tres"
+
+[deps]
+
+source_file="res://world/dialogue/tipfish1.dialogue"
+dest_files=["res://.godot/imported/tipfish1.dialogue-f4df86fae38962c5e52fa80b918df23d.tres"]
+
+[params]
+
+defaults=true

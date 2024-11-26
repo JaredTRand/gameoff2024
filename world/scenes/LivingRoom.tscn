@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://y8encr4rb4df"]
+[gd_scene load_steps=34 format=4 uid="uid://y8encr4rb4df"]
 
 [ext_resource type="PackedScene" uid="uid://brtq66og04p34" path="res://addons/Kenney/Furniture/scenes/table_coffee.tscn" id="1_x61qm"]
 [ext_resource type="PackedScene" uid="uid://di2gqj3v1a3ft" path="res://addons/Kenney/Furniture/FBX format/pottedPlant.fbx" id="2_7a3kg"]
@@ -325,6 +325,9 @@ shadow_mesh = SubResource("ArrayMesh_c6jbm")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_slc7d"]
 points = PackedVector3Array(0, 2.7, 1.99989, -1.55797, 2.31916, 2.7, -0.757312, 2.31916, 2.49993, 0, 0, 1.99989, 0, 2.7, 0, -4.1, 2.7, 1.99989, -1.55797, 1.08122, 2.7, -2.54243, 2.31916, 2.7, -0.757312, 0.380579, 2.49993, 0, 0, 0, -4.1, 0, 1.99989, -4.1, 2.7, 0, -3.34309, 2.31916, 2.49993, -2.54243, 1.08122, 2.7, -3.34309, 0.380579, 2.49993, -3.02002, 0, 0, -4.1, 0, 0.0999021, -4.1, 2.30673, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8w8tr"]
+size = Vector3(10, 12.1, 1.585)
+
 [node name="mainroom" type="Node3D"]
 
 [node name="furniture" type="Node3D" parent="."]
@@ -495,5 +498,14 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="ceilingFan" parent="." instance=ExtResource("10_xll5a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 13, -2)
 
-[node name="bowl" parent="." instance=ExtResource("11_x3agi")]
+[node name="Ferdinand" parent="." instance=ExtResource("11_x3agi")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -8, 2.7, -25)
+
+[node name="tipfish1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -29)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tipfish1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_8w8tr")
+
+[connection signal="area_entered" from="tipfish1" to="Ferdinand" method="_on_tipfish_1_area_entered"]

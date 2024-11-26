@@ -40,7 +40,7 @@ dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 dof_blur_amount = 0.21
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ss4nr"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xm2qj"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 dof_blur_amount = 0.21
@@ -87,7 +87,7 @@ spring_length = 4.0
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 16.0359, 3.5, -34.9399)
-attributes = SubResource("CameraAttributesPractical_ss4nr")
+attributes = SubResource("CameraAttributesPractical_xm2qj")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300

@@ -1455,6 +1455,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908729, 0)
 shape = SubResource("CapsuleShape3D_k6p7c")
 
 [node name="UserInterface" parent="." instance=ExtResource("5_5lnlg")]
+unique_name_in_owner = true
 
 [node name="STATE_MACHINE" type="Node" parent="." node_paths=PackedStringArray("felix")]
 script = ExtResource("6_3wa72")

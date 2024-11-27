@@ -48,3 +48,45 @@ Felix: Yeah, yeah, fine.
 do GameState.swap_camera("felix")
 set GameState.dialogue_on = false
 => END
+
+
+~ beforeFirstFlake
+set GameState.dialogue_on = true
+
+do GameState.swap_camera("fish")
+Ferdinand: You got the stuff?
+
+do GameState.swap_camera("felix")
+Felix: I haven't found any yet.
+
+do GameState.swap_camera("fish")
+Ferdinand: ...
+Ferdinand: So why are you here?
+Ferdinand: My memories still feeling fuzzy.
+Ferdinand: Some flakes will help. They're in a big orange container.
+Ferdinand: Got a little fella like me on the front. You can't miss it.
+
+do GameState.swap_camera("felix")
+Felix: Right. On it.
+set GameState.dialogue_on = false
+=> END
+
+
+~ firstFlake
+set GameState.dialogue_on = true
+set GameState.firstFlake = true
+
+do GameState.swap_camera("fish")
+Ferdinand: *Crunch crunch crunch*
+Ferdinand: Oh yeah...
+Ferdinand: *Crunch crunch crunch*
+Ferdinand: Mmm...
+Ferdinand: That's some quality flake.
+
+do GameState.swap_camera("felix")
+Felix: So...
+
+
+
+set GameState.dialogue_on = false
+=> END

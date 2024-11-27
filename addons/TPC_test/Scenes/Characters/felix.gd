@@ -41,6 +41,8 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var _player_pcam: PhantomCamera3D
 
+@onready var dust_effect:GPUParticles3D = $felix/dust_effect
+
 var jump_count:int = 0
 var jump_count_max:int = 1
 
@@ -134,13 +136,19 @@ func _physics_process(delta):
 				snap_vector = Vector3.ZERO
 		elif not is_on_floor() and Input.is_action_just_pressed("player_jump") and jump_count <= jump_count_max:
 			jump_count += 1
+			dust_effect.restart()
 			velocity.y = jump_strength
 			snap_vector = Vector3.ZERO
 		elif just_landed:
+			debug_panel.add_property("last y speed", (global_position.y - pre_pos.y))
+			if (global_position.y - pre_pos.y) < .3:
+				dust_effect.restart()
 			jump_count = 0
 			snap_vector = Vector3.DOWN
+			
 		debug_panel.add_property("jump_count", jump_count)
 		debug_panel.add_property("velocity", velocity)
+		debug_panel.add_property("dust_effect", dust_effect.emitting)
 		if pre_pos:
 			debug_panel.add_property("speed!", (global_position - pre_pos).length())
 		pre_pos = global_position

@@ -8,7 +8,11 @@ func interact():
 	interaction_cooldown.start()
 	
 	if not GameState.fish_introduction:
-		DialogueManager.show_dialogue_balloon(resource, "introduction") 
+		DialogueManager.show_dialogue_balloon(resource, "introduction")
+	elif not GameState.first_flake:
+		DialogueManager.show_dialogue_balloon(resource, "beforeFirstFlake")
+	elif GameState.first_flake:
+		DialogueManager.show_dialogue_balloon(resource, "beforeFirstFlake")
 
 func _on_tipfish_1_area_entered(area):
 	if not GameState.met_fish: 

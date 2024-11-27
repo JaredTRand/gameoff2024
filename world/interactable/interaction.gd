@@ -26,6 +26,7 @@ var in_player_interact_area = false
 
 @onready var felix = get_tree().get_first_node_in_group("player")
 @onready var hotbar = get_tree().get_first_node_in_group("hotbar")
+@onready var fishflakes = get_tree().get_first_node_in_group("ff_container")
 var hover_text:Label3D 
 
 # Called when the node enters the scene tree for the first time.
@@ -60,7 +61,19 @@ func interact():
 		felix.think(thought)
 		
 	if pickup_able:
-		var success = hotbar.add_item(inv_img, interaction_name)
+		var success
+		if interaction_name == "Fish Flakes":
+			var cur_flake_count:int = int(fishflakes.find_child("flakecount").text)
+			fishflakes.find_child("flakecount").text = str(cur_flake_count + 1)
+			
+			fishflakes.find_child("AnimationPlayer").play("moreflakes2")
+			
+			var TRfishflakes:TextureRect = fishflakes.find_child("fishflakes")
+			if !TRfishflakes.visible:
+				TRfishflakes.visible = true
+			success = true
+		else:
+			success = hotbar.add_item(inv_img, interaction_name)
 		if success: 
 			self.queue_free()
 	

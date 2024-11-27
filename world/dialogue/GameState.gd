@@ -5,6 +5,7 @@ var dialogue_on = false
 var met_fish = false
 var fish_introduction = false
 var first_flake = false
+var numOfFlakes:int = 0
 @onready var phantom_cams
 @onready var look_at:PhantomCamera3D
 

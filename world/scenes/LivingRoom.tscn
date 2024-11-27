@@ -525,7 +525,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 13, -2)
 
 [node name="Ferdinand" parent="." instance=ExtResource("11_x3agi")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -8, 2.7, -25)
-hvr_txt_size = 150
+hvr_txt_size = 200
+interaction_cooldown_time = null
+thought = null
+pickup_able = null
+openable = null
+locked = null
+unlocked_with = null
+unlock_thought = null
 
 [node name="FishPhantomCamera" type="Node3D" parent="." node_paths=PackedStringArray("follow_target") groups=["phantomcams"]]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=27 format=3 uid="uid://dui3sqsargabd"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_qns0x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_vxnf4"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://cpb6ju30vop3g" path="res://world/scenes/duct_vcurve.tscn" id="9_js8gr"]
 [ext_resource type="PackedScene" uid="uid://h0gwt40qtp5i" path="res://world/scenes/duct_hcurve.tscn" id="10_vw6cw"]
 [ext_resource type="PackedScene" uid="uid://bostd4fyeholt" path="res://world/scenes/grate.tscn" id="11_c5a8c"]
-[ext_resource type="PackedScene" uid="uid://c74iskyrbxix1" path="res://world/assets/fish/fishflakes.tscn" id="17_272gi"]
 
 [sub_resource type="Resource" id="Resource_eoher"]
 script = ExtResource("2_7tyqq")
@@ -40,7 +39,7 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_40n1o"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_r7pas"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
@@ -87,7 +86,7 @@ metadata/name = "felix"
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0359, 3.9, 7.59481)
-attributes = SubResource("CameraAttributesPractical_40n1o")
+attributes = SubResource("CameraAttributesPractical_r7pas")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300
@@ -291,12 +290,3 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 18, 1, -5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.258819, 0.482963, -0.836516, -1.49012e-08, 0.866025, 0.5, 0.965926, 0.12941, -0.224144, -37.1357, 12.9, 0)
-
-[node name="Cylinder" parent="." instance=ExtResource("17_272gi")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 0.8, -21)
-
-[node name="Cylinder2" parent="." instance=ExtResource("17_272gi")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 0.8, -15)
-
-[node name="Cylinder3" parent="." instance=ExtResource("17_272gi")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 0.8, -27)

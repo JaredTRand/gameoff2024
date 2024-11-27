@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://y8encr4rb4df"]
+[gd_scene load_steps=43 format=4 uid="uid://y8encr4rb4df"]
 
 [ext_resource type="PackedScene" uid="uid://brtq66og04p34" path="res://addons/Kenney/Furniture/scenes/table_coffee.tscn" id="1_x61qm"]
 [ext_resource type="PackedScene" uid="uid://di2gqj3v1a3ft" path="res://addons/Kenney/Furniture/FBX format/pottedPlant.fbx" id="2_7a3kg"]
@@ -9,11 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://du8ses7a47ykm" path="res://addons/Kenney/Furniture/scenes/wall_window_slide.tscn" id="7_oyvum"]
 [ext_resource type="PackedScene" uid="uid://dipjlso0oiul0" path="res://addons/Kenney/Furniture/scenes/wall_doorway_wide.tscn" id="8_nr2g8"]
 [ext_resource type="PackedScene" uid="uid://c3ebf68t32kqk" path="res://addons/Kenney/Furniture/scenes/wall_half.tscn" id="9_q0uc3"]
+[ext_resource type="PackedScene" uid="uid://dxkc3gamoewvk" path="res://world/scenes/shelf.tscn" id="10_qidjw"]
 [ext_resource type="PackedScene" uid="uid://com5il1110o3b" path="res://addons/Kenney/Furniture/scenes/ceiling_fan.tscn" id="10_xll5a"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="11_medlu"]
 [ext_resource type="PackedScene" uid="uid://bxisinmybewjp" path="res://world/assets/fish/fish+bowl.tscn" id="11_x3agi"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_dg21a"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="13_pnrbp"]
+[ext_resource type="PackedScene" uid="uid://c74iskyrbxix1" path="res://world/assets/fish/fishflakes.tscn" id="16_03m3k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nguq6"]
 resource_name = "carpetBlue"
@@ -353,6 +355,12 @@ dof_blur_near_distance = 0.05
 [sub_resource type="BoxShape3D" id="BoxShape3D_8w8tr"]
 size = Vector3(10, 12.1, 1.585)
 
+[sub_resource type="Resource" id="Resource_6y62r"]
+script = ExtResource("12_dg21a")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="mainroom" type="Node3D"]
 
 [node name="furniture" type="Node3D" parent="."]
@@ -520,6 +528,12 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15, 0,
 [node name="wallHalf2" parent="wall" instance=ExtResource("9_q0uc3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -30)
 
+[node name="shelf" parent="wall" instance=ExtResource("10_qidjw")]
+transform = Transform3D(3.01609e-07, 0, 1, 0, 0.2, 0, -2.3, 0, 1.31135e-07, -9.5, 7.5, -11.2)
+
+[node name="shelf2" parent="wall" instance=ExtResource("10_qidjw")]
+transform = Transform3D(3.01609e-07, 0, 1, 0, 0.2, 0, -2.3, 0, 1.31135e-07, -9.5, 9.5, -17.2)
+
 [node name="ceilingFan" parent="." instance=ExtResource("10_xll5a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 13, -2)
 
@@ -557,5 +571,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -29)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tipfish1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 shape = SubResource("BoxShape3D_8w8tr")
+
+[node name="FishFlakes" parent="." instance=ExtResource("16_03m3k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9.2, 9.9, -18.2)
+
+[node name="fishflakescam" type="Node3D" parent="FishFlakes" node_paths=PackedStringArray("follow_target", "look_at_target") groups=["phantomcams"]]
+transform = Transform3D(-0.177526, 0.0366802, 0.0844904, 1.49011e-09, 0.183458, -0.079644, -0.0921093, -0.0706954, -0.162842, 13.4975, -12.7232, -26.0142)
+script = ExtResource("11_medlu")
+follow_mode = 6
+follow_target = NodePath("..")
+look_at_mode = 2
+look_at_target = NodePath("..")
+tween_resource = SubResource("Resource_6y62r")
+follow_offset = Vector3(2.615, -2.465, -5.04)
+metadata/name = "fishflakes"
 
 [connection signal="area_entered" from="tipfish1" to="Ferdinand" method="_on_tipfish_1_area_entered"]

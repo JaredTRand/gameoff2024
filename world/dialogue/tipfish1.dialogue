@@ -43,7 +43,11 @@ Ferdinand: My memory’s feeling a little fuzzy though.
 Ferdinand: Some flakes might clear things up a little.
 
 do GameState.swap_camera("felix")
-Felix: Yeah, yeah, fine.
+Felix: Yeah, yeah, fine. I get it.
+Felix: Where can I find some?
+
+do GameState.swap_camera("fishflakes")
+Ferdinand: Human left some up on a shelf up there. Go grab those for me.
 
 do GameState.swap_camera("felix")
 set GameState.dialogue_on = false

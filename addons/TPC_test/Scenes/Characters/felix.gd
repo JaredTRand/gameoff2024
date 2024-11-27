@@ -141,7 +141,7 @@ func _physics_process(delta):
 			snap_vector = Vector3.ZERO
 		elif just_landed:
 			debug_panel.add_property("last y speed", (global_position.y - pre_pos.y))
-			if (global_position.y - pre_pos.y) < .3:
+			if (global_position.y - pre_pos.y) < -.15:
 				dust_effect.restart()
 			jump_count = 0
 			snap_vector = Vector3.DOWN

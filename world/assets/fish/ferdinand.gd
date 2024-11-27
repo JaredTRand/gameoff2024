@@ -12,7 +12,7 @@ func interact():
 	elif not GameState.first_flake:
 		DialogueManager.show_dialogue_balloon(resource, "beforeFirstFlake")
 	elif GameState.first_flake:
-		DialogueManager.show_dialogue_balloon(resource, "beforeFirstFlake")
+		DialogueManager.show_dialogue_balloon(resource, "firstFlake")
 
 func _on_tipfish_1_area_entered(area):
 	if not GameState.met_fish: 

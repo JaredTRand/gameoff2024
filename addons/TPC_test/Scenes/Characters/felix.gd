@@ -41,7 +41,7 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var _player_pcam: PhantomCamera3D
 
-@onready var dust_effect:GPUParticles3D = $felix/dust_effect
+@onready var dust_effect:GPUParticles3D = $felix/Armature/dust_effect
 
 var jump_count:int = 0
 var jump_count_max:int = 1

@@ -76,11 +76,22 @@ set GameState.dialogue_on = false
 => END
 
 
+~ firstFlakeandNoIntro
+set GameState.dialogue_on = true
+set GameState.met_fish = true
+set GameState.fish_introduction = true
+
+do GameState.swap_camera("fish")
+Ferdinand: *sniff sniff*
+Ferdinand: Are those flakes?
+Ferdinand: They smell so fresh!
+Ferdinand: Pour them on in and I'll tell you a secret.
 ~ firstFlake
 set GameState.dialogue_on = true
 set GameState.firstFlake = true
-
+do GameState.use_fish_flake()
 do GameState.swap_camera("fish")
+
 Ferdinand: *Crunch crunch crunch*
 Ferdinand: Oh yeah...
 Ferdinand: *Crunch crunch crunch*
@@ -90,7 +101,29 @@ Ferdinand: That's some quality flake.
 do GameState.swap_camera("felix")
 Felix: So...
 
+do GameState.swap_camera("fish")
+Ferdinand: Huh? Oh, right!
+Ferdinand: Well, Carrie Cardinal was flying around the feeders today.
+Ferdinand: She mentioned that a window in the top floor gazebo was wide open. 
 
+do GameState.swap_camera("felix")
+Felix: Great! But how am I gonna get all the way up there?
 
+do GameState.swap_camera("fish")
+Ferdinand: What are you asking me for? I can’t do everything for you.
+Ferdinand: Although… If you find some more flakes… my memory might clear up a little more… 
+Ferdinand: Might just remember something helpful.
+Ferdinand: My info’s good. Quality stuff.
+Ferdinand: I’m no red herring, after all. 
+Ferdinand: Those guys suck. Notorious liars.
+
+do GameState.swap_camera("felix")
+Felix: Right...
+Felix: See ya!
+
+set GameState.fish_intro_completed = true
 set GameState.dialogue_on = false
+=> END
+
+~ fishtip
 => END

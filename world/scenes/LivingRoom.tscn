@@ -579,7 +579,7 @@ shape = SubResource("BoxShape3D_8w8tr")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9.2, 9.9, -18.2)
 
 [node name="fishflakescam" type="Node3D" parent="FishFlakes" node_paths=PackedStringArray("follow_target", "look_at_target") groups=["phantomcams"]]
-transform = Transform3D(-0.177526, 0.0366802, 0.0844904, 1.49011e-09, 0.183458, -0.079644, -0.0921093, -0.0706954, -0.162842, 13.4975, -12.7232, -26.0142)
+transform = Transform3D(-0.177526, 0.0366803, 0.0844904, 1.49011e-09, 0.183458, -0.079644, -0.0921093, -0.0706955, -0.162842, 13.4975, -12.7232, -26.0142)
 script = ExtResource("11_medlu")
 follow_mode = 6
 follow_target = NodePath("..")

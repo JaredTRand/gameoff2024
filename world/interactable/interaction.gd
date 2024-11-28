@@ -14,11 +14,13 @@ extends MeshInstance3D
 @export_group("Openable")
 @export var openable:bool = false
 @export var locked:bool = false
+@export var open_sound:AudioStreamWAV
 @export var unlocked_with:String
 @export var unlock_thought:String = ""
 @export var additional_open:Node3D
 
 @onready var animator:AnimationPlayer = find_child("AnimationPlayer")
+@onready var sound:AudioStreamPlayer3D = find_child("AudioStreamPlayer3D")
 
 var hover_text_canbevisible = true
 
@@ -77,10 +79,12 @@ func interact():
 				felix.think(unlock_thought)
 				locked = false
 				animator.play("open")
+				sound.play()
 				add_open()
 				set_script(null)
 		else:
 			animator.play("open")
+			sound.play()
 			add_open()
 			
 func add_open():

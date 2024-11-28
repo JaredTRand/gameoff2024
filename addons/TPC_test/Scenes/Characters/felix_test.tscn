@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=4 uid="uid://ovvdhs1wpji7"]
+[gd_scene load_steps=41 format=4 uid="uid://ovvdhs1wpji7"]
 
 [ext_resource type="Script" path="res://addons/TPC_test/Scenes/Characters/felix.gd" id="1_yxq00"]
 [ext_resource type="Material" uid="uid://lhbweyif244p" path="res://Felix/model/cat001.tres" id="2_4s7ui"]
+[ext_resource type="Script" path="res://smoother.gd" id="2_qoree"]
 [ext_resource type="AnimationLibrary" uid="uid://bfr6icn3uihx3" path="res://Felix/animations/animations.res" id="3_4dcp1"]
 [ext_resource type="PackedScene" uid="uid://b0xx0p7kdhbma" path="res://Felix/UI/UIanddebugPanel.tscn" id="5_5lnlg"]
 [ext_resource type="Script" path="res://Felix/scripts/state_machine/state_machine.gd" id="6_3wa72"]
@@ -9,36 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b3kx2md7ubkqx" path="res://Felix/assets/thoughtbubs.png" id="8_5ws5c"]
 [ext_resource type="PackedScene" uid="uid://b3aus3ceccucv" path="res://Felix/assets/thought_bubble.tscn" id="9_bou7y"]
 [ext_resource type="Texture2D" uid="uid://mp4fn7284tbn" path="res://addons/kenney_particle_pack/smoke_03.png" id="9_ejfs2"]
-
-[sub_resource type="Curve" id="Curve_4vdcn"]
-_data = [Vector2(0, 1), 0.0, 2.1267, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_14kyp"]
-curve = SubResource("Curve_4vdcn")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mf0g5"]
-angle_min = 1.07288e-05
-angle_max = 1.07288e-05
-direction = Vector3(0, 5.265, 0)
-spread = 180.0
-initial_velocity_min = 0.4
-initial_velocity_max = 0.5
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_14kyp")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7axjb"]
-transparency = 2
-alpha_scissor_threshold = 0.1
-alpha_antialiasing_mode = 0
-blend_mode = 1
-cull_mode = 2
-albedo_texture = ExtResource("9_ejfs2")
-billboard_mode = 1
-billboard_keep_scale = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_nfc5f"]
-material = SubResource("StandardMaterial3D_7axjb")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_i4ti0"]
 resource_name = "Cylinder_004_001"
@@ -563,6 +534,36 @@ nodes/jf_blend/position = Vector2(12.8, 1025.2)
 nodes/output/position = Vector2(496, 672)
 node_connections = [&"ground_air_transition", 0, &"iwr_blend", &"ground_air_transition", 1, &"jf_blend", &"iwr_blend", 0, &"Idle", &"iwr_blend", 1, &"Walk", &"iwr_blend", 2, &"Run", &"jf_blend", 0, &"Animation 2", &"jf_blend", 1, &"Animation", &"jf_blend", 2, &"Air", &"output", 0, &"ground_air_transition"]
 
+[sub_resource type="Curve" id="Curve_4vdcn"]
+_data = [Vector2(0, 1), 0.0, 2.1267, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_14kyp"]
+curve = SubResource("Curve_4vdcn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mf0g5"]
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, 5.265, 0)
+spread = 180.0
+initial_velocity_min = 0.4
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_14kyp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7axjb"]
+transparency = 2
+alpha_scissor_threshold = 0.1
+alpha_antialiasing_mode = 0
+blend_mode = 1
+cull_mode = 2
+albedo_texture = ExtResource("9_ejfs2")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_nfc5f"]
+material = SubResource("StandardMaterial3D_7axjb")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_36une"]
 size = Vector3(1, 2, 2)
 
@@ -583,17 +584,8 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 [node name="Armature" type="Node3D" parent="felix"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 0, 0)
 
-[node name="dust_effect" type="GPUParticles3D" parent="felix/Armature"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, -1.88745e-07, 0, 1.88745e-07, 2.5, 0, 0, 0)
-emitting = false
-amount = 12
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_mf0g5")
-draw_pass_1 = SubResource("QuadMesh_nfc5f")
-
 [node name="Skeleton3D" type="Skeleton3D" parent="felix/Armature"]
+physics_interpolation_mode = 1
 bones/0/name = "RL_BoneRoot"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0.998354, -0.0219262, 0.0529988, -0.0516084, 0.0597445, 0.996879, -0.0250241, -0.997973, 0.0585147, -0.0970953, -0.107404, 0.0520385)
@@ -1476,6 +1468,16 @@ parameters/ground_air_transition/current_index = 1
 parameters/iwr_blend/blend_amount = 1.0
 parameters/jf_blend/blend_amount = 0.0
 
+[node name="dust_effect" type="GPUParticles3D" parent="felix"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, -2.4869e-13, 0, 2.4869e-13, 2.5, 0, 0, 0)
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mf0g5")
+draw_pass_1 = SubResource("QuadMesh_nfc5f")
+
 [node name="Eyecast" type="RayCast3D" parent="felix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.65723, 0)
 target_position = Vector3(0, 0, 1.5)
@@ -1490,6 +1492,9 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 [node name="interact_collision" type="CollisionShape3D" parent="felix/interact_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 shape = SubResource("BoxShape3D_36une")
+
+[node name="Smoother" type="Node" parent="felix"]
+script = ExtResource("2_qoree")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908729, 0)

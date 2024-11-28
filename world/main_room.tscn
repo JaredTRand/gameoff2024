@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=31 format=3 uid="uid://dui3sqsargabd"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_qns0x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_vxnf4"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cpb6ju30vop3g" path="res://world/scenes/duct_vcurve.tscn" id="9_js8gr"]
 [ext_resource type="PackedScene" uid="uid://h0gwt40qtp5i" path="res://world/scenes/duct_hcurve.tscn" id="10_vw6cw"]
 [ext_resource type="PackedScene" uid="uid://bostd4fyeholt" path="res://world/scenes/grate.tscn" id="11_c5a8c"]
+[ext_resource type="AudioStream" uid="uid://ce46bvkqvvp4v" path="res://world/sounds/ventbreakopen.wav" id="15_3ubm0"]
 
 [sub_resource type="Resource" id="Resource_eoher"]
 script = ExtResource("2_7tyqq")
@@ -39,7 +40,7 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_tnnap"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7i4q1"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
@@ -63,6 +64,33 @@ points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ssrx"]
 points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
+
+[sub_resource type="Animation" id="Animation_onij1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-7.10543e-15, -4.44089e-16, -1.42357e-14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.67128, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_iq2jg"]
 resource_name = "open"
@@ -90,33 +118,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(3.67128, 0, 0), Vector3(3.67128, 0, 0), Vector3(4.46938, -0.800011, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_onij1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-7.10543e-15, -4.44089e-16, -1.42357e-14)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(3.67128, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_etbcr"]
@@ -147,7 +148,7 @@ metadata/name = "felix"
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 27.0359, 11.4424, 1.93414)
-attributes = SubResource("CameraAttributesPractical_tnnap")
+attributes = SubResource("CameraAttributesPractical_7i4q1")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300
@@ -354,6 +355,9 @@ libraries = {
 "": SubResource("AnimationLibrary_etbcr")
 }
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="tunnels/finalducts2/brokenvent"]
+stream = ExtResource("15_3ubm0")
+
 [node name="grate" parent="tunnels" node_paths=PackedStringArray("additional_open") instance=ExtResource("11_c5a8c")]
 transform = Transform3D(-1.62921e-07, 0, -1.41, 0, 0.75, 0, 1, 0, -2.29718e-07, 21.7, 49, -57.5)
 hvr_txt_size = 100
@@ -362,13 +366,12 @@ locked = true
 unlocked_with = "Crowbar"
 additional_open = NodePath("../finalducts2/brokenvent")
 
-[node name="grate2" parent="tunnels" node_paths=PackedStringArray("additional_open") instance=ExtResource("11_c5a8c")]
+[node name="grate2" parent="tunnels" instance=ExtResource("11_c5a8c")]
 transform = Transform3D(-1.62921e-07, 0, -1.41, 0, 0.75, 0, 1, 0, -2.29718e-07, 13.7, 1, 3.5)
 hvr_txt_size = 100
 openable = true
 locked = true
 unlocked_with = "Crowbar"
-additional_open = NodePath("")
 
 [node name="sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 12.6, 7)

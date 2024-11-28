@@ -41,7 +41,7 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var _player_pcam: PhantomCamera3D
 
-@onready var dust_effect:GPUParticles3D = $felix/Armature/dust_effect
+@onready var dust_effect:GPUParticles3D = $felix/dust_effect
 
 var jump_count:int = 0
 var jump_count_max:int = 1
@@ -148,7 +148,6 @@ func _physics_process(delta):
 			
 		debug_panel.add_property("jump_count", jump_count)
 		debug_panel.add_property("velocity", velocity)
-		debug_panel.add_property("dust_effect", dust_effect.emitting)
 		if pre_pos:
 			debug_panel.add_property("speed!", (global_position - pre_pos).length())
 		pre_pos = global_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://bygkp6m5pu0fp"]
+[gd_scene load_steps=86 format=4 uid="uid://bygkp6m5pu0fp"]
 
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="1_8muie"]
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_vxmsc"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c7rp0xrkr246h" path="res://addons/Kenney/Furniture/FBX format/kitchenCabinetUpper.fbx" id="12_3w6ak"]
 [ext_resource type="PackedScene" uid="uid://cosmpbb5hfcta" path="res://addons/Kenney/Furniture/FBX format/kitchenCoffeeMachine.fbx" id="13_c38m3"]
 [ext_resource type="Material" uid="uid://gup067sc2wed" path="res://world/assets/materials/carpet.tres" id="13_ccfq4"]
+[ext_resource type="PackedScene" uid="uid://c74iskyrbxix1" path="res://world/assets/fish/fishflakes.tscn" id="14_bis3d"]
 [ext_resource type="PackedScene" uid="uid://dk5m6cvg3s1kr" path="res://addons/Kenney/Furniture/FBX format/kitchenBlender.fbx" id="14_qx6pg"]
 [ext_resource type="PackedScene" uid="uid://bnmmicrfrouv6" path="res://addons/Kenney/Furniture/FBX format/doorwayOpen.fbx" id="15_2k6fd"]
 [ext_resource type="PackedScene" uid="uid://c86rcuhbfec1u" path="res://world/assets/badcrowbar/badcrowbar.tscn" id="15_liafs"]
@@ -1291,6 +1292,9 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/benchCushion/benchCushion2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xlcsw")
+
+[node name="FishFlakes" parent="furniture" instance=ExtResource("14_bis3d")]
+transform = Transform3D(-0.2, 0, 1.74846e-08, 0, 0.2, 0, -1.74846e-08, 0, -0.2, 8.3, 10, 27)
 
 [node name="floor" type="Node3D" parent="."]
 

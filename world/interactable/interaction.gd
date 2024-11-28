@@ -16,6 +16,7 @@ extends MeshInstance3D
 @export var locked:bool = false
 @export var unlocked_with:String
 @export var unlock_thought:String = ""
+@export var additional_open:Node3D
 
 @onready var animator:AnimationPlayer = find_child("AnimationPlayer")
 
@@ -76,9 +77,18 @@ func interact():
 				felix.think(unlock_thought)
 				locked = false
 				animator.play("open")
+				add_open()
 				set_script(null)
 		else:
 			animator.play("open")
+			add_open()
+			
+func add_open():
+	if is_instance_valid(additional_open):
+		#await get_tree().create_timer(2.0).timeout 
+		var add_anim = additional_open.find_child("AnimationPlayer")
+		if add_anim:
+			add_anim.play("open")
 
 func _on_interaction_cooldown_timeout():
 	hover_text_canbevisible = true

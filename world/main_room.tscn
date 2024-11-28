@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=30 format=3 uid="uid://dui3sqsargabd"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_qns0x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_vxnf4"]
@@ -39,7 +39,7 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hh34a"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_tnnap"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
@@ -64,6 +64,67 @@ points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ssrx"]
 points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
 
+[sub_resource type="Animation" id="Animation_iq2jg"]
+resource_name = "open"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-7.10543e-15, -4.44089e-16, -1.42357e-14), Vector3(-7.10543e-15, -4.44089e-16, -1.42357e-14), Vector3(0, 0, -0.832522), Vector3(0, 0, -0.804597), Vector3(0, 0, -0.832522)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3.67128, 0, 0), Vector3(3.67128, 0, 0), Vector3(4.46938, -0.800011, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_onij1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-7.10543e-15, -4.44089e-16, -1.42357e-14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.67128, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_etbcr"]
+_data = {
+"RESET": SubResource("Animation_onij1"),
+"open": SubResource("Animation_iq2jg")
+}
+
 [node name="LEVEL" type="Node3D"]
 
 [node name="PlayerPhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target") groups=["phantomcams"]]
@@ -86,7 +147,7 @@ metadata/name = "felix"
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 27.0359, 11.4424, 1.93414)
-attributes = SubResource("CameraAttributesPractical_hh34a")
+attributes = SubResource("CameraAttributesPractical_tnnap")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300
@@ -231,7 +292,7 @@ transform = Transform3D(1, -8.35486e-16, 0, -3.21077e-14, 1, 0, 0, 0, 1, 0, 0, 0
 shape = SubResource("ConvexPolygonShape3D_1f5lf")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="tunnels/finalducts2"]
-transform = Transform3D(-3.64162, 7.82311e-08, -1.73356e-07, -2.16365e-07, -0.20736, 9.87361e-08, -6.59386e-07, 1.45047e-08, 1, 11.7815, -1.50624, -0.0224983)
+transform = Transform3D(-0.728324, 7.82311e-08, -1.73356e-07, -4.3273e-08, -0.20736, 9.87361e-08, -1.31877e-07, 1.45047e-08, 1, 0.288806, -1.50624, -0.0224984)
 mesh = SubResource("BoxMesh_kgkfm")
 skeleton = NodePath("")
 
@@ -274,12 +335,40 @@ skeleton = NodePath("")
 transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_6ssrx")
 
-[node name="grate" parent="tunnels" instance=ExtResource("11_c5a8c")]
+[node name="brokenvent" type="Node3D" parent="tunnels/finalducts2"]
+transform = Transform3D(0.999999, 1.42357e-14, -4.44089e-16, -1.42357e-14, 1, 7.10543e-15, 4.44089e-16, -7.10543e-15, 1, 3.67128, 0, 0)
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="tunnels/finalducts2/brokenvent"]
+transform = Transform3D(-3.68907, 7.82311e-08, -1.73356e-07, -2.19184e-07, -0.20736, 9.87361e-08, -6.67978e-07, 1.45047e-08, 1, 14.2556, -1.50625, -0.0224984)
+mesh = SubResource("BoxMesh_kgkfm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tunnels/finalducts2/brokenvent/MeshInstance3D6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnels/finalducts2/brokenvent/MeshInstance3D6/StaticBody3D"]
+transform = Transform3D(1, -8.35486e-16, 0, -3.21077e-14, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_k678c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="tunnels/finalducts2/brokenvent"]
+libraries = {
+"": SubResource("AnimationLibrary_etbcr")
+}
+
+[node name="grate" parent="tunnels" node_paths=PackedStringArray("additional_open") instance=ExtResource("11_c5a8c")]
 transform = Transform3D(-1.62921e-07, 0, -1.41, 0, 0.75, 0, 1, 0, -2.29718e-07, 21.7, 49, -57.5)
 hvr_txt_size = 100
 openable = true
 locked = true
 unlocked_with = "Crowbar"
+additional_open = NodePath("../finalducts2/brokenvent")
+
+[node name="grate2" parent="tunnels" node_paths=PackedStringArray("additional_open") instance=ExtResource("11_c5a8c")]
+transform = Transform3D(-1.62921e-07, 0, -1.41, 0, 0.75, 0, 1, 0, -2.29718e-07, 13.7, 1, 3.5)
+hvr_txt_size = 100
+openable = true
+locked = true
+unlocked_with = "Crowbar"
+additional_open = NodePath("")
 
 [node name="sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 12.6, 7)

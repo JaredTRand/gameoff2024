@@ -79,12 +79,12 @@ func interact():
 				felix.think(unlock_thought)
 				locked = false
 				animator.play("open")
-				sound.play()
+				if sound: sound.play()
 				add_open()
 				set_script(null)
 		else:
 			animator.play("open")
-			sound.play()
+			if sound: sound.play()
 			add_open()
 			
 func add_open():

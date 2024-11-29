@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7007qk1iob7y"]
 
-[ext_resource type="PackedScene" uid="uid://f8xayu7qvbjy" path="res://examples/wigglebone/palm/palm.gltf" id="1"]
+[ext_resource type="PackedScene" uid="uid://f8xayu7qvbjy" path="res://addons/wigglebone/examples/wigglebone/palm/palm.gltf" id="1"]
 [ext_resource type="Script" path="res://addons/wigglebone/wiggle_bone.gd" id="2"]
-[ext_resource type="Resource" path="res://examples/wigglebone/palm/leave.tres" id="3"]
-[ext_resource type="Resource" path="res://examples/wigglebone/palm/trunk.tres" id="4"]
+[ext_resource type="Resource" uid="uid://w6m3ec6wrn42" path="res://addons/wigglebone/examples/wigglebone/palm/leave.tres" id="3"]
+[ext_resource type="Resource" uid="uid://cwabaw2vr7rl" path="res://addons/wigglebone/examples/wigglebone/palm/trunk.tres" id="4"]
 
 [node name="Palm" instance=ExtResource("1")]
 

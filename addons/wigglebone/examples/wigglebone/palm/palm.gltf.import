@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://f8xayu7qvbjy"
-path="res://.godot/imported/palm.gltf-ccc7965ea45fc105021ebc2119f73be8.scn"
+path="res://.godot/imported/palm.gltf-685290a40f0976db994ca92e7b3608bd.scn"
 
 [deps]
 
-source_file="res://examples/wigglebone/palm/palm.gltf"
-dest_files=["res://.godot/imported/palm.gltf-ccc7965ea45fc105021ebc2119f73be8.scn"]
+source_file="res://addons/wigglebone/examples/wigglebone/palm/palm.gltf"
+dest_files=["res://.godot/imported/palm.gltf-685290a40f0976db994ca92e7b3608bd.scn"]
 
 [params]
 

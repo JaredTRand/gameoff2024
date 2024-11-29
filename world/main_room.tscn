@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=37 format=3 uid="uid://dui3sqsargabd"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_qns0x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_vxnf4"]
@@ -16,7 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://cpb6ju30vop3g" path="res://world/scenes/duct_vcurve.tscn" id="9_js8gr"]
 [ext_resource type="PackedScene" uid="uid://h0gwt40qtp5i" path="res://world/scenes/duct_hcurve.tscn" id="10_vw6cw"]
 [ext_resource type="PackedScene" uid="uid://bostd4fyeholt" path="res://world/scenes/grate.tscn" id="11_c5a8c"]
+[ext_resource type="PackedScene" uid="uid://d3r63ycmfcnl4" path="res://world/assets/bigfan/bigfan.tscn" id="12_7d3ho"]
 [ext_resource type="AudioStream" uid="uid://ce46bvkqvvp4v" path="res://world/sounds/ventbreakopen.wav" id="15_3ubm0"]
+[ext_resource type="PackedScene" uid="uid://c86rcuhbfec1u" path="res://world/assets/badcrowbar/badcrowbar.tscn" id="19_ophtq"]
+[ext_resource type="Texture2D" uid="uid://cyhp000hhv3ut" path="res://Felix/UI/hotbar/itemimages/hotbar_crowbar.jpg" id="20_cgiuu"]
 
 [sub_resource type="Resource" id="Resource_eoher"]
 script = ExtResource("2_7tyqq")
@@ -40,9 +43,18 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7i4q1"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qb4rg"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_2h2oq"]
+size = Vector3(11.64, 0.4, 10.06)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oqmp3"]
+bounce = 41.85
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_smd1r"]
+points = PackedVector3Array(-5.82, -0.2, -5.03, -5.82, 0.2, -5.03, 5.82, -0.2, -5.03, -5.82, -0.2, 5.03, -5.82, 0.2, 5.03, 5.82, 0.2, -5.03, 5.82, -0.2, 5.03, 5.82, 0.2, 5.03)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fvr5"]
 albedo_color = Color(0.587751, 0.587751, 0.58775, 1)
@@ -130,7 +142,7 @@ _data = {
 
 [node name="PlayerPhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target") groups=["phantomcams"]]
 unique_name_in_owner = true
-transform = Transform3D(-0.999995, 0, 0, 0, 0.990468, 0.135588, 0, 0.135588, -0.990465, 27.0359, 11.4424, 1.93414)
+transform = Transform3D(-0.999995, 0, 0, 0, 0.990468, 0.135588, 0, 0.135588, -0.990465, -6.9641, 51.0424, -5.36586)
 script = ExtResource("1_vxnf4")
 priority = 10
 follow_mode = 6
@@ -147,8 +159,8 @@ metadata/name = "felix"
 
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 27.0359, 11.4424, 1.93414)
-attributes = SubResource("CameraAttributesPractical_7i4q1")
+transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, -6.9641, 51.0424, -5.36586)
+attributes = SubResource("CameraAttributesPractical_qb4rg")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300
@@ -156,7 +168,7 @@ process_physics_priority = 300
 script = ExtResource("1_qns0x")
 
 [node name="Player" parent="." instance=ExtResource("2_tbhhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0359, 9.9, 5.896)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9641, 49.5, -1.404)
 
 [node name="livingRoom" parent="." instance=ExtResource("2_w5bkr")]
 
@@ -171,6 +183,16 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.2, 
 
 [node name="3rdfloor_abovelivingroom" parent="." instance=ExtResource("7_ntybd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 26, -10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3rdfloor_abovelivingroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_2h2oq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="3rdfloor_abovelivingroom/MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_oqmp3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="3rdfloor_abovelivingroom/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_smd1r")
 
 [node name="tunnels" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.5, 0, -60)
@@ -382,3 +404,14 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 18, 1, -5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.258819, 0.482963, -0.836516, -1.49012e-08, 0.866025, 0.5, 0.965926, 0.12941, -0.224144, -37.1357, 12.9, 0)
+
+[node name="Cube" parent="." instance=ExtResource("19_ophtq")]
+transform = Transform3D(0.2, -1.74846e-08, 1.74846e-08, 1.74846e-08, -8.74228e-09, -0.2, 1.74846e-08, 0.2, -8.74228e-09, 0, 49.6, -1.3)
+interaction_type = "Pick up"
+interaction_name = "Crowbar"
+thought = "Who makes a crowbar for cats anyway?"
+pickup_able = true
+inv_img = ExtResource("20_cgiuu")
+
+[node name="bigfan" parent="." instance=ExtResource("12_7d3ho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 47, -18)

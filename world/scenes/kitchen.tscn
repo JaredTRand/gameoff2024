@@ -926,15 +926,17 @@ shape = SubResource("ConvexPolygonShape3D_3urot")
 
 [node name="kitchenCabinetDrawer2" parent="furniture" instance=ExtResource("5_0pyim")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.6, 0.5, 25)
+hvr_txt_size = 100
 
 [node name="kitchenCabinetDrawer3" parent="furniture" instance=ExtResource("5_0pyim")]
 transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 7.4, 0.5, 25.1)
+hvr_txt_size = 100
 
 [node name="kitchenCabinet" parent="furniture" instance=ExtResource("6_yqsjy")]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -5.6, 0.5, 16.4)
 interaction_type = "OPen"
 interaction_name = "Cabinet"
-hvr_txt_size = 150
+hvr_txt_size = 100
 openable = true
 
 [node name="kitchenCabinet3" type="Node3D" parent="furniture"]
@@ -960,6 +962,7 @@ thought = "It's stuck. Maybe I can find something to pry it open."
 hvr_txt_size = 100
 openable = true
 locked = true
+open_lockable = true
 unlocked_with = "Crowbar"
 unlock_thought = "It's open!"
 open_locked_thought = "The Key! But the door is jammed... I need something to pry it open with"
@@ -978,13 +981,13 @@ libraries = {
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1.2, 0.5, 25.1)
 interaction_type = "Open"
 interaction_name = "Cabinet"
-hvr_txt_size = 150
+hvr_txt_size = 100
 openable = true
 
 [node name="kitchenSink2" parent="furniture" instance=ExtResource("5_xowtn")]
 interaction_type = "Open"
 interaction_name = "Cabinet"
-hvr_txt_size = 150
+hvr_txt_size = 100
 openable = true
 
 [node name="kitchenFridgeLarge" type="Node3D" parent="furniture"]
@@ -1251,10 +1254,12 @@ shape = SubResource("ConcavePolygonShape3D_6s4kc")
 
 [node name="grate" parent="." instance=ExtResource("19_nvsk5")]
 transform = Transform3D(7.54979e-08, 0, 0.6, 0, 0.75, 0, -1, 0, 4.52987e-08, -11.3, 10.3, -19.9)
+thought = "It won't budge. Could I unscrew it?"
 hvr_txt_size = 100
 openable = true
 locked = true
-unlocked_with = "Crowbar"
+unlocked_with = "Screwdriver"
+unlock_thought = "Yes! In we go!"
 
 [node name="hideables" type="Node3D" parent="."]
 

@@ -16,6 +16,7 @@ extends MeshInstance3D
 @export_group("Openable")
 @export var openable:bool = false
 @export var locked:bool = false
+@export var open_lockable:bool = false
 @export var open_sound:AudioStreamWAV
 @export var unlocked_with:String
 @export var unlock_thought:String = ""
@@ -27,7 +28,7 @@ extends MeshInstance3D
 
 var hover_text_canbevisible = true
 
-enum open_states {closed, open_locked, open}
+enum open_states {closed, open_locked, open, done}
 var  open_state = open_states.closed
 
 @onready var interaction_cooldown:Timer = Timer.new()
@@ -45,7 +46,7 @@ func _ready():
 	interaction_cooldown.one_shot = true
 	interaction_cooldown.connect("timeout", _on_interaction_cooldown_timeout)
 	
-	if parent_interactable and parent_interactable.locked:
+	if parent_interactable and parent_interactable.has_method("interact") and parent_interactable.locked:
 		is_active = false
 	
 	if hover_text == null:
@@ -86,7 +87,7 @@ func interact():
 		if success: 
 			self.queue_free()
 	
-	if openable and open_state != open_states.open:
+	if openable:
 		if locked:
 			if hotbar.is_in_hotbar(unlocked_with):
 				open_state = open_states.open
@@ -95,17 +96,25 @@ func interact():
 				animator.play("open")
 				if sound: sound.play()
 				add_open()
-				set_script(null)
-			elif open_state != open_states.open_locked:
+			elif open_lockable and open_state != open_states.open_locked:
 				open_state = open_states.open_locked
 				felix.think(open_locked_thought)
 				animator.play("open_locked")
 				if sound: sound.play()
 				
 		else:
-			animator.play("open")
-			if sound: sound.play()
-			add_open()
+			if open_state == open_states.open:
+				open_state = open_states.closed
+				animator.play_backwards("open")
+				if sound: sound.play()
+				add_open()
+				interaction_type = "Open"
+			else:
+				open_state = open_states.open
+				animator.play("open")
+				if sound: sound.play()
+				add_open()
+				interaction_type = "Close"
 			
 func add_open():
 	if is_instance_valid(additional_open):
@@ -116,7 +125,7 @@ func add_open():
 			
 func check_is_active():
 	if is_active: return true
-	if parent_interactable and not parent_interactable.locked:
+	if parent_interactable and parent_interactable.has_method("interact") and parent_interactable.locked:
 			return true
 	return false
 	

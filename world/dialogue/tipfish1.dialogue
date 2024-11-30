@@ -1,3 +1,5 @@
+import "res://world/dialogue/tipfish_eating.dialogue" as tipfish_eating
+
 ~ comehere
 set GameState.dialogue_on = true
 set GameState.met_fish = true
@@ -92,10 +94,10 @@ set GameState.firstFlake = true
 do GameState.use_fish_flake()
 do GameState.swap_camera("fish")
 
-Ferdinand: *Crunch crunch crunch*
-Ferdinand: Oh yeah...
-Ferdinand: *Crunch crunch crunch*
-Ferdinand: Mmm...
+=>< tipfish_eating/sounds
+=>< tipfish_eating/comments
+=>< tipfish_eating/sounds
+=>< tipfish_eating/comments
 Ferdinand: That's some quality flake.
 
 do GameState.swap_camera("felix")
@@ -133,7 +135,8 @@ do GameState.swap_camera("felix")
 Felix: I need something that I can pry with.
 
 do GameState.swap_camera("fish")
-Ferdinand: *Crunch crunch crunch*
+=>< tipfish_eating/sounds
+=>< tipfish_eating/comments
 Ferdinand: Ok. Have you tried looking in some of the upstairs rooms? Candy told me about some funny looking things up there.
 
 do GameState.swap_camera("felix")
@@ -156,8 +159,57 @@ do GameState.swap_camera("felix")
 Felix: The door to upsairs is locked.
 
 do GameState.swap_camera("fish")
-Ferdinand: *Munch crunch crunch*
+=>< tipfish_eating/sounds
+=>< tipfish_eating/comments
 Ferdinand: Try some of the cabinets in the kitchen? There must be lots of goodies in there.
+
+do GameState.swap_camera("felix")
+set GameState.dialogue_on = true
+=> END
+
+
+
+~ noMoreTips
+set GameState.dialogue_on = true
+
+do GameState.swap_camera("fish")
+=>< tipfish_eating/sounds
+=>< tipfish_eating/comments
+Ferdinand: Thank you for the flakes, Felix, but I'm fresh out of tips. 
+
+do GameState.swap_camera("felix")
+Felix: Really?
+
+do GameState.swap_camera("fish")
+Ferdinand: Yes. I have told you everything that I know.
+Ferdinand: The student becomes the master.
+Ferdinand: Now go. Get out there, and live!
+Ferdinand: Though do come back to give me flakes sometimes.
+
+do GameState.swap_camera("felix")
+Felix: Sure thing. Bye!
+
+do GameState.swap_camera("fish")
+Ferdinand: *Sniffle* Goodbye, young Felix...
+
+do GameState.swap_camera("felix")
+Felix: Ferdi, I'm not leaving forever. I just need a good sun nap.
+
+do GameState.swap_camera("fish")
+Ferdinand: Aaaaand... scene! How did you like my acting? Was I convincing?
+Ferdinand: I taught myself how to fake cry and everything.
+Ferdinand: ...
+Ferdinand: It gets boring in here.
+
+do GameState.swap_camera("felix")
+Felix: I'll come visit again soon then.
+
+do GameState.swap_camera("fish")
+Ferdinand: I'd like that.
+Ferdinand: Bye for now.
+
+do GameState.swap_camera("felix")
+Felix: Bye Ferdi!
 
 do GameState.swap_camera("felix")
 set GameState.dialogue_on = true

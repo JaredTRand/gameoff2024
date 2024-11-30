@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://fbfqdr8sf12q"
+path="res://.godot/imported/tipfish_eating.dialogue-8f17577d921cad0c3cb11f136887a392.tres"
+
+[deps]
+
+source_file="res://world/dialogue/tipfish_eating.dialogue"
+dest_files=["res://.godot/imported/tipfish_eating.dialogue-8f17577d921cad0c3cb11f136887a392.tres"]
+
+[params]
+
+defaults=true

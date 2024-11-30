@@ -19,12 +19,16 @@ extends MeshInstance3D
 @export var open_sound:AudioStreamWAV
 @export var unlocked_with:String
 @export var unlock_thought:String = ""
+@export var open_locked_thought:String = ""
 @export var additional_open:Node3D
 
 @onready var animator:AnimationPlayer = find_child("AnimationPlayer")
 @onready var sound:AudioStreamPlayer3D = find_child("AudioStreamPlayer3D")
 
 var hover_text_canbevisible = true
+
+enum open_states {closed, open_locked, open}
+var  open_state = open_states.closed
 
 @onready var interaction_cooldown:Timer = Timer.new()
 var in_player_interact_area = false
@@ -82,15 +86,22 @@ func interact():
 		if success: 
 			self.queue_free()
 	
-	if openable:
+	if openable and open_state != open_states.open:
 		if locked:
 			if hotbar.is_in_hotbar(unlocked_with):
+				open_state = open_states.open
 				felix.think(unlock_thought)
 				locked = false
 				animator.play("open")
 				if sound: sound.play()
 				add_open()
 				set_script(null)
+			elif open_state != open_states.open_locked:
+				open_state = open_states.open_locked
+				felix.think(open_locked_thought)
+				animator.play("open_locked")
+				if sound: sound.play()
+				
 		else:
 			animator.play("open")
 			if sound: sound.play()

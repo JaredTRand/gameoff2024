@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://bygkp6m5pu0fp"]
+[gd_scene load_steps=82 format=4 uid="uid://bygkp6m5pu0fp"]
 
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="1_8muie"]
 [ext_resource type="Material" uid="uid://cpp2wjtku5nvj" path="res://world/assets/key/gold.tres" id="2_7fhqh"]
@@ -282,7 +282,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.174533, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_cd6pn"]
@@ -298,13 +298,30 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -0.174533, 0), Vector3(0, -2.00713, 0)]
+"values": [Vector3(0, -0.122173, 0), Vector3(0, -2.00713, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_caqrk"]
+resource_name = "open_locked"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.122173, 0), Vector3(0, -0.122173, 0), Vector3(0, -0.0872665, 0), Vector3(0, -0.122173, 0), Vector3(0, -0.0872665, 0), Vector3(0, -0.122173, 0), Vector3(0, -0.0872665, 0), Vector3(0, -0.122173, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oimig"]
 _data = {
 "RESET": SubResource("Animation_4v5bx"),
-"open": SubResource("Animation_cd6pn")
+"open": SubResource("Animation_cd6pn"),
+"open_locked": SubResource("Animation_caqrk")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubhej"]
@@ -933,18 +950,19 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_yhfb5")
 
 [node name="door" type="MeshInstance3D" parent="furniture/kitchenCabinet3/kitchenCabinet"]
-transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -0.26844, 0.85086, 0.299999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26844, 0.85086, 0.299999)
 mesh = SubResource("ArrayMesh_4wb42")
 skeleton = NodePath("")
 script = ExtResource("6_ffnav")
 interaction_type = "Inspect"
 interaction_name = "Cabinet"
 thought = "It's stuck. Maybe I can find something to pry it open."
-hvr_txt_size = 150
+hvr_txt_size = 100
 openable = true
 locked = true
 unlocked_with = "Crowbar"
 unlock_thought = "It's open!"
+open_locked_thought = "The Key! But the door is jammed... I need something to pry it open with"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door" groups=["interactable"]]
 

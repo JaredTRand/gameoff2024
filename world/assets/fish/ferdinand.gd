@@ -17,7 +17,10 @@ func interact():
 	elif not GameState.first_flake:
 		DialogueManager.show_dialogue_balloon(resource, "firstFlake")
 	elif GameState.fish_intro_completed:
-		var tipitem = "fishtip_" +hotbar.items_not_collected.pick_random().to_lower()
+		if hotbar.items_not_collected.length() <= 0:
+			DialogueManager.show_dialogue_balloon(resource, "noMoreTips")
+
+		var tipitem = "fishtip_" + hotbar.items_not_collected.pick_random().to_lower()
 		
 		var dialogue_line = await DialogueManager.get_next_dialogue_line(resource, tipitem)
 		

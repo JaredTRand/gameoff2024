@@ -159,7 +159,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2835, 0, 0.4455)
 mesh = SubResource("ArrayMesh_sd204")
 skeleton = NodePath("")
 script = ExtResource("1_ou0l6")
-interaction_type = "Open"
 interaction_name = "Door"
 thought = "Human locked the door? Where'd they put the key..."
 hvr_txt_size = 150

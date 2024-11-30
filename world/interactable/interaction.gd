@@ -1,12 +1,12 @@
 extends MeshInstance3D
 
 @export var is_active:bool = true
-@export var interaction_type:String
+@export var interaction_type:String = "Open"
 @export var interaction_name:String
 @export var interaction_cooldown_time:float = 3.0
 @export var thought:String
 
-@export var hvr_txt_size:int = 300
+@export var hvr_txt_size:int = 100
 
 @export_group("Pickup")
 @export var pickup_able:bool = false
@@ -18,7 +18,7 @@ extends MeshInstance3D
 @export var locked:bool = false
 @export var open_lockable:bool = false
 @export var open_sound:AudioStreamWAV
-@export var unlocked_with:String
+@export var unlocked_with:String = "*"
 @export var unlock_thought:String = ""
 @export var open_locked_thought:String = ""
 @export var additional_open:Node3D
@@ -36,7 +36,7 @@ var in_player_interact_area = false
 
 @onready var felix = get_tree().get_first_node_in_group("player")
 @onready var hotbar = get_tree().get_first_node_in_group("hotbar")
-
+@onready var debug = get_tree().get_first_node_in_group("debug_panel")
 var hover_text:Label3D 
 
 # Called when the node enters the scene tree for the first time.
@@ -46,8 +46,10 @@ func _ready():
 	interaction_cooldown.one_shot = true
 	interaction_cooldown.connect("timeout", _on_interaction_cooldown_timeout)
 	
-	if parent_interactable and parent_interactable.has_method("interact") and parent_interactable.locked:
+	debug.add_property(interaction_name + " active1?", is_active)
+	if not check_is_active():
 		is_active = false
+	debug.add_property(interaction_name + " active2?", is_active)
 	
 	if hover_text == null:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
@@ -89,7 +91,7 @@ func interact():
 	
 	if openable:
 		if locked:
-			if hotbar.is_in_hotbar(unlocked_with):
+			if unlocked_with == "*" or hotbar.is_in_hotbar(unlocked_with):
 				open_state = open_states.open
 				felix.think(unlock_thought)
 				locked = false
@@ -124,10 +126,22 @@ func add_open():
 			add_anim.play("open")
 			
 func check_is_active():
-	if is_active: return true
-	if parent_interactable and parent_interactable.has_method("interact") and parent_interactable.locked:
-			return true
-	return false
+	if is_active: 
+		return true
+
+	if is_instance_valid(parent_interactable):
+		debug.add_property(interaction_name + " parent valid?", is_instance_valid(parent_interactable))
+		debug.add_property(interaction_name + " has method?", parent_interactable.has_method("interact"))
+		debug.add_property(interaction_name + " is locked?", parent_interactable.locked)
+		debug.add_property(interaction_name + " all together", is_instance_valid(parent_interactable) and parent_interactable.has_method("interact") and not parent_interactable.locked)
+
+	if is_instance_valid(parent_interactable):
+		if parent_interactable.has_method("interact") and not parent_interactable.locked:
+			is_active = true
+		else: 
+			is_active = false
+	
+	return is_active
 	
 func _on_interaction_cooldown_timeout():
 	hover_text_canbevisible = true

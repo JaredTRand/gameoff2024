@@ -187,22 +187,29 @@ func think(thought):
 func _process_raycasts():
 	var can_ledge_grab = not headcast.is_colliding() and eyecast.is_colliding()
 
+func is_valid_interactable(body):
+	if not body.is_in_group("interactable"):
+		return false
+	if not body.get_parent().has_method("interact"):
+		return false
+	if not body.get_parent().check_is_active():
+		return false
+	return true
+
 func _on_interact_area_body_entered(body):
-	if not body.is_in_group("interactable"): return
-	if not body.get_parent().has_method("interact_with_on"): return
-	if not body.get_parent().check_is_active(): return
-		
+	if not is_valid_interactable(body): return
 	
 	debug_panel.add_property("interacting", true)
 	can_interact = true
 	body.get_parent().interact_with_on()
+	
+	if cur_interactable_obj:
+		_on_interact_area_body_exited(cur_interactable_obj)
 	cur_interactable_obj = body.get_parent()
 
 
 func _on_interact_area_body_exited(body):
-	if not body.is_in_group("interactable"): return
-	if not body.get_parent().has_method("interact_with_off"): return
-	if not body.get_parent().check_is_active(): return
+	if not is_valid_interactable(body): return
 	
 	debug_panel.add_property("interacting", false)
 	can_interact = false

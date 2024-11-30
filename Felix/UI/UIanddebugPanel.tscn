@@ -74,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="DebugPanel" type="PanelContainer" parent="."]
+[node name="DebugPanel" type="PanelContainer" parent="." groups=["debug_panel"]]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0

@@ -15,11 +15,12 @@ extends MeshInstance3D
 
 @export_group("Openable")
 @export var openable:bool = false
+@export var interactable_after_open:bool = true
 @export var locked:bool = false
-@export var open_lockable:bool = false
 @export var open_sound:AudioStreamWAV
 @export var unlocked_with:String = "*"
 @export var unlock_thought:String = ""
+@export var open_lockable:bool = false
 @export var open_locked_thought:String = ""
 @export var additional_open:Node3D
 
@@ -52,6 +53,7 @@ func _ready():
 	if hover_text == null:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
 		add_child(hover_text)
+		
 		hover_text.font_size = hvr_txt_size
 
 func interact_with_on():
@@ -97,6 +99,8 @@ func interact():
 				animator.play("open")
 				if sound: sound.play()
 				add_open()
+				if not interactable_after_open:
+					set_script(null)
 			elif open_lockable and open_state != open_states.open_locked:
 				open_state = open_states.open_locked
 				felix.think(open_locked_thought)
@@ -116,7 +120,9 @@ func interact():
 				if sound: sound.play()
 				add_open()
 				interaction_type = "Close"
-			
+				
+				if not interactable_after_open:
+					set_script(null)
 func add_open():
 	if is_instance_valid(additional_open):
 		#await get_tree().create_timer(2.0).timeout 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=4 uid="uid://cyyg6wuedfbl7"]
+[gd_scene load_steps=28 format=4 uid="uid://cyyg6wuedfbl7"]
 
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="1_emoer"]
 [ext_resource type="Texture2D" uid="uid://cptl7rnr4xaty" path="res://world/assets/materials/rope.jpg" id="2_63hug"]
 [ext_resource type="Shader" path="res://world/assets/blingbling.gdshader" id="3_jdcwt"]
+[ext_resource type="Material" uid="uid://tc4ni315gc1k" path="res://world/assets/ductmetal.tres" id="4_a22rs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xoqq"]
 resource_name = "wood"
@@ -224,9 +225,24 @@ albedo_texture = ExtResource("2_63hug")
 
 [sub_resource type="TorusMesh" id="TorusMesh_ptm7l"]
 material = SubResource("StandardMaterial3D_x4vqx")
-inner_radius = 0.9
-outer_radius = 0.95
+inner_radius = 2.049
+outer_radius = 2.125
 rings = 3
+ring_segments = 6
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n7odv"]
+points = PackedVector3Array(1.75428, 0.0478807, 0.856243, -0.0119684, -0.0502687, -2.13727, -0.0119684, 0.0478807, -2.13727, -1.85257, -0.0502687, 1.07712, 1.85257, -0.0502687, 1.07712, -1.85257, 0.0478807, 1.07712, 1.85257, 0.0478807, 1.07712, 0.0366307, -0.0502687, -2.11273, -1.75428, 0.0478807, 0.856243, 0.110255, 0.0478807, -1.99002, 1.85257, -0.0502687, 1.02804, -1.85257, -0.0502687, 1.02804, -0.110255, -0.0502687, -1.99002, -0.380088, 0.0478807, -1.5234, 1.11633, -0.0502687, -0.248153, -1.85257, 0.0478807, 1.02804, 1.85257, 0.0478807, 1.02804, 0.0366307, 0.0478807, -2.11273, -1.01804, 0.0478807, -0.419948, 1.01804, 0.0478807, -0.419948, -1.11633, -0.0502687, -0.248153)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ufd75"]
+radius = 0.021
+height = 0.018
+radial_segments = 6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gdj1a"]
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.18
+radial_segments = 5
 
 [sub_resource type="Animation" id="Animation_s3i2s"]
 length = 0.001
@@ -316,6 +332,7 @@ _data = {
 [node name="doorway" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_pciqr")
 skeleton = NodePath("")
+script = ExtResource("1_emoer")
 
 [node name="door" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2835, 0, 0.4455)
@@ -360,9 +377,35 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bearcontainer/bear/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7rsls")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="bearcontainer"]
-transform = Transform3D(2, 0, 0, 0, 0.0871557, -1.49429, 0, 0.996195, 0.130734, -0.0512252, 2.00111, -0.0747013)
+[node name="rope" type="MeshInstance3D" parent="bearcontainer" node_paths=PackedStringArray("additional_open")]
+transform = Transform3D(1, 0, 0, 0, 0.28655, -0.697402, 0, 1.01698, 0.196504, -0.0512252, 1.78899, -0.204584)
 mesh = SubResource("TorusMesh_ptm7l")
+script = ExtResource("1_emoer")
+interaction_type = "Cut"
+interaction_name = "Rope"
+thought = "Maybe I could cut this?"
+openable = true
+locked = true
+unlocked_with = "Scissors"
+unlock_thought = "Oops..."
+additional_open = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bearcontainer/rope" groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 1.49012e-08, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bearcontainer/rope/StaticBody3D"]
+transform = Transform3D(1.4, 0, 0, 0, 1, -2.98023e-08, 0, 1.49012e-08, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_n7odv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bearcontainer/rope"]
+transform = Transform3D(3, 0, 0, 0, 3, -1.78814e-07, 0, 1.19209e-07, 3, 0, 0.163637, -2.02977)
+material_override = ExtResource("4_a22rs")
+mesh = SubResource("SphereMesh_ufd75")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="bearcontainer/rope"]
+transform = Transform3D(3, 0, 0, 0, 3, -1.78814e-07, 0, 1.19209e-07, 3, 0, -0.101526, -2.03012)
+material_override = ExtResource("4_a22rs")
+mesh = SubResource("CylinderMesh_gdj1a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

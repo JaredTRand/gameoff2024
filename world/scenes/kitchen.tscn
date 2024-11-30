@@ -1076,9 +1076,9 @@ interaction_name = "Cabinet"
 thought = "It's stuck. Maybe I can find something to pry it open."
 openable = true
 locked = true
-open_lockable = true
 unlocked_with = "Crowbar"
 unlock_thought = "It's open!"
+open_lockable = true
 open_locked_thought = "The Key! But the door is jammed... I need something to pry it open with"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door" groups=["interactable"]]

@@ -24,7 +24,7 @@ extends MeshInstance3D
 @export var open_locked_thought:String = ""
 @export var additional_open:Node3D
 
-@onready var animator:AnimationPlayer = find_child("AnimationPlayer")
+@export var animator:AnimationPlayer
 @onready var sound:AudioStreamPlayer3D = find_child("AudioStreamPlayer3D")
 
 var hover_text_canbevisible = true
@@ -49,6 +49,9 @@ func _ready():
 	
 	if not check_is_active():
 		is_active = false
+	
+	if not animator:
+		animator = find_child("AnimationPlayer")
 	
 	if hover_text == null:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()

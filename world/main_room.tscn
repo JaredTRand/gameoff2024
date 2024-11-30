@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://d3r63ycmfcnl4" path="res://world/assets/bigfan/bigfan.tscn" id="12_7d3ho"]
 [ext_resource type="AudioStream" uid="uid://ce46bvkqvvp4v" path="res://world/sounds/ventbreakopen.wav" id="15_3ubm0"]
 [ext_resource type="PackedScene" uid="uid://c86rcuhbfec1u" path="res://world/assets/badcrowbar/badcrowbar.tscn" id="19_ophtq"]
-[ext_resource type="Texture2D" uid="uid://cyhp000hhv3ut" path="res://Felix/UI/hotbar/itemimages/hotbar_crowbar.jpg" id="20_cgiuu"]
+[ext_resource type="Texture2D" uid="uid://b4xoxg3obskgg" path="res://Felix/UI/hotbar/itemimages/hotbar_crowbar.jpg" id="20_cgiuu"]
 
 [sub_resource type="Resource" id="Resource_eoher"]
 script = ExtResource("2_7tyqq")
@@ -42,7 +42,7 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_c5a6d"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ihacu"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
@@ -150,7 +150,7 @@ metadata/name = "felix"
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 10.0359, 8.04235, -61.3659)
-attributes = SubResource("CameraAttributesPractical_c5a6d")
+attributes = SubResource("CameraAttributesPractical_ihacu")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300
@@ -383,5 +383,4 @@ transform = Transform3D(0.2, -1.74846e-08, 1.74846e-08, 1.74846e-08, -8.74228e-0
 interaction_type = "Pick up"
 interaction_name = "Crowbar"
 thought = "Who makes a crowbar for cats anyway?"
-pickup_able = true
 inv_img = ExtResource("20_cgiuu")

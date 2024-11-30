@@ -14,6 +14,9 @@ set GameState.dialogue_on = false
 => END
 
 
+
+
+
 ~ introduction
 set GameState.dialogue_on = true
 set GameState.met_fish = true
@@ -56,6 +59,8 @@ set GameState.dialogue_on = false
 => END
 
 
+
+
 ~ beforeFirstFlake
 set GameState.dialogue_on = true
 
@@ -76,6 +81,9 @@ do GameState.swap_camera("felix")
 Felix: Right. On it.
 set GameState.dialogue_on = false
 => END
+
+
+
 
 
 ~ firstFlakeandNoIntro
@@ -128,6 +136,9 @@ set GameState.dialogue_on = false
 => END
 
 
+
+
+
 ~ fishtip_crowbar
 set GameState.dialogue_on = true
 
@@ -137,10 +148,10 @@ Felix: I need something that I can pry with.
 do GameState.swap_camera("fish")
 =>< tipfish_eating/sounds
 =>< tipfish_eating/comments
-Ferdinand: Ok. Have you tried looking in some of the upstairs rooms? Candy told me about some funny looking things up there.
+Ferdinand: Have you tried looking in some of the higher cabinets? Candy told me about some funny looking things up there.
 
 do GameState.swap_camera("felix")
-Felix: Whos Candy?
+Felix: Who's Candy?
 
 do GameState.swap_camera("fish")
 Ferdinand: Candy. The cockroach who lives in human's pantry.
@@ -149,7 +160,7 @@ do GameState.swap_camera("felix")
 Felix: Yuck.
 
 do GameState.swap_camera("felix")
-set GameState.dialogue_on = true
+set GameState.dialogue_on = false
 => END
 
 ~ fishtip_key
@@ -164,8 +175,38 @@ do GameState.swap_camera("fish")
 Ferdinand: Try some of the cabinets in the kitchen? There must be lots of goodies in there.
 
 do GameState.swap_camera("felix")
-set GameState.dialogue_on = true
+set GameState.dialogue_on = false
 => END
+
+~ fishtip_grate
+set GameState.dialogue_on = true
+
+do GameState.swap_camera("fish")
+=>< tipfish_eating/sounds
+=>< tipfish_eating/comments
+
+do GameState.swap_camera("felix")
+Felix: Any tips for me?
+
+do GameState.swap_camera("fish")
+Ferdinand: Don't forget to look up once in a while. Elenor has told me a thing or two tunnels or some such. 
+
+do GameState.swap_camera("felix")
+Felix: Tunnels? Wait, who is Elenor?
+
+do GameState.swap_camera("fish")
+Ferdinand: Wouldn't you like to know.
+
+do GameState.swap_camera("felix")
+Felix: Yeah, kinda.
+
+do GameState.swap_camera("fish")
+Ferdinand: Go on, get out of here. Keep looking.
+
+do GameState.swap_camera("felix")
+set GameState.dialogue_on = false
+=> END
+
 
 
 
@@ -199,7 +240,7 @@ do GameState.swap_camera("fish")
 Ferdinand: Aaaaand... scene! How did you like my acting? Was I convincing?
 Ferdinand: I taught myself how to fake cry and everything.
 Ferdinand: ...
-Ferdinand: It gets boring in here.
+Ferdinand: It gets lonely in here.
 
 do GameState.swap_camera("felix")
 Felix: I'll come visit again soon then.
@@ -212,5 +253,5 @@ do GameState.swap_camera("felix")
 Felix: Bye Ferdi!
 
 do GameState.swap_camera("felix")
-set GameState.dialogue_on = true
+set GameState.dialogue_on = false
 => END

@@ -165,7 +165,7 @@ hvr_txt_size = 150
 openable = true
 locked = true
 unlocked_with = "Key"
-unlock_thought = "Finally!"
+unlock_thought = "Finally! Up we go"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="door" groups=["interactable"]]
 

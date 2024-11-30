@@ -1,8 +1,19 @@
-[gd_scene load_steps=9 format=4 uid="uid://bpdfnllyao8xq"]
+[gd_scene load_steps=12 format=4 uid="uid://bpdfnllyao8xq"]
 
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="1_45e6k"]
+[ext_resource type="Shader" path="res://world/assets/blingbling.gdshader" id="1_kol78"]
+[ext_resource type="Texture2D" uid="uid://b4offnsfn68mu" path="res://Felix/UI/hotbar/itemimages/hotbar_screwdriver.jpg" id="2_b7efp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rravf"]
+render_priority = 0
+shader = ExtResource("1_kol78")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/cycle_interval = 1.0
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_width = 3.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_veens"]
+next_pass = SubResource("ShaderMaterial_rravf")
 albedo_color = Color(0.233925, 0.233925, 0.233925, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sqcrr"]
@@ -83,6 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("ArrayMesh_q72ir")
 skeleton = NodePath("")
 script = ExtResource("1_45e6k")
+inv_img = ExtResource("2_b7efp")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)

@@ -46,10 +46,8 @@ func _ready():
 	interaction_cooldown.one_shot = true
 	interaction_cooldown.connect("timeout", _on_interaction_cooldown_timeout)
 	
-	debug.add_property(interaction_name + " active1?", is_active)
 	if not check_is_active():
 		is_active = false
-	debug.add_property(interaction_name + " active2?", is_active)
 	
 	if hover_text == null:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
@@ -93,6 +91,7 @@ func interact():
 		if locked:
 			if unlocked_with == "*" or hotbar.is_in_hotbar(unlocked_with):
 				open_state = open_states.open
+				interaction_type = "Close"
 				felix.think(unlock_thought)
 				locked = false
 				animator.play("open")

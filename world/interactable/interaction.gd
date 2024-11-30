@@ -1,5 +1,6 @@
 extends MeshInstance3D
 
+@export var is_active:bool = true
 @export var interaction_type:String
 @export var interaction_name:String
 @export var interaction_cooldown_time:float = 3.0
@@ -10,6 +11,7 @@ extends MeshInstance3D
 @export_group("Pickup")
 @export var pickup_able:bool = false
 @export var inv_img:CompressedTexture2D
+@export var parent_interactable:Node3D
 
 @export_group("Openable")
 @export var openable:bool = false
@@ -39,12 +41,17 @@ func _ready():
 	interaction_cooldown.one_shot = true
 	interaction_cooldown.connect("timeout", _on_interaction_cooldown_timeout)
 	
+	if parent_interactable and parent_interactable.locked:
+		is_active = false
+	
 	if hover_text == null:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
 		add_child(hover_text)
 		hover_text.font_size = hvr_txt_size
 
 func interact_with_on():
+	if not is_active: return
+	
 	in_player_interact_area = true
 	if hover_text_canbevisible:
 		hover_text.visible = true
@@ -56,6 +63,8 @@ func interact_with_off():
 	in_player_interact_area = false
 	
 func interact():
+	if not is_active: return
+			
 	hover_text.visible = false
 	hover_text_canbevisible = false
 	interaction_cooldown.start()
@@ -93,7 +102,13 @@ func add_open():
 		var add_anim = additional_open.find_child("AnimationPlayer")
 		if add_anim:
 			add_anim.play("open")
-
+			
+func check_is_active():
+	if is_active: return true
+	if parent_interactable and not parent_interactable.locked:
+			return true
+	return false
+	
 func _on_interaction_cooldown_timeout():
 	hover_text_canbevisible = true
 	if in_player_interact_area and hover_text_canbevisible:

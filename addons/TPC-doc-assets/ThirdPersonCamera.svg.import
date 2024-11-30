@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6pjscq4yoxmd"
-path="res://.godot/imported/inspector.png-1322cbba90808596682f3d2ac95ae703.ctex"
+uid="uid://cqotqc7yxpqur"
+path="res://.godot/imported/ThirdPersonCamera.svg-56387c0e4ad639d785b2dde30c8bfe1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TPC-doc-assets/doc/inspector.png"
-dest_files=["res://.godot/imported/inspector.png-1322cbba90808596682f3d2ac95ae703.ctex"]
+source_file="res://addons/TPC-doc-assets/ThirdPersonCamera.svg"
+dest_files=["res://.godot/imported/ThirdPersonCamera.svg-56387c0e4ad639d785b2dde30c8bfe1c.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

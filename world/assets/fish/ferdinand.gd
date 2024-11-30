@@ -14,10 +14,15 @@ func interact():
 			DialogueManager.show_dialogue_balloon(resource, "introduction")
 	elif not GameState.first_flake:
 		DialogueManager.show_dialogue_balloon(resource, "beforeFirstFlake")
-	elif GameState.first_flake:
+	elif not GameState.first_flake:
 		DialogueManager.show_dialogue_balloon(resource, "firstFlake")
 	elif GameState.fish_intro_completed:
-		DialogueManager.show_dialogue_balloon(resource, "fishtip")
+		var tipitem = "fishtip_" +hotbar.items_not_collected.pick_random().to_lower()
+		
+		var dialogue_line = await DialogueManager.get_next_dialogue_line(resource, tipitem)
+		
+		if dialogue_line:
+			DialogueManager.show_dialogue_balloon(resource, tipitem)
 
 func _on_tipfish_1_area_entered(area):
 	if not GameState.met_fish: 

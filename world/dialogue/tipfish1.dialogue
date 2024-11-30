@@ -125,5 +125,40 @@ set GameState.fish_intro_completed = true
 set GameState.dialogue_on = false
 => END
 
-~ fishtip
+
+~ fishtip_crowbar
+set GameState.dialogue_on = true
+
+do GameState.swap_camera("felix")
+Felix: I need something that I can pry with.
+
+do GameState.swap_camera("fish")
+Ferdinand: *Crunch crunch crunch*
+Ferdinand: Ok. Have you tried looking in some of the upstairs rooms? Candy told me about some funny looking things up there.
+
+do GameState.swap_camera("felix")
+Felix: Whos Candy?
+
+do GameState.swap_camera("fish")
+Ferdinand: Candy. The cockroach who lives in human's pantry.
+
+do GameState.swap_camera("felix")
+Felix: Yuck.
+
+do GameState.swap_camera("felix")
+set GameState.dialogue_on = true
+=> END
+
+~ fishtip_key
+set GameState.dialogue_on = true
+
+do GameState.swap_camera("felix")
+Felix: The door to upsairs is locked.
+
+do GameState.swap_camera("fish")
+Ferdinand: *Munch crunch crunch*
+Ferdinand: Try some of the cabinets in the kitchen? There must be lots of goodies in there.
+
+do GameState.swap_camera("felix")
+set GameState.dialogue_on = true
 => END

@@ -125,6 +125,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("player_interact"):
 			if cur_interactable_obj:
 				cur_interactable_obj.interact()
+				cur_interactable_obj = null
 			
 		var just_landed := is_on_floor() and snap_vector == Vector3.ZERO
 		var is_jumping := is_on_floor() and Input.is_action_just_pressed("player_jump")
@@ -188,7 +189,9 @@ func _process_raycasts():
 
 func _on_interact_area_body_entered(body):
 	if not body.is_in_group("interactable"): return
-	if not body.get_parent().has_method("interact_with_off"): return
+	if not body.get_parent().has_method("interact_with_on"): return
+	if not body.get_parent().check_is_active(): return
+		
 	
 	debug_panel.add_property("interacting", true)
 	can_interact = true
@@ -199,6 +202,7 @@ func _on_interact_area_body_entered(body):
 func _on_interact_area_body_exited(body):
 	if not body.is_in_group("interactable"): return
 	if not body.get_parent().has_method("interact_with_off"): return
+	if not body.get_parent().check_is_active(): return
 	
 	debug_panel.add_property("interacting", false)
 	can_interact = false

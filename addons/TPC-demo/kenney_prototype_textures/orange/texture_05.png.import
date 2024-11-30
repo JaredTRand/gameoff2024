@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8vwnx65onnvv"
-path.s3tc="res://.godot/imported/texture_09.png-f10b3f0cbb549bee1437f74fdcf4d12a.s3tc.ctex"
+uid="uid://3ut80mef1rtt"
+path.s3tc="res://.godot/imported/texture_05.png-ba057f062af7bde8f00d21d8d68c7c69.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://TPC-demo/kenney_prototype_textures/green/texture_09.png"
-dest_files=["res://.godot/imported/texture_09.png-f10b3f0cbb549bee1437f74fdcf4d12a.s3tc.ctex"]
+source_file="res://addons/TPC-demo/kenney_prototype_textures/orange/texture_05.png"
+dest_files=["res://.godot/imported/texture_05.png-ba057f062af7bde8f00d21d8d68c7c69.s3tc.ctex"]
 
 [params]
 

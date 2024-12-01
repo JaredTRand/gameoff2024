@@ -15,7 +15,7 @@ func interact():
 			DialogueManager.show_dialogue_balloon(resource, "introduction")
 	elif not GameState.first_flake:
 		DialogueManager.show_dialogue_balloon(resource, "beforeFirstFlake")
-	elif GameState.first_flake:
+	elif GameState.first_flake and not GameState.fish_intro_completed:
 		DialogueManager.show_dialogue_balloon(resource, "firstFlake")
 	elif GameState.fish_intro_completed:
 		if hotbar.items_not_collected.is_empty() and other_tips.is_empty():

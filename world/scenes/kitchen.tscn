@@ -1253,7 +1253,7 @@ is_active = false
 parent_interactable = NodePath("../kitchenCabinetUpperLow4")
 
 [node name="trashcan2" type="MeshInstance3D" parent="furniture"]
-transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 15.5, 0.5, 27)
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.5415, 0, -0.6, 0, -2.62268e-08, 15.5, 0.5, 27)
 mesh = SubResource("ArrayMesh_whlns")
 skeleton = NodePath("")
 

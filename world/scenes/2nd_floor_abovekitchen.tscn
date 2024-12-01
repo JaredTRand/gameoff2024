@@ -1339,4 +1339,7 @@ transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -1.45722, 6.11084, 0.20001
 [node name="pottedPlant" parent="." instance=ExtResource("11_8fjyb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, 13, 4)
 
+[node name="FishFlakes" parent="." instance=ExtResource("7_u37gl")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 15.5, 13.7, -20.7)
+
 [connection signal="body_entered" from="furniture/AnimatableBody3D/bookcaseOpen2/trigger_grate" to="furniture/AnimatableBody3D/bookcaseOpen2/trigger_grate" method="_on_body_entered"]

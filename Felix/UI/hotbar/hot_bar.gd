@@ -5,7 +5,10 @@ var items_not_collected:Array
 func _ready():
 	for item in get_tree().get_nodes_in_group("interactable"):
 		if item.get_parent().pickup_able and item.get_parent().interaction_name != "Fish Flakes":
-			items_not_collected.append(item.get_parent().interaction_name)
+			if item.get_parent().txt_name:
+				items_not_collected.append(item.get_parent().txt_name)
+			else:
+				items_not_collected.append(item.get_parent().interaction_name)
 
 func add_item(image, newname):
 	var empty_child = get_empty_child()

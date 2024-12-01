@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bev14i8g048ol"]
+[gd_scene load_steps=9 format=3 uid="uid://bev14i8g048ol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fvr5"]
 albedo_color = Color(0.587751, 0.587751, 0.58775, 1)
@@ -20,6 +20,15 @@ points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ssrx"]
 points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kkah"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_hcg34"]
+material = SubResource("StandardMaterial3D_0kkah")
+size = Vector3(2.4, 0.925, 0.01)
 
 [node name="duct" type="Node3D"]
 
@@ -66,3 +75,43 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D"]
 transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_6ssrx")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.45, 0, 0, 0, 1, 9, 0, 0.769981)
+mesh = SubResource("BoxMesh_hcg34")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.45, 0, 0, 0, 1, 9, 0, -0.810367)
+mesh = SubResource("BoxMesh_hcg34")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.45, 0, 0, 0, 1, 9, 0, 0.769981)
+mesh = SubResource("BoxMesh_hcg34")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.45, 0, 0, 0, 1, 9, 0, -0.810367)
+mesh = SubResource("BoxMesh_hcg34")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.45, 0, 0, 0, 1, 0, 0, 0.769981)
+mesh = SubResource("BoxMesh_hcg34")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.45, 0, 0, 0, 1, 0, 0, -0.810367)
+mesh = SubResource("BoxMesh_hcg34")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.45, 0, 0, 0, 1, -10, 0, 0.769981)
+mesh = SubResource("BoxMesh_hcg34")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.45, 0, 0, 0, 1, -10, 0, -0.810367)
+mesh = SubResource("BoxMesh_hcg34")
+skeleton = NodePath("")

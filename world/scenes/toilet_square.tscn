@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://dfid4lk4cui05"]
+[gd_scene load_steps=14 format=4 uid="uid://dfid4lk4cui05"]
 
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="1_r67na"]
+[ext_resource type="PackedScene" uid="uid://c74iskyrbxix1" path="res://world/assets/fish/fishflakes.tscn" id="2_fu6nt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7lh17"]
 resource_name = "carpetWhite"
@@ -148,6 +149,8 @@ _data = {
 mesh = SubResource("ArrayMesh_jfhn0")
 skeleton = NodePath("")
 script = ExtResource("1_r67na")
+openable = true
+locked = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
 
@@ -173,3 +176,8 @@ libraries = {
 
 [node name="toilet_text_placement" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 2, 0)
+
+[node name="FishFlakes" parent="." node_paths=PackedStringArray("parent_interactable") instance=ExtResource("2_fu6nt")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.5, 1.9, 1)
+is_active = false
+parent_interactable = NodePath("..")

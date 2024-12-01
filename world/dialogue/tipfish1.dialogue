@@ -9,7 +9,7 @@ Ferdinand: Pssssst.
 Ferdinand: Hey.
 Ferdinand: Come over here.
 
-do GameState.swap_camera("felix")
+do GameState.swap_camera("felix", false)
 set GameState.dialogue_on = false
 => END
 
@@ -26,14 +26,16 @@ do GameState.swap_camera("fish")
 Ferdinand: You trying to get outside again?
 
 do GameState.swap_camera("felix")
-Felix: Yeah. It’s weird. It's hard to find a way out today.
+Felix: Yeah. I wanna go nap in the sun again!
+Felix: It’s weird. It's hard to find a way out today.
 
 do GameState.swap_camera("fish")
 Ferdinand: Human isn’t happy since last time.
 Ferdinand: They locked the joint up and hid away the keys.
 
 do GameState.swap_camera("felix")
-Felix: I just wanted to go sleep in the sun!
+Felix: But I just wanted to go sleep in the sun!
+Felix: This stinks.
 
 do GameState.swap_camera("fish")
 Ferdinand: …
@@ -54,7 +56,7 @@ Felix: Where can I find some?
 do GameState.swap_camera("fishflakes")
 Ferdinand: Human left some up on a shelf up there. Go grab those for me.
 
-do GameState.swap_camera("felix")
+do GameState.swap_camera("felix", false)
 set GameState.dialogue_on = false
 => END
 
@@ -174,7 +176,7 @@ do GameState.swap_camera("fish")
 =>< tipfish_eating/comments
 Ferdinand: Try some of the cabinets in the kitchen? There must be lots of goodies in there.
 
-do GameState.swap_camera("felix")
+do GameState.swap_camera("felix", false)
 set GameState.dialogue_on = false
 => END
 
@@ -190,7 +192,7 @@ do GameState.swap_camera("felix")
 Felix: Any tips for me?
 
 do GameState.swap_camera("fish")
-Ferdinand: Don't forget to look up once in a while. Elenor has told me a thing or two tunnels or some such. 
+Ferdinand: Don't forget to look up once in a while. Elenor has told me a thing or two about tunnels or some such. 
 
 do GameState.swap_camera("felix")
 Felix: Tunnels? Wait, who is Elenor?
@@ -204,7 +206,7 @@ Felix: Yeah, kinda.
 do GameState.swap_camera("fish")
 Ferdinand: Go on, get out of here. Keep looking.
 
-do GameState.swap_camera("felix")
+do GameState.swap_camera("felix", false)
 set GameState.dialogue_on = false
 => END
 
@@ -235,7 +237,7 @@ Ferdinand: They're not all zingers.
 do GameState.swap_camera("felix")
 Felix: Right. Okay then.
 
-do GameState.swap_camera("felix")
+do GameState.swap_camera("felix", false)
 set GameState.dialogue_on = false
 => END
 
@@ -264,7 +266,7 @@ Ferdinand: Nope.
 Ferdinand: Well, sort of.
 Ferdinand: Ah, whatever, It doesn't matter. Just try looking up there!
 
-do GameState.swap_camera("felix")
+do GameState.swap_camera("felix", false)
 set GameState.dialogue_on = false
 => END
 
@@ -314,6 +316,6 @@ Ferdinand: Bye for now.
 do GameState.swap_camera("felix")
 Felix: Bye Ferdi!
 
-do GameState.swap_camera("felix")
+do GameState.swap_camera("felix", false)
 set GameState.dialogue_on = false
 => END

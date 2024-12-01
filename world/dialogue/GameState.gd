@@ -17,7 +17,7 @@ var numOfFlakes:int = 0
 func _ready():
 	phantom_cams = get_tree().get_nodes_in_group("phantomcams")
 	
-func swap_camera(cam_to_switch_to:String):
+func swap_camera(cam_to_switch_to:String, speaking=true):
 	var new_cam 
 	for cam in phantom_cams:
 		if is_instance_valid(cam) and cam.get_meta("name") == cam_to_switch_to:
@@ -30,7 +30,7 @@ func swap_camera(cam_to_switch_to:String):
 		
 		if sounds and not sounds.is_empty() and hotbar_sound and not hotbar_sound.playing:
 			hotbar_sound.stream = load(sounds[randi() % sounds.size()])
-			if hotbar_sound.stream: hotbar_sound.play()
+			if speaking and hotbar_sound.stream: hotbar_sound.play()
 		if look_at: 
 			look_at.priority = 10
 		look_at = new_cam

@@ -57,59 +57,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.2, 
 [node name="wall46" parent="walls" instance=ExtResource("2_4tydu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.2, 13.5, 2.28882e-05)
 
-[node name="ceiling" type="Node3D" parent="."]
-
-[node name="floorFull38" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 26.4, -0.200001)
-
-[node name="floorFull39" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 26.4, -0.200001)
-
-[node name="floorFull40" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 26.4, -0.200001)
-
-[node name="floorFull41" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.4, -0.200001)
-
-[node name="floorFull42" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 26.4, -10.2)
-
-[node name="floorFull43" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 26.4, -10.2)
-
-[node name="floorFull44" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 26.4, -10.2)
-
-[node name="floorFull45" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.4, -10.2)
-
-[node name="floorFull46" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 26.4, -20.2)
-
-[node name="floorFull47" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 26.4, -20.2)
-
-[node name="floorFull48" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 26.4, -20.2)
-
-[node name="floorFull49" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10, 26.4, -10.2)
-
-[node name="floorFull50" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 26.4, -20.2)
-
-[node name="floorFull51" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.4, -20.2)
-
-[node name="floorFull52" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 26.4, -20.2)
-
-[node name="floorFull53" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 26.4, -20.2)
-
-[node name="floorFull54" parent="ceiling" instance=ExtResource("1_1tcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 26.4, -20.2)
-
 [node name="floor" type="Node3D" parent="."]
 
 [node name="floorFull21" parent="floor" instance=ExtResource("1_1tcbf")]

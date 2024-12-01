@@ -114,7 +114,7 @@ Felix: So...
 do GameState.swap_camera("fish")
 Ferdinand: Huh? Oh, right!
 Ferdinand: Well, Carrie Cardinal was flying around the feeders today.
-Ferdinand: She mentioned that a window in the top floor gazebo was wide open. 
+Ferdinand: She mentioned that a window in the top floor lookout was wide open. 
 
 do GameState.swap_camera("felix")
 Felix: Great! But how am I gonna get all the way up there?

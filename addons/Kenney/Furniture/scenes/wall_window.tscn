@@ -1,4 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://o83vi1y1kspq"]
+[gd_scene load_steps=12 format=4 uid="uid://o83vi1y1kspq"]
+
+[ext_resource type="Material" uid="uid://j7htnkmhughj" path="res://world/scenes/glass.tres" id="1_nnvxl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpjrr"]
 resource_name = "wood"
@@ -169,6 +171,7 @@ skeleton = NodePath("")
 
 [node name="window" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12708, 3.92708, 0.0272503)
+material_override = ExtResource("1_nnvxl")
 mesh = SubResource("ArrayMesh_manc3")
 skeleton = NodePath("")
 

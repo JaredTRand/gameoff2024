@@ -7,6 +7,7 @@ extends MeshInstance3D
 @export var thought:String
 
 @export var hvr_txt_size:int = 50
+@export var txt_name:String = ""
 
 @export_group("Pickup")
 @export var pickup_able:bool = false
@@ -70,6 +71,9 @@ func _ready():
 	
 	if not sound:
 		sound = find_child("AudioStreamPlayer3D")
+		
+	if not hover_text_placement:
+		hover_text_placement = find_child((txt_name + "_text_placement").to_lower())
 		
 	if hover_text == null:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()

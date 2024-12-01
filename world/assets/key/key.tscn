@@ -48,6 +48,7 @@ script = ExtResource("2_vfton")
 interaction_type = "Pick up"
 interaction_name = "key"
 thought = "A key! I wonder what this unlocks..."
+txt_name = "key"
 pickup_able = true
 pickup_sound = ExtResource("3_7ggaw")
 inv_img = ExtResource("3_w86lf")

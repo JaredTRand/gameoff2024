@@ -573,6 +573,8 @@ script = ExtResource("1_i1y2m")
 interaction_type = "Pull Back"
 interaction_name = "Covers"
 openable = true
+interactable_after_open = false
+locked = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="coverBottom" groups=["interactable"]]
 
@@ -683,7 +685,8 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bedblocks/cylinder2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_6etpk")
 
-[node name="Key" parent="bedblocks" instance=ExtResource("3_mpq2l")]
+[node name="Key" parent="bedblocks" node_paths=PackedStringArray("parent_interactable") instance=ExtResource("3_mpq2l")]
 transform = Transform3D(-0.0766044, 0, -0.0642788, 0, 0.1, 0, 0.0642788, 0, -0.0766044, 0.7, 0.6, -2)
 interaction_name = "Wardrobe Key"
 thought = ""
+parent_interactable = NodePath("../../coverBottom")

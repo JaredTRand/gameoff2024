@@ -74,6 +74,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["hotbar_sound"]]
+
 [node name="DebugPanel" type="PanelContainer" parent="." groups=["debug_panel"]]
 layout_mode = 0
 offset_left = 10.0

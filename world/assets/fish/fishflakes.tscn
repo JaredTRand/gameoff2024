@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://c74iskyrbxix1"]
+[gd_scene load_steps=10 format=4 uid="uid://c74iskyrbxix1"]
 
 [ext_resource type="Texture2D" uid="uid://10v2q8weik5v" path="res://world/assets/fish/fishflakes_fishflakes.jpg" id="1_d5bcb"]
 [ext_resource type="Shader" path="res://world/assets/blingbling.gdshader" id="2_u2vl8"]
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="3_ko314"]
+[ext_resource type="AudioStream" uid="uid://pmclbbu4t45h" path="res://world/sounds/flake1shake.wav" id="4_6vbbf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4yi86"]
 render_priority = 0
@@ -65,6 +66,7 @@ interaction_type = "Pick Up"
 interaction_name = "Fish Flakes"
 hvr_txt_size = 150
 pickup_able = true
+pickup_sound = ExtResource("4_6vbbf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
 

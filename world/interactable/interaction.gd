@@ -10,6 +10,7 @@ extends MeshInstance3D
 
 @export_group("Pickup")
 @export var pickup_able:bool = false
+@export var pickup_sound:AudioStreamWAV = load("res://world/sounds/pickupitem.wav")
 @export var inv_img:CompressedTexture2D
 @export var parent_interactable:Node3D
 
@@ -29,6 +30,7 @@ extends MeshInstance3D
 
 @export var animator:AnimationPlayer
 @export var sound:AudioStreamPlayer3D
+@onready var hotbar_sound:AudioStreamPlayer = get_tree().get_first_node_in_group("hotbar_sound")
 
 var hover_text_canbevisible = true
 
@@ -107,7 +109,11 @@ func interact():
 			success = GameState.get_fish_flake()
 		else:
 			success = hotbar.add_item(inv_img, interaction_name)
+			
 		if success: 
+			if hotbar_sound:
+				if pickup_sound: hotbar_sound.stream = pickup_sound
+				if hotbar_sound.stream: hotbar_sound.play()
 			self.queue_free()
 	
 	if openable:
@@ -123,8 +129,10 @@ func interact():
 				felix.think(open_locked_thought)
 				animator.play("open_locked")
 				
-				if open_locked_sound: sound.stream = open_locked_sound
-				if sound and sound.stream: sound.play()
+				
+				if sound:
+					if open_locked_sound: sound.stream = open_locked_sound
+					if sound.stream: sound.play()
 				
 		else:
 			if open_state == open_states.open:
@@ -139,8 +147,10 @@ func open():
 	
 	if animator: animator.play("open")
 	
-	if open_sound: sound.stream = open_sound
-	if sound and sound.stream: sound.play()
+	
+	if sound:
+		if open_sound: sound.stream = open_sound
+		if sound.stream: sound.play()
 	
 	add_open()
 	if delete_after_open: self.queue_free()
@@ -150,8 +160,9 @@ func close():
 	open_state = open_states.closed
 	if animator: animator.play_backwards("open")
 	
-	if close_sound: sound.stream = close_sound
-	if sound and sound.stream: sound.play()
+	if sound:
+		if close_sound: sound.stream = close_sound
+		if sound.stream: sound.play()
 	add_open()
 	interaction_type = "Open"
 	

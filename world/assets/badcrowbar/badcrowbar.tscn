@@ -63,3 +63,7 @@ pickup_able = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_cp1ir")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="crowbar_test_placement" type="Node3D" parent="."]

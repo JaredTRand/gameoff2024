@@ -1,10 +1,13 @@
-[gd_scene load_steps=92 format=4 uid="uid://bygkp6m5pu0fp"]
+[gd_scene load_steps=95 format=4 uid="uid://bygkp6m5pu0fp"]
 
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="1_8muie"]
 [ext_resource type="Material" uid="uid://cpp2wjtku5nvj" path="res://world/assets/key/gold.tres" id="2_7fhqh"]
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_vxmsc"]
 [ext_resource type="PackedScene" uid="uid://du8ses7a47ykm" path="res://addons/Kenney/Furniture/scenes/wall_window_slide.tscn" id="3_4fxyg"]
+[ext_resource type="AudioStream" uid="uid://bwiy2y7ehaitg" path="res://world/sounds/cabinetopen.wav" id="3_pscxu"]
+[ext_resource type="AudioStream" uid="uid://ddqgvwfwp6i02" path="res://world/sounds/cabinetclose.wav" id="4_2n6my"]
 [ext_resource type="PackedScene" uid="uid://cf6cowduxk8gf" path="res://world/scenes/kitchen_cabinet_drawer.tscn" id="5_0pyim"]
+[ext_resource type="AudioStream" uid="uid://dkfqgqkcqb2lf" path="res://world/sounds/cabinetopenlocked.wav" id="5_nwsy2"]
 [ext_resource type="PackedScene" uid="uid://b0bp8k63psqgp" path="res://world/scenes/kitchen_cabinet_upper_low.tscn" id="5_wyblr"]
 [ext_resource type="PackedScene" uid="uid://cxty1374c1wm3" path="res://world/scenes/kitchen_sink_2.tscn" id="5_xowtn"]
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="6_ffnav"]
@@ -1078,6 +1081,8 @@ interaction_name = "Cabinet"
 thought = "It's stuck. Maybe I can find something to pry it open."
 openable = true
 locked = true
+close_sound = ExtResource("4_2n6my")
+open_locked_sound = ExtResource("5_nwsy2")
 unlocked_with = "Crowbar"
 unlock_thought = "It's open!"
 open_lockable = true
@@ -1093,6 +1098,11 @@ libraries = {
 "": SubResource("AnimationLibrary_oimig")
 }
 
+[node name="cabinet_text_placement" type="Node3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 1, 3.8147e-06)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="furniture/kitchenCabinet3/kitchenCabinet/door"]
+
 [node name="kitchenCabinet2" parent="furniture" instance=ExtResource("6_yqsjy")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1.2, 0.5, 25.1)
 interaction_name = "Cabinet"
@@ -1101,6 +1111,8 @@ openable = true
 [node name="kitchenSink2" parent="furniture" instance=ExtResource("5_xowtn")]
 interaction_name = "Cabinet"
 openable = true
+open_sound = ExtResource("3_pscxu")
+close_sound = ExtResource("4_2n6my")
 
 [node name="kitchenFridgeLarge" type="Node3D" parent="furniture"]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 12.6, 0.5, 26.1)
@@ -1411,6 +1423,7 @@ unlock_thought = "Yes! In we go!"
 [node name="Key" parent="hideables" node_paths=PackedStringArray("parent_interactable") instance=ExtResource("7_hgdlj")]
 transform = Transform3D(-0.0984808, 0, -0.0173648, 0, 0.1, 0, 0.0173648, 0, -0.0984808, -6.29999, 1.4, -10.6)
 mesh = SubResource("ArrayMesh_bjnfo")
+is_active = false
 interaction_name = "Key"
 hvr_txt_size = 150
 parent_interactable = NodePath("../../furniture/kitchenCabinet3/kitchenCabinet/door")

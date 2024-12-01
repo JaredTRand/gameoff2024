@@ -265,6 +265,7 @@ interaction_name = "Door"
 thought = "Did human leave ANY doors unlocked? Where's that key..."
 hvr_txt_size = 150
 openable = true
+locked = true
 open_sound = ExtResource("6_g0c85")
 close_sound = ExtResource("7_3kqcn")
 unlocked_with = "Key"

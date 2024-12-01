@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://do0j7tvga0yx0"]
+[gd_scene load_steps=8 format=4 uid="uid://do0j7tvga0yx0"]
 
 [ext_resource type="Material" uid="uid://cpp2wjtku5nvj" path="res://world/assets/key/gold.tres" id="1_iq8bf"]
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="2_vfton"]
+[ext_resource type="AudioStream" uid="uid://c82f5v7y5hanh" path="res://world/sounds/pickupkey.wav" id="3_7ggaw"]
 [ext_resource type="Texture2D" uid="uid://1brgvd43773v" path="res://Felix/UI/hotbar/itemimages/hotbar_key.jpg" id="3_w86lf"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_r5kw1"]
@@ -48,6 +49,7 @@ interaction_type = "Pick up"
 interaction_name = "key"
 thought = "A key! I wonder what this unlocks..."
 pickup_able = true
+pickup_sound = ExtResource("3_7ggaw")
 inv_img = ExtResource("3_w86lf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
@@ -55,3 +57,7 @@ inv_img = ExtResource("3_w86lf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191345, 0, -1.86865)
 shape = SubResource("BoxShape3D_q3ff8")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="key_text_placement" type="Node3D" parent="."]

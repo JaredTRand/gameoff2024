@@ -306,3 +306,8 @@ shape = SubResource("ConcavePolygonShape3D_1nru4")
 libraries = {
 "": SubResource("AnimationLibrary_rhxka")
 }
+
+[node name="cabinet_text_placement" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 1.8, 3.8147e-06)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

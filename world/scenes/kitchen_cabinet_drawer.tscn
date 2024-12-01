@@ -1,6 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://cf6cowduxk8gf"]
+[gd_scene load_steps=18 format=4 uid="uid://cf6cowduxk8gf"]
 
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="1_pe670"]
+[ext_resource type="AudioStream" uid="uid://bwiy2y7ehaitg" path="res://world/sounds/cabinetopen.wav" id="2_4ksn0"]
+[ext_resource type="AudioStream" uid="uid://ddqgvwfwp6i02" path="res://world/sounds/cabinetclose.wav" id="3_n3det"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rx4pr"]
 resource_name = "metal"
@@ -235,21 +237,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4igje")
 
-[sub_resource type="Animation" id="Animation_rqy13"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("door:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -1.65806, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_y7eeu"]
 length = 0.001
 tracks/0/type = "value"
@@ -263,6 +250,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rqy13"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.65806, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_707cm"]
@@ -279,6 +281,8 @@ interaction_type = "Open"
 interaction_name = "Cabinet"
 hvr_txt_size = 150
 openable = true
+open_sound = ExtResource("2_4ksn0")
+close_sound = ExtResource("3_n3det")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
 
@@ -304,3 +308,8 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_707cm")
 }
+
+[node name="cabinet_text_placement" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1, 1.6, 3.8147e-06)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

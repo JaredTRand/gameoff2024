@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://b8f81824g182q"]
+[gd_scene load_steps=31 format=4 uid="uid://b8f81824g182q"]
 
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="1_qv4wp"]
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="2_25jco"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://btsa0jndauq1s" path="res://world/assets/scissors/scissors.tscn" id="13_plood"]
 [ext_resource type="PackedScene" uid="uid://bostd4fyeholt" path="res://world/scenes/grate.tscn" id="14_7jkgs"]
 [ext_resource type="PackedScene" uid="uid://bev14i8g048ol" path="res://world/scenes/duct.tscn" id="16_t2t5f"]
+[ext_resource type="Script" path="res://world/scenes/trigger_area.gd" id="18_5ikcx"]
 [ext_resource type="PackedScene" uid="uid://h0gwt40qtp5i" path="res://world/scenes/duct_hcurve.tscn" id="18_n1kwj"]
 [ext_resource type="PackedScene" uid="uid://cpb6ju30vop3g" path="res://world/scenes/duct_vcurve.tscn" id="19_x2xco"]
 
@@ -108,6 +109,9 @@ points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_npm87"]
 points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cnsph"]
+size = Vector3(7.5, 4.7, 3.8)
 
 [node name="Node3D" type="Node3D"]
 
@@ -359,7 +363,7 @@ shape = SubResource("ConvexPolygonShape3D_npm87")
 transform = Transform3D(4.46662e-09, 8.23326e-09, -0.03, -8.3203e-09, 0.999999, 6.78799e-10, 0.100173, -1.49012e-07, 1.22198e-09, -1.75014, -0.0150585, -0.0240976)
 
 [node name="grate" parent="ducts/duct with grate" instance=ExtResource("14_7jkgs")]
-transform = Transform3D(-4.37114e-08, 9.5309e-08, 1.18461, 0, 0.752254, -1.50087e-07, -1, -4.16609e-15, -5.17808e-08, -0.202433, -1.3, -1.2)
+transform = Transform3D(-4.37114e-08, 9.5309e-08, 1.18461, 0, 0.752254, -1.50088e-07, -1, -4.16609e-15, -5.17809e-08, -0.202433, -1.3, -1.2)
 thought = ""
 
 [node name="duct with grate2" type="Node3D" parent="ducts"]
@@ -410,9 +414,10 @@ transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e
 shape = SubResource("ConvexPolygonShape3D_npm87")
 
 [node name="grate" parent="ducts/duct with grate2" instance=ExtResource("14_7jkgs")]
-transform = Transform3D(-4.37114e-08, -8.91947e-08, 1.19716, 0, 0.750001, 1.42373e-07, -1, 3.89883e-15, -5.23293e-08, -0.206819, -1.28443, -1.1933)
+transform = Transform3D(-4.37114e-08, -8.91947e-08, 1.19716, 0, 0.750001, 1.42374e-07, -1, 3.89882e-15, -5.23295e-08, -0.206819, -1.28443, -1.1933)
 skeleton = NodePath("../../..")
 thought = ""
+locked = true
 unlock_thought = "Huh! Opens pretty easy from this side"
 
 [node name="duct_hcurve" parent="ducts" instance=ExtResource("18_n1kwj")]
@@ -444,3 +449,16 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 50.319
 
 [node name="duct8" parent="ducts" instance=ExtResource("16_t2t5f")]
 transform = Transform3D(4.46662e-09, 8.23326e-09, -0.03, -8.3203e-09, 0.999999, 6.78799e-10, 0.100173, -1.49012e-07, 1.22198e-09, -21.1501, 24.0849, -68.2241)
+
+[node name="trigger_grate" type="Area3D" parent="." node_paths=PackedStringArray("this_triggers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 28, -24)
+script = ExtResource("18_5ikcx")
+this_triggers = NodePath("../ducts/duct with grate/grate")
+using_method = "open"
+delay = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trigger_grate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0.299999, 1.1075)
+shape = SubResource("BoxShape3D_cnsph")
+
+[connection signal="body_entered" from="trigger_grate" to="trigger_grate" method="_on_body_entered"]

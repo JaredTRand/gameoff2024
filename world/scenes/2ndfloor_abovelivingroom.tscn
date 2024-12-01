@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://df01vm10omhij"]
+[gd_scene load_steps=31 format=4 uid="uid://df01vm10omhij"]
 
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_e8k4o"]
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="2_oy3hw"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://sascje00svta" path="res://addons/Kenney/Furniture/FBX format/wallDoorway.fbx" id="4_mxs8s"]
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="5_jni2w"]
 [ext_resource type="AudioStream" uid="uid://cdh3mqif4xa0i" path="res://world/sounds/dooropen.wav" id="6_g0c85"]
+[ext_resource type="PackedScene" uid="uid://do1cu1sojk7o6" path="res://world/bookcase_closed_doors.tscn" id="6_jgeds"]
 [ext_resource type="AudioStream" uid="uid://b3td4huvitxx6" path="res://world/sounds/doorclose.wav" id="7_3kqcn"]
 [ext_resource type="PackedScene" uid="uid://c1ksm4haqn4ty" path="res://addons/Kenney/Furniture/FBX format/rugRectangle.fbx" id="7_4k1w8"]
+[ext_resource type="PackedScene" uid="uid://c8em2as82e3o6" path="res://addons/Kenney/Furniture/FBX format/rugRound.fbx" id="10_eiobi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egsmx"]
 albedo_color = Color(1, 0.317647, 1, 1)
@@ -345,6 +347,109 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/cylinder2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_tgyma")
 
+[node name="cube3" type="MeshInstance3D" parent="furniture/blocks"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4.87868, 0.746061, 2.12132)
+mesh = SubResource("BoxMesh_dieo0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/blocks/cube3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/cube3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_uywdk")
+
+[node name="cube4" type="MeshInstance3D" parent="furniture/blocks"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8.41421, 0.800625, -1.78814e-07)
+mesh = SubResource("BoxMesh_dieo0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/blocks/cube4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/cube4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_uywdk")
+
+[node name="triangle3" type="MeshInstance3D" parent="furniture/blocks"]
+transform = Transform3D(0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, 6.29289, 0.633965, 2.12132)
+mesh = SubResource("PrismMesh_xap3l")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/blocks/triangle3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/triangle3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_djwqe")
+
+[node name="triangle4" type="MeshInstance3D" parent="furniture/blocks"]
+transform = Transform3D(-0.258819, -0.965926, -4.2222e-08, 0, -4.37114e-08, 1, -0.965926, 0.258819, 1.13133e-08, 7, 0.669329, -2.82843)
+mesh = SubResource("PrismMesh_xap3l")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/blocks/triangle4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/triangle4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_djwqe")
+
+[node name="cylinder3" type="MeshInstance3D" parent="furniture/blocks"]
+transform = Transform3D(0.707107, 6.18172e-08, -0.707107, 0, -1, -8.74228e-08, -0.707107, 6.18172e-08, -0.707107, 6.29289, 0.633965, 0.707107)
+mesh = SubResource("CylinderMesh_mopq4")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/blocks/cylinder3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/cylinder3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_tgyma")
+
+[node name="cylinder4" type="MeshInstance3D" parent="furniture/blocks"]
+transform = Transform3D(0.707107, 6.18172e-08, -0.707107, 0, -1, -8.74228e-08, -0.707107, 6.18172e-08, -0.707107, 9.12132, 0.703906, -2.12132)
+mesh = SubResource("CylinderMesh_mopq4")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/blocks/cylinder4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/cylinder4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_tgyma")
+
+[node name="bookcaseClosedDoors2" parent="furniture" instance=ExtResource("6_jgeds")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9, 0.1, -7)
+
+[node name="cube2" type="MeshInstance3D" parent="furniture/bookcaseClosedDoors2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 1.54606, 1.8)
+mesh = SubResource("BoxMesh_dieo0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/bookcaseClosedDoors2/cube2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/bookcaseClosedDoors2/cube2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_uywdk")
+
+[node name="cube3" type="MeshInstance3D" parent="furniture/bookcaseClosedDoors2"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -1.10001, 2.34972, 1.74653)
+mesh = SubResource("BoxMesh_dieo0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/bookcaseClosedDoors2/cube3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/bookcaseClosedDoors2/cube3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_uywdk")
+
+[node name="cylinder4" type="MeshInstance3D" parent="furniture/bookcaseClosedDoors2"]
+transform = Transform3D(0.707107, 6.18172e-08, -0.707107, 0, -1, -8.74228e-08, -0.707107, 6.18172e-08, -0.707107, -1.07868, 1.95963, 1.57868)
+mesh = SubResource("CylinderMesh_mopq4")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/bookcaseClosedDoors2/cylinder4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/bookcaseClosedDoors2/cylinder4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_tgyma")
+
+[node name="cylinder5" type="MeshInstance3D" parent="furniture/bookcaseClosedDoors2"]
+transform = Transform3D(0.707107, 6.18172e-08, -0.707107, 0, -1, -8.74228e-08, -0.707107, 6.18172e-08, -0.707107, -1.87869, 1.45963, 1.57868)
+mesh = SubResource("CylinderMesh_mopq4")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="furniture/bookcaseClosedDoors2/cylinder5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/bookcaseClosedDoors2/cylinder5/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_tgyma")
+
 [node name="doorway2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 17, -0.1, -20.2)
 mesh = SubResource("ArrayMesh_pciqr")
@@ -368,7 +473,7 @@ openable = true
 locked = true
 open_sound = ExtResource("6_g0c85")
 close_sound = ExtResource("7_3kqcn")
-unlocked_with = "Key"
+unlocked_with = "Tiny Human Key"
 unlock_thought = "Maybe I can find another key in here?"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="doorway2/door" groups=["interactable"]]
@@ -383,3 +488,9 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="doorway2/door"]
+
+[node name="door_text_placement" type="Node3D" parent="doorway2/door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 0)
+
+[node name="rugRound" parent="." instance=ExtResource("10_eiobi")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 23.3, 0.449919, -16)

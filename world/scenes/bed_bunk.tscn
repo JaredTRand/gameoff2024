@@ -1,7 +1,8 @@
-[gd_scene load_steps=39 format=4 uid="uid://s50ygtxohdgt"]
+[gd_scene load_steps=40 format=4 uid="uid://s50ygtxohdgt"]
 
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="1_i1y2m"]
 [ext_resource type="PackedScene" uid="uid://btsa0jndauq1s" path="res://world/assets/scissors/scissors.tscn" id="2_xlwey"]
+[ext_resource type="PackedScene" uid="uid://do0j7tvga0yx0" path="res://world/assets/key/key.tscn" id="3_mpq2l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ku6xe"]
 resource_name = "wood"
@@ -681,3 +682,8 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bedblocks/cylinder2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_6etpk")
+
+[node name="Key" parent="bedblocks" instance=ExtResource("3_mpq2l")]
+transform = Transform3D(-0.0766044, 0, -0.0642788, 0, 0.1, 0, 0.0642788, 0, -0.0766044, 0.7, 0.6, -2)
+interaction_name = "Wardrobe Key"
+thought = ""

@@ -218,6 +218,25 @@ set GameState.dialogue_on = false
 
 ~ fishtip_scissors
 set GameState.dialogue_on = true
+do GameState.swap_camera("fish")
+=>< tipfish_eating/sounds
+=>< tipfish_eating/comments
+
+do GameState.swap_camera("felix")
+Felix: Got any more tips for me?
+
+do GameState.swap_camera("fish")
+=>< tipfish_eating/sounds
+Ferdinand: Sure.
+Ferdinand: Check in the tiny human's room. Tiny humans are well know for being kleptomaniacs.
+
+do GameState.swap_camera("felix")
+Felix: Really?
+
+do GameState.swap_camera("fish")
+Ferdinand: Nope.
+Ferdinand: Well, sort of.
+Ferdinand: Ah, whatever, It doesn't matter. Just try looking up there!
 
 do GameState.swap_camera("felix")
 set GameState.dialogue_on = false

@@ -167,12 +167,12 @@ func close():
 	interaction_type = "Open"
 	
 func add_open():
-	if is_instance_valid(additional_open):
-		#await get_tree().create_timer(2.0).timeout 
-		var add_anim = additional_open.find_child("AnimationPlayer")
-		if add_anim:
-			add_anim.play("open")
-			
+	if is_instance_valid(additional_open) and additional_open.has_method("open"):
+		await get_tree().create_timer(5.0).timeout 
+		#var add_anim = additional_open.find_child("AnimationPlayer")
+		#if add_anim:
+			#add_anim.play("open")
+		additional_open.open()
 func check_is_active():
 	if is_active: 
 		return true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://s50ygtxohdgt"]
+[gd_scene load_steps=31 format=4 uid="uid://s50ygtxohdgt"]
 
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="1_i1y2m"]
 
@@ -350,6 +350,67 @@ shadow_mesh = SubResource("ArrayMesh_btb86")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tii13"]
 points = PackedVector3Array(-3.48003, 0.999922, 0, -3.48003, 0.6, 0.519969, -4, 0.999922, 0.519969, -3.48003, 1.39992, 0.519969, -0.52036, 0.999922, 0, -0.52036, 0.6, 0.519969, -3.48003, 0.6, 3.47964, -4, 0.999922, 3.47964, -3.48003, 1.39992, 3.47964, -0.52036, 1.39992, 0.519969, 0, 0.999922, 0.519969, -0.52036, 0.6, 3.47964, -3.48003, 0.999922, 4, -0.52036, 1.39992, 3.47964, 0, 0.999922, 3.47964, -0.52036, 0.999922, 4)
 
+[sub_resource type="Animation" id="Animation_ya2do"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.18, 2.07044, 10.6627), Vector3(-1.18, 2.07, 9.823)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.18338e-16, -1.5708, 0.125664), Vector3(0, -1.5708, -1.8326)]
+}
+
+[sub_resource type="Animation" id="Animation_6trrd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.18, 2.07044, 10.6627)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.18338e-16, -1.5708, 0.125664)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wo3mp"]
+_data = {
+"RESET": SubResource("Animation_6trrd"),
+"open": SubResource("Animation_ya2do")
+}
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_fdhp5"]
 _surfaces = [{
 "aabb": AABB(-4, 0.6, 0, 4, 0.8, 4),
@@ -384,6 +445,67 @@ shadow_mesh = SubResource("ArrayMesh_fdhp5")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_taoju"]
 points = PackedVector3Array(-3.48003, 0.999922, 0, -3.48003, 0.6, 0.519969, -4, 0.999922, 0.519969, -3.48003, 1.39992, 0.519969, -0.52036, 0.999922, 0, -0.52036, 0.6, 0.519969, -3.48003, 0.6, 3.47964, -4, 0.999922, 3.47964, -3.48003, 1.39992, 3.47964, -0.52036, 1.39992, 0.519969, 0, 0.999922, 0.519969, -0.52036, 0.6, 3.47964, -3.48003, 0.999922, 4, -0.52036, 1.39992, 3.47964, 0, 0.999922, 3.47964, -0.52036, 0.999922, 4)
+
+[sub_resource type="Animation" id="Animation_dyjwr"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0.125664), Vector3(0, -1.5708, -1.8326)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.18, 7.37044, 10.6627)]
+}
+
+[sub_resource type="Animation" id="Animation_tlwxv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0.125664)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.18, 7.37044, 10.6627)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5h24n"]
+_data = {
+"RESET": SubResource("Animation_tlwxv"),
+"open": SubResource("Animation_dyjwr")
+}
 
 [node name="bedBunk" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_ogi65")
@@ -431,10 +553,11 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 14)
 
 [node name="pillowBottom" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, 0, -0.85, 0.0626666, 0.496057, 0, 0.496057, -0.0626666, 0, -1.18, 1.97045, 10.6627)
+transform = Transform3D(-2.16833e-08, 2.73924e-09, -0.85, 0.0626666, 0.496057, -4.40587e-16, 0.496057, -0.0626666, -3.71547e-08, -1.18, 2.07044, 10.6627)
 mesh = SubResource("ArrayMesh_ftsso")
 skeleton = NodePath("")
 script = ExtResource("1_i1y2m")
+openable = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="pillowBottom" groups=["interactable"]]
 
@@ -446,12 +569,18 @@ shape = SubResource("ConvexPolygonShape3D_tii13")
 transform = Transform3D(1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 0, 0, 1, -1.88397, 1.04436, 2.35294)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pillowBottom"]
+libraries = {
+"": SubResource("AnimationLibrary_wo3mp")
+}
 
 [node name="pillowTop" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, 0, -0.85, 0.0626666, 0.496057, 0, 0.496057, -0.0626666, 0, -1.18, 7.37044, 10.6627)
+transform = Transform3D(-2.16833e-08, 2.73924e-09, -0.85, 0.0626666, 0.496057, 0, 0.496057, -0.0626666, -3.71547e-08, -1.18, 7.37044, 10.6627)
 mesh = SubResource("ArrayMesh_m0j1o")
 skeleton = NodePath("")
 script = ExtResource("1_i1y2m")
+interaction_type = "Flip"
+interaction_name = "Pillow"
+openable = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="pillowTop" groups=["interactable"]]
 
@@ -459,4 +588,10 @@ script = ExtResource("1_i1y2m")
 transform = Transform3D(1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_taoju")
 
-[node name="Node3D" type="Node3D" parent="pillowTop"]
+[node name="pillow_text_placement" type="Node3D" parent="pillowTop"]
+transform = Transform3D(1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 0, 0, 1, -1.88397, 1.04436, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pillowTop"]
+libraries = {
+"": SubResource("AnimationLibrary_5h24n")
+}

@@ -568,6 +568,7 @@ follow_damping = true
 follow_distance = 1.2
 spring_length = 1.2
 metadata/name = "fish"
+metadata/sounds = PackedStringArray("res://world/sounds/ferdinandtalk.wav")
 
 [node name="tipfish1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -29)

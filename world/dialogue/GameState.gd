@@ -12,6 +12,7 @@ var numOfFlakes:int = 0
 @onready var look_at:PhantomCamera3D
 
 @onready var fishflakes = get_tree().get_first_node_in_group("ff_container")
+@onready var hotbar_sound:AudioStreamPlayer = get_tree().get_first_node_in_group("hotbar_sound")
 
 func _ready():
 	phantom_cams = get_tree().get_nodes_in_group("phantomcams")
@@ -23,6 +24,13 @@ func swap_camera(cam_to_switch_to:String):
 			new_cam = cam
 			
 	if is_instance_valid(new_cam) and new_cam != look_at:
+		var sounds
+		if new_cam.has_meta("sounds"):
+			sounds = new_cam.get_meta("sounds")
+		
+		if sounds and not sounds.is_empty() and hotbar_sound and not hotbar_sound.playing:
+			hotbar_sound.stream = load(sounds[randi() % sounds.size()])
+			if hotbar_sound.stream: hotbar_sound.play()
 		if look_at: 
 			look_at.priority = 10
 		look_at = new_cam
@@ -33,6 +41,10 @@ func use_fish_flake():
 	
 	if cur_flake_count <= 0:
 		return false
+	
+	if hotbar_sound:
+		hotbar_sound.stream = load("res://world/sounds/flake4shakes.wav")
+		if hotbar_sound.stream: hotbar_sound.play()
 	
 	cur_flake_count = cur_flake_count - 1
 	fishflakes.find_child("flakecount").text = str(cur_flake_count)

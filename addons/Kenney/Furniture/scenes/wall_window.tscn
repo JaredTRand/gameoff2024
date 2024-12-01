@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://o83vi1y1kspq"]
+[gd_scene load_steps=11 format=4 uid="uid://o83vi1y1kspq"]
 
 [ext_resource type="Material" uid="uid://j7htnkmhughj" path="res://world/scenes/glass.tres" id="1_nnvxl"]
 
@@ -6,13 +6,6 @@
 resource_name = "wood"
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.952921, 0.798667, 0.660025, 1)
-emission_enabled = true
-emission_energy_multiplier = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kysig"]
-resource_name = "metalDark"
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.589021, 0.656282, 0.656282, 1)
 emission_enabled = true
 emission_energy_multiplier = 0.0
 
@@ -76,7 +69,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAwAEAAUAAgAGAAAABgACAAcABgAHAAUABQAHAAMA"),
-"material": SubResource("StandardMaterial3D_kysig"),
+"material": SubResource("StandardMaterial3D_ra614"),
 "name": "metalDark",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://df01vm10omhij"]
+[gd_scene load_steps=20 format=4 uid="uid://df01vm10omhij"]
 
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_e8k4o"]
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="2_oy3hw"]
+[ext_resource type="PackedScene" uid="uid://dkoosp4crin3c" path="res://world/scenes/bed_bunk.tscn" id="4_d31mq"]
 [ext_resource type="PackedScene" uid="uid://sascje00svta" path="res://addons/Kenney/Furniture/FBX format/wallDoorway.fbx" id="4_mxs8s"]
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="5_jni2w"]
 [ext_resource type="AudioStream" uid="uid://cdh3mqif4xa0i" path="res://world/sounds/dooropen.wav" id="6_g0c85"]
@@ -242,7 +243,10 @@ transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 19.6, 0.
 
 [node name="furniture" type="Node3D" parent="."]
 
-[node name="rugRectangle" parent="." instance=ExtResource("7_4k1w8")]
+[node name="bedBunk2" parent="furniture" instance=ExtResource("4_d31mq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -19.4)
+
+[node name="rugRectangle" parent="furniture" instance=ExtResource("7_4k1w8")]
 transform = Transform3D(-8.74228e-08, 0, 1, 0, 1, 0, -2, 0, -4.37114e-08, 10.2, 0.5, -52)
 
 [node name="doorway2" type="MeshInstance3D" parent="."]

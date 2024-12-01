@@ -43,7 +43,7 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ywdev"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_wb4qg"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
@@ -151,7 +151,7 @@ metadata/name = "felix"
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, -10.5136, 22.2424, -62.8659)
-attributes = SubResource("CameraAttributesPractical_ywdev")
+attributes = SubResource("CameraAttributesPractical_wb4qg")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300

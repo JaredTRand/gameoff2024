@@ -183,6 +183,7 @@ set GameState.dialogue_on = true
 
 do GameState.swap_camera("fish")
 =>< tipfish_eating/sounds
+=>< tipfish_eating/sounds
 =>< tipfish_eating/comments
 
 do GameState.swap_camera("felix")
@@ -211,6 +212,7 @@ set GameState.dialogue_on = false
 ~ fishtip_screwdriver
 set GameState.dialogue_on = true
 do GameState.swap_camera("fish")
+=>< tipfish_eating/sounds
 =>< tipfish_eating/sounds
 =>< tipfish_eating/comments
 
@@ -241,6 +243,8 @@ set GameState.dialogue_on = false
 ~ fishtip_scissors
 set GameState.dialogue_on = true
 do GameState.swap_camera("fish")
+=>< tipfish_eating/sounds
+=>< tipfish_eating/comments
 =>< tipfish_eating/sounds
 =>< tipfish_eating/comments
 

@@ -550,7 +550,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 13, -2)
 [node name="Ferdinand" parent="." instance=ExtResource("11_x3agi")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -8, 2.7, -25)
 other_tips = ["grate"]
-hvr_txt_size = 200
+hvr_txt_size = 50
 
 [node name="FishPhantomCamera" type="Node3D" parent="." node_paths=PackedStringArray("follow_target") groups=["phantomcams"]]
 unique_name_in_owner = true

@@ -194,5 +194,5 @@ func check_is_active():
 	
 func _on_interaction_cooldown_timeout():
 	hover_text_canbevisible = true
-	if in_player_interact_area and hover_text_canbevisible:
+	if in_player_interact_area and hover_text_canbevisible and not GameState.dialogue_on:
 		hover_text.visible = true

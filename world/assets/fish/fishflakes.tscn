@@ -72,3 +72,5 @@ pickup_sound = ExtResource("4_6vbbf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_3c4pn")
+
+[node name="fish flakes_text_placement" type="Node3D" parent="."]

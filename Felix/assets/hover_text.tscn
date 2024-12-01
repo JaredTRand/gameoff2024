@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dumv7xay0qg6r"]
 
 [node name="hover_text" type="Label3D" groups=["hovertext"]]
+top_level = true
 visible = false
 billboard = 1
 no_depth_test = true

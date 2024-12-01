@@ -43,7 +43,7 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_w0m2k"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rl1r6"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
@@ -133,7 +133,7 @@ _data = {
 
 [node name="PlayerPhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target") groups=["phantomcams"]]
 unique_name_in_owner = true
-transform = Transform3D(-0.999995, 0, 0, 0, 0.990468, 0.135588, 0, 0.135588, -0.990465, 9.8864, 23.5424, -39.3659)
+transform = Transform3D(-0.999995, 0, 0, 0, 0.990468, 0.135588, 0, 0.135588, -0.990465, 26.8864, 11.0424, 1.93414)
 script = ExtResource("1_vxnf4")
 priority = 10
 follow_mode = 6
@@ -150,8 +150,8 @@ metadata/name = "felix"
 
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 9.8864, 23.5424, -39.3659)
-attributes = SubResource("CameraAttributesPractical_w0m2k")
+transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 26.8864, 11.0424, 1.93414)
+attributes = SubResource("CameraAttributesPractical_rl1r6")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300
@@ -159,7 +159,7 @@ process_physics_priority = 300
 script = ExtResource("1_qns0x")
 
 [node name="Player" parent="." instance=ExtResource("2_tbhhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8864, 22, -35.404)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26.8864, 9.5, 5.896)
 
 [node name="livingRoom" parent="." instance=ExtResource("2_w5bkr")]
 
@@ -171,9 +171,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.2, 
 [node name="2ndfloor_abovelivingroom" parent="." instance=ExtResource("5_2d8ca")]
 
 [node name="3rdfloor_abovekitchen" parent="." instance=ExtResource("6_3js08")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 12.9, -50)
 
 [node name="3rdfloor_abovelivingroom" parent="." instance=ExtResource("7_ntybd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 26, -10)
 
 [node name="bigfan" parent="3rdfloor_abovelivingroom" instance=ExtResource("12_7d3ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 21, -8)
@@ -370,7 +370,7 @@ stream = ExtResource("15_3ubm0")
 [node name="grate" parent="tunnels" node_paths=PackedStringArray("additional_open") instance=ExtResource("11_c5a8c")]
 transform = Transform3D(-1.62921e-07, 0, -1.41, 0, 0.75, 0, 1, 0, -2.29718e-07, 21.7, 49, -57.5)
 interaction_type = ""
-hvr_txt_size = 100
+hvr_txt_size = 50
 locked = true
 unlocked_with = "Crowbar"
 additional_open = NodePath("../finalducts2/brokenvent/MeshInstance3D6")

@@ -90,7 +90,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v7v74")
 
 [node name="Cylinder" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1, 0)
 mesh = SubResource("ArrayMesh_q72ir")
 skeleton = NodePath("")
 script = ExtResource("1_45e6k")
@@ -107,3 +107,6 @@ shape = SubResource("CapsuleShape3D_720fk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("ArrayMesh_sg30t")
 skeleton = NodePath("")
+
+[node name="screwdriver_text_placement" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)

@@ -1046,12 +1046,12 @@ shape = SubResource("ConvexPolygonShape3D_3urot")
 [node name="kitchenCabinetDrawer2" parent="furniture" instance=ExtResource("5_0pyim")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.6, 0.5, 25)
 interaction_type = ""
-hvr_txt_size = 100
+hvr_txt_size = 50
 
 [node name="kitchenCabinetDrawer3" parent="furniture" instance=ExtResource("5_0pyim")]
 transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 7.4, 0.5, 25.1)
 interaction_type = ""
-hvr_txt_size = 100
+hvr_txt_size = 50
 
 [node name="kitchenCabinet" parent="furniture" instance=ExtResource("6_yqsjy")]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -5.6, 0.5, 16.4)
@@ -1413,7 +1413,7 @@ shape = SubResource("ConcavePolygonShape3D_6s4kc")
 transform = Transform3D(7.54979e-08, 0, 0.6, 0, 0.75, 0, -1, 0, 4.52987e-08, -11.3, 10.3, -19.9)
 interaction_type = ""
 thought = "It won't budge. Could I unscrew it?"
-hvr_txt_size = 100
+hvr_txt_size = 50
 locked = true
 unlocked_with = "Screwdriver"
 unlock_thought = "Yes! In we go!"

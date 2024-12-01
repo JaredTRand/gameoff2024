@@ -354,7 +354,7 @@ openable = true
 locked = true
 open_sound = ExtResource("8_c37m5")
 close_sound = ExtResource("9_v20aj")
-unlocked_with = "Black Key"
+unlocked_with = "Bedroom Key"
 unlock_thought = "And human thought they could keep me downstairs"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="door" groups=["interactable"]]

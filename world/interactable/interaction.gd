@@ -6,7 +6,7 @@ extends MeshInstance3D
 @export var interaction_cooldown_time:float = 3.0
 @export var thought:String
 
-@export var hvr_txt_size:int = 100
+@export var hvr_txt_size:int = 50
 
 @export_group("Pickup")
 @export var pickup_able:bool = false
@@ -75,6 +75,7 @@ func _ready():
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
 		if hover_text_placement:
 			hover_text_placement.add_child(hover_text)
+			hover_text.global_position = hover_text_placement.global_position
 		else:
 			add_child(hover_text)
 		
@@ -153,7 +154,7 @@ func open():
 		if open_sound: sound.stream = open_sound
 		if sound.stream: sound.play()
 	
-	add_open()
+	if additional_open: add_open()
 	if delete_after_open: self.queue_free()
 	if not interactable_after_open: set_script(null)
 	
@@ -164,7 +165,7 @@ func close():
 	if sound:
 		if close_sound: sound.stream = close_sound
 		if sound.stream: sound.play()
-	add_open()
+	#add_open()
 	interaction_type = "Open"
 	
 func add_open():

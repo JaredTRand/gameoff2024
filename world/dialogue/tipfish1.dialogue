@@ -210,6 +210,28 @@ set GameState.dialogue_on = false
 
 ~ fishtip_screwdriver
 set GameState.dialogue_on = true
+do GameState.swap_camera("fish")
+=>< tipfish_eating/sounds
+=>< tipfish_eating/comments
+
+do GameState.swap_camera("felix")
+Felix: Got any more tips for me?
+
+do GameState.swap_camera("fish")
+Ferdinand: Sure do.
+Ferdinand: Word around town is that Human is getting their bathroom worked on.
+
+do GameState.swap_camera("felix")
+Felix: ...
+Felix: So?
+
+do GameState.swap_camera("fish")
+Ferdinand: Look, I can't spell everything out for you, kid.
+Ferdinand: Maybe the info is useful, maybe it's not. Not my problem.
+Ferdinand: They're not all zingers.
+
+do GameState.swap_camera("felix")
+Felix: Right. Okay then.
 
 do GameState.swap_camera("felix")
 set GameState.dialogue_on = false

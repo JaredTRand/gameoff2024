@@ -474,7 +474,7 @@ locked = true
 open_sound = ExtResource("6_g0c85")
 close_sound = ExtResource("7_3kqcn")
 unlocked_with = "Tiny Human Key"
-unlock_thought = "Maybe I can find another key in here?"
+unlock_thought = "And we're back here..."
 
 [node name="StaticBody3D" type="StaticBody3D" parent="doorway2/door" groups=["interactable"]]
 

@@ -66,4 +66,4 @@ shape = SubResource("ConvexPolygonShape3D_cp1ir")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
-[node name="crowbar_test_placement" type="Node3D" parent="."]
+[node name="crowbar_text_placement" type="Node3D" parent="."]

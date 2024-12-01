@@ -1055,7 +1055,7 @@ hvr_txt_size = 50
 
 [node name="kitchenCabinet" parent="furniture" instance=ExtResource("6_yqsjy")]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -5.6, 0.5, 16.4)
-interaction_type = "OPen"
+interaction_type = "Open"
 interaction_name = "Cabinet"
 openable = true
 
@@ -1424,14 +1424,11 @@ unlock_thought = "Yes! In we go!"
 transform = Transform3D(-0.0984808, 0, -0.0173648, 0, 0.1, 0, 0.0173648, 0, -0.0984808, -6.29999, 1.4, -10.6)
 mesh = SubResource("ArrayMesh_bjnfo")
 is_active = false
-interaction_name = "Key"
-hvr_txt_size = 150
 parent_interactable = NodePath("../../furniture/kitchenCabinet3/kitchenCabinet/door")
 
 [node name="Crowbar" parent="hideables" node_paths=PackedStringArray("parent_interactable") instance=ExtResource("15_liafs")]
 transform = Transform3D(-0.000256866, -0.552539, 0.0389763, -0.0279899, -2.66957e-08, -0.00305777, 0.000705738, -0.201108, -0.107086, 11.1, 10.3, 8.3)
 is_active = false
-interaction_type = "Pick Up"
 interaction_name = "Crowbar"
 thought = "Who makes a crowbar this small? Well, this'll work."
 inv_img = ExtResource("19_4xmn4")

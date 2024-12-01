@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://27x1gwyt5hao"]
+[gd_scene load_steps=15 format=4 uid="uid://27x1gwyt5hao"]
 
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="1_ou0l6"]
+[ext_resource type="AudioStream" uid="uid://cdh3mqif4xa0i" path="res://world/sounds/dooropen.wav" id="2_04c1l"]
+[ext_resource type="AudioStream" uid="uid://b3td4huvitxx6" path="res://world/sounds/doorclose.wav" id="3_pv3n3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xoqq"]
 resource_name = "wood"
@@ -161,9 +163,10 @@ skeleton = NodePath("")
 script = ExtResource("1_ou0l6")
 interaction_name = "Door"
 thought = "Human locked the door? Where'd they put the key..."
-hvr_txt_size = 150
 openable = true
 locked = true
+open_sound = ExtResource("2_04c1l")
+close_sound = ExtResource("3_pv3n3")
 unlocked_with = "Key"
 unlock_thought = "Finally! Up we go"
 
@@ -177,3 +180,6 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_c88qm")
 }
+
+[node name="door_text_placement" type="Node3D" parent="door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)

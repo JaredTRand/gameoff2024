@@ -1,10 +1,12 @@
-[gd_scene load_steps=31 format=4 uid="uid://df01vm10omhij"]
+[gd_scene load_steps=33 format=4 uid="uid://df01vm10omhij"]
 
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_e8k4o"]
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="2_oy3hw"]
 [ext_resource type="PackedScene" uid="uid://s50ygtxohdgt" path="res://world/scenes/bed_bunk.tscn" id="4_d31mq"]
 [ext_resource type="PackedScene" uid="uid://sascje00svta" path="res://addons/Kenney/Furniture/FBX format/wallDoorway.fbx" id="4_mxs8s"]
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="5_jni2w"]
+[ext_resource type="PackedScene" uid="uid://100vpj5nx1yt" path="res://world/scenes/triangle_block.tscn" id="6_75e3x"]
+[ext_resource type="PackedScene" uid="uid://bnjw35lwiewld" path="res://world/scenes/cube_block.tscn" id="6_eye3h"]
 [ext_resource type="AudioStream" uid="uid://cdh3mqif4xa0i" path="res://world/sounds/dooropen.wav" id="6_g0c85"]
 [ext_resource type="PackedScene" uid="uid://do1cu1sojk7o6" path="res://world/bookcase_closed_doors.tscn" id="6_jgeds"]
 [ext_resource type="AudioStream" uid="uid://b3td4huvitxx6" path="res://world/sounds/doorclose.wav" id="7_3kqcn"]
@@ -307,15 +309,7 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/cube2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_uywdk")
 
-[node name="triangle" type="MeshInstance3D" parent="furniture/blocks"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 0.633965, 1)
-mesh = SubResource("PrismMesh_xap3l")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="furniture/blocks/triangle"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/triangle/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_djwqe")
+[node name="triangle" parent="furniture/blocks" instance=ExtResource("6_75e3x")]
 
 [node name="triangle2" type="MeshInstance3D" parent="furniture/blocks"]
 transform = Transform3D(0.5, -0.866025, -3.78552e-08, 0, -4.37114e-08, 1, -0.866025, -0.5, -2.18557e-08, 5, 0.633965, -2)
@@ -406,6 +400,59 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/blocks/cylinder4/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_tgyma")
+
+[node name="stacked" type="Node3D" parent="furniture/blocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.770654, -4)
+
+[node name="cube5" parent="furniture/blocks/stacked" instance=ExtResource("6_eye3h")]
+
+[node name="cube6" parent="furniture/blocks/stacked" instance=ExtResource("6_eye3h")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0.5, 0)
+
+[node name="cube7" parent="furniture/blocks/stacked" instance=ExtResource("6_eye3h")]
+transform = Transform3D(-0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, 0, 1, 0)
+
+[node name="cube8" parent="furniture/blocks/stacked" instance=ExtResource("6_eye3h")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 0, 1.5, 0)
+
+[node name="cube9" parent="furniture/blocks/stacked" instance=ExtResource("6_eye3h")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 2, 0)
+
+[node name="cube10" parent="furniture/blocks/stacked" instance=ExtResource("6_eye3h")]
+transform = Transform3D(0.0871557, 0, -0.996195, 0, 1, 0, 0.996195, 0, 0.0871557, 0, 2.5, 0)
+
+[node name="cube11" parent="furniture/blocks/stacked" instance=ExtResource("6_eye3h")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 3, 0)
+
+[node name="cube12" parent="furniture/blocks/stacked" instance=ExtResource("6_eye3h")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 3.5, 0)
+
+[node name="cube13" parent="furniture/blocks/stacked" instance=ExtResource("6_eye3h")]
+transform = Transform3D(-0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, -0.906308, 0, 4, 0)
+
+[node name="triangle" parent="furniture/blocks/stacked" instance=ExtResource("6_75e3x")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.5, -0.166035, 2)
+
+[node name="triangle2" parent="furniture/blocks/stacked" instance=ExtResource("6_75e3x")]
+transform = Transform3D(0.965926, -0.258819, -1.13133e-08, 0, -4.37114e-08, 1, -0.258819, -0.965926, -4.2222e-08, 2.5, 0.0867538, 2)
+
+[node name="triangle3" parent="furniture/blocks/stacked" instance=ExtResource("6_75e3x")]
+transform = Transform3D(0.965926, 0.258819, 1.13133e-08, -8.57914e-16, -4.37114e-08, 1, 0.258819, -0.965926, -4.2222e-08, 2.5, 0.338404, 2)
+
+[node name="triangle4" parent="furniture/blocks/stacked" instance=ExtResource("6_75e3x")]
+transform = Transform3D(-0.866025, -0.5, -2.18557e-08, -8.57914e-16, -4.37114e-08, 1, -0.5, 0.866025, 3.78552e-08, 2.5, 0.591382, 2.1)
+
+[node name="triangle5" parent="furniture/blocks/stacked" instance=ExtResource("6_75e3x")]
+transform = Transform3D(-0.258819, -0.965926, -4.2222e-08, 0, -4.37114e-08, 1, -0.965926, 0.258819, 1.13133e-08, 2.47585, 0.839352, 2.03147)
+
+[node name="triangle6" parent="furniture/blocks/stacked" instance=ExtResource("6_75e3x")]
+transform = Transform3D(-0.5, -0.866026, -3.78552e-08, -8.57914e-16, -4.37114e-08, 1, -0.866026, 0.5, 2.18557e-08, 2.47585, 1.09214, 2.03147)
+
+[node name="triangle7" parent="furniture/blocks/stacked" instance=ExtResource("6_75e3x")]
+transform = Transform3D(2.98023e-08, -1, -4.37114e-08, -8.57914e-16, -4.37114e-08, 1, -1, -2.98023e-08, -3.55271e-15, 2.47585, 1.34379, 2.03147)
+
+[node name="triangle8" parent="furniture/blocks/stacked" instance=ExtResource("6_75e3x")]
+transform = Transform3D(-0.258819, 0.965926, 4.2222e-08, 9.18443e-16, -4.37114e-08, 1, 0.965926, 0.258819, 1.13133e-08, 2.57244, 1.59677, 2.00559)
 
 [node name="bookcaseClosedDoors2" parent="furniture" instance=ExtResource("6_jgeds")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9, 0.1, -7)

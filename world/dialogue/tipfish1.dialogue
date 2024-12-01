@@ -208,6 +208,23 @@ set GameState.dialogue_on = false
 => END
 
 
+~ fishtip_screwdriver
+set GameState.dialogue_on = true
+
+do GameState.swap_camera("felix")
+set GameState.dialogue_on = false
+=> END
+
+
+~ fishtip_scissors
+set GameState.dialogue_on = true
+
+do GameState.swap_camera("felix")
+set GameState.dialogue_on = false
+=> END
+
+
+
 
 
 ~ noMoreTips

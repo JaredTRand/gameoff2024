@@ -99,9 +99,13 @@ func interact():
 				interaction_type = "Close"
 				felix.think(unlock_thought)
 				locked = false
-				animator.play("open")
+				
+				if animator: animator.play("open")
 				if sound: sound.play()
 				add_open()
+				
+				if unlocked_with != "*":
+					hotbar.remove_item(unlocked_with)
 				if not interactable_after_open:
 					set_script(null)
 			elif open_lockable and open_state != open_states.open_locked:

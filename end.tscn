@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://chcdwsa3k1mxt"]
+[gd_scene load_steps=19 format=4 uid="uid://chcdwsa3k1mxt"]
 
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="1_mpr30"]
 [ext_resource type="PackedScene" uid="uid://o83vi1y1kspq" path="res://addons/Kenney/Furniture/scenes/wall_window.tscn" id="2_twfxt"]
 [ext_resource type="Material" uid="uid://j7htnkmhughj" path="res://world/scenes/glass.tres" id="3_d2b55"]
 [ext_resource type="PackedScene" uid="uid://beb2qwku32g4q" path="res://addons/Kenney/Furniture/FBX format/benchCushionLow.fbx" id="4_tjwoh"]
+[ext_resource type="PackedScene" uid="uid://ia53dolq7j2i" path="res://Felix/felix_end.tscn" id="5_1r0qy"]
+[ext_resource type="Texture2D" uid="uid://wubc7rleuqr0" path="res://Felix/assets/thoughtbubs_con.png" id="7_dx0nt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxhrm"]
 resource_name = "wood"
@@ -12,11 +14,8 @@ albedo_color = Color(0.952921, 0.798667, 0.660025, 1)
 emission_enabled = true
 emission_energy_multiplier = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vt6eg"]
-resource_name = "_defaultMat"
-vertex_color_use_as_albedo = true
-emission_enabled = true
-emission_energy_multiplier = 0.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8s2xx"]
+albedo_color = Color(0.454524, 0.454524, 0.454524, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ehn0y"]
 _surfaces = [{
@@ -72,7 +71,6 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAwAEAAUAAgAGAAAABgACAAcABgAHAAUABQAHAAMA"),
-"material": SubResource("StandardMaterial3D_vt6eg"),
 "name": "metalDark",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -84,7 +82,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAwAEAAUABgAEAAcABgAIAAkACgALAAwADQAOAA8ACgAQAAkAEQAQAAUAEgATABQAFQAWABcAGAAZABoAGwAcAB0A"),
-"material": SubResource("StandardMaterial3D_vt6eg"),
+"material": SubResource("StandardMaterial3D_8s2xx"),
 "name": "_defaultMat",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -484,4 +482,31 @@ transform = Transform3D(-0.0965925, 0, -0.284701, 0, 1, 0, 0.0258819, 0, -1.0625
 transform = Transform3D(-0.0707107, 0, -0.777817, 0, 1, 0, 0.0707106, 0, -0.777817, 11.7795, 12.3, -10.0388)
 
 [node name="benchCushionLow" parent="." instance=ExtResource("4_tjwoh")]
-transform = Transform3D(1.5, 0, 0, 0, 1.35, 0, 0, 0, 1, 15.3, 14.1, -49)
+transform = Transform3D(1.5, 0, 0, 0, 1.35, 0, 0, 0, 1, 15.3, 14.1, -52)
+
+[node name="Node3D" parent="." instance=ExtResource("5_1r0qy")]
+transform = Transform3D(-0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871558, 12, 15, -51)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.482963, 0.774519, -0.408494, 0.277827, 0.577944, 0.767328, 0.830397, 0.2571, -0.494308, 8.6, 20.4, -51.2)
+
+[node name="thought_bubble" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 18, -50)
+
+[node name="text" type="Label3D" parent="thought_bubble"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705081, 0)
+billboard = 1
+no_depth_test = true
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "Thanks For Playing!"
+outline_size = 127
+horizontal_alignment = 0
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="bub_dots" type="Sprite3D" parent="thought_bubble"]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -0.2, -0.1, -0.399998)
+centered = false
+billboard = 1
+texture = ExtResource("7_dx0nt")

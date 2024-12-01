@@ -4,4 +4,5 @@
 
 [resource]
 albedo_texture = ExtResource("1_julmr")
+albedo_texture_force_srgb = true
 emission_enabled = true

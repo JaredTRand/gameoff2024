@@ -296,7 +296,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 3.
 [node name="televisionVintage" parent="furniture/televisionVintage" instance=ExtResource("5_8go0e")]
 
 [node name="FishFlakes" parent="furniture/televisionVintage" instance=ExtResource("16_03m3k")]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 2.3, -2.6, 1.8)
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 2.3, -2.9, 1.8)
 
 [node name="televisionAntenna" parent="furniture" instance=ExtResource("4_m7jxe")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 6.3, 16)

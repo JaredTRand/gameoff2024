@@ -18,8 +18,14 @@ func interact():
 	elif GameState.first_flake and not GameState.fish_intro_completed:
 		DialogueManager.show_dialogue_balloon(resource, "firstFlake")
 	elif GameState.fish_intro_completed:
+		var cur_flake_count:int = int(GameState.fishflakes.find_child("flakecount").text)
+		if cur_flake_count <= 0:
+			DialogueManager.show_dialogue_balloon(resource, "flakeless")
+			return
+
 		if hotbar.items_not_collected.is_empty() and other_tips.is_empty():
 			DialogueManager.show_dialogue_balloon(resource, "noMoreTips")
+			return
 
 		var rng = RandomNumberGenerator.new().randi_range(1,2)
 		if rng == 1:

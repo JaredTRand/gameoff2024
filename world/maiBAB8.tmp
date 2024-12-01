@@ -42,7 +42,7 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u2whc"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1g0r3"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
@@ -162,7 +162,7 @@ metadata/sounds = PackedStringArray("res://world/sounds/felixtalk1.wav", "res://
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 26.5864, 10.9894, 1.83414)
-attributes = SubResource("CameraAttributesPractical_u2whc")
+attributes = SubResource("CameraAttributesPractical_1g0r3")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300
@@ -194,12 +194,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 21, -8)
 
 [node name="lampSquareCeiling15" parent="3rdfloor_abovelivingroom" instance=ExtResource("19_gks5y")]
 transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -10.6, 13, -26.9)
-
-[node name="lampSquareCeiling16" parent="3rdfloor_abovelivingroom" instance=ExtResource("19_gks5y")]
-transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -10.6, 13, -35.9)
-
-[node name="lampSquareCeiling17" parent="3rdfloor_abovelivingroom" instance=ExtResource("19_gks5y")]
-transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, -10.6, 13, -42.9)
 
 [node name="tunnels" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.5, 0, -60)
@@ -445,9 +439,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -36.1)
 
 [node name="lampSquareCeiling3" parent="lighting/kitch" instance=ExtResource("19_gks5y")]
 transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 13.8, 12.4, -1)
-
-[node name="lampSquareCeiling11" parent="lighting/kitch" instance=ExtResource("19_gks5y")]
-transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 23.8, 12.4, 2)
 
 [node name="lampSquareCeiling4" parent="lighting/kitch" instance=ExtResource("19_gks5y")]
 transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 13.8, 12.4, -10)

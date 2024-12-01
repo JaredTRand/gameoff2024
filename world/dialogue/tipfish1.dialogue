@@ -143,7 +143,7 @@ set GameState.dialogue_on = false
 
 ~ fishtip_crowbar
 set GameState.dialogue_on = true
-
+do GameState.use_fish_flake()
 do GameState.swap_camera("felix")
 Felix: I need something that I can pry with.
 
@@ -166,6 +166,7 @@ set GameState.dialogue_on = false
 => END
 
 ~ fishtip_key
+do GameState.use_fish_flake()
 set GameState.dialogue_on = true
 
 do GameState.swap_camera("felix")
@@ -182,7 +183,7 @@ set GameState.dialogue_on = false
 
 ~ fishtip_grate
 set GameState.dialogue_on = true
-
+do GameState.use_fish_flake()
 do GameState.swap_camera("fish")
 =>< tipfish_eating/sounds
 =>< tipfish_eating/sounds
@@ -213,6 +214,7 @@ set GameState.dialogue_on = false
 
 ~ fishtip_screwdriver
 set GameState.dialogue_on = true
+do GameState.use_fish_flake()
 do GameState.swap_camera("fish")
 =>< tipfish_eating/sounds
 =>< tipfish_eating/sounds
@@ -244,6 +246,7 @@ set GameState.dialogue_on = false
 
 ~ fishtip_scissors
 set GameState.dialogue_on = true
+do GameState.use_fish_flake()
 do GameState.swap_camera("fish")
 =>< tipfish_eating/sounds
 =>< tipfish_eating/comments
@@ -271,11 +274,35 @@ set GameState.dialogue_on = false
 => END
 
 
+~ flakeless
+set GameState.dialogue_on = true
+do GameState.swap_camera("felix")
+Felix: Hey Ferdi! Got any good tips for me?
 
+do GameState.swap_camera("fish")
+Ferdinand: That depends. Do you have any good flakes for me?
+
+do GameState.swap_camera("felix")
+Felix: ...
+Felix: No...
+
+do GameState.swap_camera("fish")
+Ferdinand: Then get back out there!
+
+do GameState.swap_camera("felix")
+Felix: I can't come just to say hi?
+
+do GameState.swap_camera("fish")
+Ferdinand: Not when we have a mission to complete!
+
+do GameState.swap_camera("felix")
+set GameState.dialogue_on = false
+=> END
 
 
 ~ noMoreTips
 set GameState.dialogue_on = true
+do GameState.use_fish_flake()
 
 do GameState.swap_camera("fish")
 =>< tipfish_eating/sounds

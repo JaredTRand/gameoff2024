@@ -88,6 +88,15 @@ func _set_pcam_rotation(pcam: PhantomCamera3D, event: InputEvent) -> void:
 
 		# Change the SpringArm3D node's rotation and rotate around its target
 		pcam.set_third_person_rotation_degrees(pcam_rotation_degrees)
+	elif event is InputEventJoypadMotion:
+		var pcam_rotation_degrees: Vector3
+		
+		pcam_rotation_degrees = pcam.get_third_person_rotation_degrees()
+		pcam_rotation_degrees.x -= (event.get_action_strength("player_controller_camera_down") - event.get_action_strength("player_controller_camera_up")) * mouse_sensitivity*100
+		pcam_rotation_degrees.x = clampf(pcam_rotation_degrees.x, min_pitch, max_pitch)
+		pcam_rotation_degrees.y -= (event.get_action_strength("player_controller_camera_right") - event.get_action_strength("player_controller_camera_left")) * mouse_sensitivity*100
+		pcam_rotation_degrees.y = wrapf(pcam_rotation_degrees.y, min_yaw, max_yaw)
+		pcam.set_third_person_rotation_degrees(pcam_rotation_degrees)
 
 func _physics_process(delta):
 	if GameState.dialogue_on:

@@ -183,3 +183,5 @@ libraries = {
 
 [node name="door_text_placement" type="Node3D" parent="door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="door"]

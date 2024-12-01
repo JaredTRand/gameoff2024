@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://df01vm10omhij"]
+[gd_scene load_steps=34 format=4 uid="uid://df01vm10omhij"]
 
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="2_e8k4o"]
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="2_oy3hw"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://do1cu1sojk7o6" path="res://world/bookcase_closed_doors.tscn" id="6_jgeds"]
 [ext_resource type="AudioStream" uid="uid://b3td4huvitxx6" path="res://world/sounds/doorclose.wav" id="7_3kqcn"]
 [ext_resource type="PackedScene" uid="uid://c1ksm4haqn4ty" path="res://addons/Kenney/Furniture/FBX format/rugRectangle.fbx" id="7_4k1w8"]
+[ext_resource type="PackedScene" uid="uid://c74iskyrbxix1" path="res://world/assets/fish/fishflakes.tscn" id="9_f5o5x"]
 [ext_resource type="PackedScene" uid="uid://c8em2as82e3o6" path="res://addons/Kenney/Furniture/FBX format/rugRound.fbx" id="10_eiobi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egsmx"]
@@ -496,6 +497,9 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="furniture/bookcaseClosedDoors2/cylinder5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_tgyma")
+
+[node name="FishFlakes" parent="furniture" instance=ExtResource("9_f5o5x")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 27.9, 4.1, -5)
 
 [node name="doorway2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 17, -0.1, -20.2)

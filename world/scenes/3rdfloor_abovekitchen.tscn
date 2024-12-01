@@ -178,7 +178,7 @@ transform = Transform3D(-1.18764e-07, 0, 1, 0, 1.6, 0, -2.717, 0, -4.37114e-08, 
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.2, 20, -2.1)
 
 [node name="toiletSquare" parent="furniture" instance=ExtResource("4_g78ui")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.4, 14, -16)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.4, 13.5, -16)
 interaction_name = "Toilet"
 openable = true
 

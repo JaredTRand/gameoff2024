@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://b8f81824g182q"]
+[gd_scene load_steps=78 format=4 uid="uid://b8f81824g182q"]
 
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="1_qv4wp"]
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="2_25jco"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="11_3alky"]
 [ext_resource type="PackedScene" uid="uid://dyexehmwqh3r5" path="res://world/scenes/potted_plant.tscn" id="11_8fjyb"]
 [ext_resource type="AudioStream" uid="uid://d1eclug0xgvh0" path="res://world/sounds/bookcasefall.wav" id="12_fkpcg"]
-[ext_resource type="PackedScene" uid="uid://btsa0jndauq1s" path="res://world/assets/scissors/scissors.tscn" id="13_plood"]
 [ext_resource type="PackedScene" uid="uid://bostd4fyeholt" path="res://world/scenes/grate.tscn" id="14_7jkgs"]
 [ext_resource type="PackedScene" uid="uid://bev14i8g048ol" path="res://world/scenes/duct.tscn" id="16_t2t5f"]
 [ext_resource type="Script" path="res://world/scenes/trigger_area.gd" id="18_5ikcx"]
@@ -940,7 +939,6 @@ script = ExtResource("11_3alky")
 interaction_type = "Look at"
 interaction_name = "Bookcase"
 thought = "If I climb to the top, could I jump to the vent?"
-interactable_after_open = false
 open_sound = ExtResource("12_fkpcg")
 additional_open = NodePath("../../../ducts/duct with grate/grate")
 add_open_wait_time = 3.1
@@ -1340,8 +1338,5 @@ transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -1.45722, 6.11084, 0.20001
 
 [node name="pottedPlant" parent="." instance=ExtResource("11_8fjyb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, 13, 4)
-
-[node name="scissors" parent="." instance=ExtResource("13_plood")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 4.37114e-09, 0, -4.37114e-09, 0.1, -8, 22, -31)
 
 [connection signal="body_entered" from="furniture/AnimatableBody3D/bookcaseOpen2/trigger_grate" to="furniture/AnimatableBody3D/bookcaseOpen2/trigger_grate" method="_on_body_entered"]

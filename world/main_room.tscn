@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dui3sqsargabd"]
+[gd_scene load_steps=32 format=3 uid="uid://dui3sqsargabd"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_qns0x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_vxnf4"]
@@ -18,8 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://d3r63ycmfcnl4" path="res://world/assets/bigfan/bigfan.tscn" id="12_7d3ho"]
 [ext_resource type="AudioStream" uid="uid://ce46bvkqvvp4v" path="res://world/sounds/ventbreakopen.wav" id="15_3ubm0"]
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="16_r78x6"]
-[ext_resource type="PackedScene" uid="uid://c86rcuhbfec1u" path="res://world/assets/badcrowbar/badcrowbar.tscn" id="19_ophtq"]
-[ext_resource type="Texture2D" uid="uid://b4xoxg3obskgg" path="res://Felix/UI/hotbar/itemimages/hotbar_crowbar.jpg" id="20_cgiuu"]
 
 [sub_resource type="Resource" id="Resource_eoher"]
 script = ExtResource("2_7tyqq")
@@ -43,7 +41,7 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_crw0l"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_h2qbr"]
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
@@ -133,7 +131,7 @@ _data = {
 
 [node name="PlayerPhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target") groups=["phantomcams"]]
 unique_name_in_owner = true
-transform = Transform3D(-0.999995, 0, 0, 0, 0.990468, 0.135588, 0, 0.135588, -0.990465, 26.2864, 11.4454, 1.63414)
+transform = Transform3D(-0.999995, 0, 0, 0, 0.990468, 0.135588, 0, 0.135588, -0.990465, 26.9864, 51.2424, -5.36586)
 script = ExtResource("1_vxnf4")
 priority = 10
 follow_mode = 6
@@ -150,8 +148,8 @@ metadata/name = "felix"
 
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 26.2864, 11.4454, 1.63414)
-attributes = SubResource("CameraAttributesPractical_crw0l")
+transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 26.9864, 51.2424, -5.36586)
+attributes = SubResource("CameraAttributesPractical_h2qbr")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300
@@ -159,7 +157,7 @@ process_physics_priority = 300
 script = ExtResource("1_qns0x")
 
 [node name="Player" parent="." instance=ExtResource("2_tbhhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2864, 9.9, 5.596)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.9864, 49.7, -1.404)
 
 [node name="livingRoom" parent="." instance=ExtResource("2_w5bkr")]
 
@@ -370,9 +368,9 @@ stream = ExtResource("15_3ubm0")
 [node name="grate" parent="tunnels" node_paths=PackedStringArray("additional_open") instance=ExtResource("11_c5a8c")]
 transform = Transform3D(-1.62921e-07, 0, -1.41, 0, 0.75, 0, 1, 0, -2.29718e-07, 21.7, 49, -57.5)
 interaction_type = ""
+thought = "Woah. Long fall"
 hvr_txt_size = 50
-locked = true
-unlocked_with = "Crowbar"
+interactable_after_open = true
 additional_open = NodePath("../finalducts2/brokenvent/MeshInstance3D6")
 add_open_wait_time = 5.0
 
@@ -382,10 +380,3 @@ omni_range = 21.77
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.258819, 0.482963, -0.836516, -1.49012e-08, 0.866025, 0.5, 0.965926, 0.12941, -0.224144, -37.1357, 12.9, 0)
-
-[node name="Cube" parent="." instance=ExtResource("19_ophtq")]
-transform = Transform3D(0.2, -1.74846e-08, 1.74846e-08, 1.74846e-08, -8.74228e-09, -0.2, 1.74846e-08, 0.2, -8.74228e-09, 0, 49.6, -1.3)
-interaction_type = "Pick up"
-interaction_name = "Crowbar"
-thought = "Who makes a crowbar for cats anyway?"
-inv_img = ExtResource("20_cgiuu")

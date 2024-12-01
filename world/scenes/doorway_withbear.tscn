@@ -407,6 +407,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 3.4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 shape = SubResource("BoxShape3D_2h5o8")
 
+[node name="bear_text_placement" type="Node3D" parent="viewbear"]
+
 [node name="bearcontainer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.996194, -0.0871557, 0, 0.0871557, 0.996194, 0, 8.9, -19)
 
@@ -461,3 +463,6 @@ mesh = SubResource("CylinderMesh_gdj1a")
 libraries = {
 "": SubResource("AnimationLibrary_jlvkc")
 }
+
+[node name="rope_text_placement" type="Node3D" parent="bearcontainer/rope"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, -0.0321321, -1.97552)

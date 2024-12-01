@@ -126,15 +126,14 @@ func interact():
 		if locked:
 			if unlocked_with == "*" or hotbar.is_in_hotbar(unlocked_with):
 				felix.think(unlock_thought)
-				open()
 				
 				if unlocked_with != "*":
-					hotbar.remove_item(unlocked_with)				
+					hotbar.remove_item(unlocked_with)
+				open()
 			elif open_lockable and open_state != open_states.open_locked:
 				open_state = open_states.open_locked
 				felix.think(open_locked_thought)
 				animator.play("open_locked")
-				
 				
 				if sound:
 					if open_locked_sound: sound.stream = open_locked_sound
@@ -157,6 +156,7 @@ func open():
 	if sound:
 		if open_sound: sound.stream = open_sound
 		if sound.stream: sound.play()
+		#sound.stream = null
 	
 	if additional_open: add_open()
 	if delete_after_open: self.queue_free()
@@ -169,6 +169,7 @@ func close():
 	if sound:
 		if close_sound: sound.stream = close_sound
 		if sound.stream: sound.play()
+		#sound.stream = null
 	#add_open()
 	interaction_type = "Open"
 	

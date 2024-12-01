@@ -129,7 +129,7 @@ func _physics_process(delta):
 				cur_interactable_obj.interact()
 				cur_interactable_obj = null
 			
-		var just_landed := is_on_floor() and was_on_floor #snap_vector == Vector3.ZERO
+		var just_landed := is_on_floor() and not was_on_floor #snap_vector == Vector3.ZERO
 		var is_jumping := is_on_floor() and Input.is_action_just_pressed("player_jump")
 		was_on_floor = is_on_floor()
 		

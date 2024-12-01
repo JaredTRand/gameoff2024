@@ -369,7 +369,6 @@ _data = {
 [node name="doorway" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_pciqr")
 skeleton = NodePath("")
-script = ExtResource("1_emoer")
 
 [node name="door" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2835, 0, 0.4455)
@@ -377,15 +376,18 @@ mesh = SubResource("ArrayMesh_sd204")
 skeleton = NodePath("")
 script = ExtResource("1_emoer")
 interaction_name = "Door"
-thought = "Locked... How will I get in here?"
+thought = "Locked from the inside... How will I get in here?"
 openable = true
 locked = true
-unlocked_with = ""
+unlocked_with = "???"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="door" groups=["interactable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_u8ndy")
+
+[node name="door_text_placement" type="Node3D" parent="door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0.9, 0)
 
 [node name="viewbear" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, -19.8)

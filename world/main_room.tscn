@@ -42,10 +42,8 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0ybkk"]
-dof_blur_far_enabled = true
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5nc8w"]
 dof_blur_far_distance = 5.99
-dof_blur_near_enabled = true
 dof_blur_near_distance = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fvr5"]
@@ -152,7 +150,7 @@ metadata/name = "felix"
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 28.3864, 23.7424, -33.3659)
-attributes = SubResource("CameraAttributesPractical_0ybkk")
+attributes = SubResource("CameraAttributesPractical_5nc8w")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300
@@ -367,6 +365,7 @@ stream = ExtResource("15_3ubm0")
 
 [node name="grate" parent="tunnels" node_paths=PackedStringArray("additional_open") instance=ExtResource("11_c5a8c")]
 transform = Transform3D(-1.62921e-07, 0, -1.41, 0, 0.75, 0, 1, 0, -2.29718e-07, 21.7, 49, -57.5)
+interaction_type = ""
 hvr_txt_size = 100
 openable = true
 locked = true

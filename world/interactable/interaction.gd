@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
 @export var is_active:bool = true
-@export var interaction_type:String = "Open"
+@export var interaction_type:String
 @export var interaction_name:String
 @export var interaction_cooldown_time:float = 3.0
 @export var thought:String
@@ -19,6 +19,8 @@ extends MeshInstance3D
 @export var delete_after_open:bool = false
 @export var locked:bool = false
 @export var open_sound:AudioStreamWAV
+@export var close_sound:AudioStreamWAV
+@export var open_locked_sound:AudioStreamWAV
 @export var unlocked_with:String = "*"
 @export var unlock_thought:String = ""
 @export var open_lockable:bool = false
@@ -39,6 +41,7 @@ var in_player_interact_area = false
 @onready var felix = get_tree().get_first_node_in_group("player")
 @onready var hotbar = get_tree().get_first_node_in_group("hotbar")
 @onready var debug = get_tree().get_first_node_in_group("debug_panel")
+@onready var hover_text_placement:Node3D = find_child((interaction_name + "_text_placement").to_lower())
 var hover_text:Label3D 
 
 # Called when the node enters the scene tree for the first time.
@@ -51,6 +54,14 @@ func _ready():
 	if not check_is_active():
 		is_active = false
 	
+	if not interaction_type:
+		if pickup_able:
+			interaction_type = "Pick Up"
+		elif openable:
+			interaction_type = "Open"
+		else:
+			interaction_type = "Interact"
+	
 	if not animator:
 		animator = find_child("AnimationPlayer")
 	
@@ -59,7 +70,10 @@ func _ready():
 		
 	if hover_text == null:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
-		add_child(hover_text)
+		if hover_text_placement:
+			hover_text_placement.add_child(hover_text)
+		else:
+			add_child(hover_text)
 		
 		hover_text.font_size = hvr_txt_size
 
@@ -69,7 +83,7 @@ func interact_with_on():
 	in_player_interact_area = true
 	if hover_text_canbevisible:
 		hover_text.visible = true
-		hover_text.global_position = global_position
+		#hover_text.global_position = global_position
 		hover_text.text = interaction_type + " " + interaction_name
 
 func interact_with_off():
@@ -99,44 +113,48 @@ func interact():
 	if openable:
 		if locked:
 			if unlocked_with == "*" or hotbar.is_in_hotbar(unlocked_with):
-				open_state = open_states.open
-				interaction_type = "Close"
 				felix.think(unlock_thought)
-				locked = false
-				
-				if animator: animator.play("open")
-				if sound: sound.play()
-				add_open()
+				open()
 				
 				if unlocked_with != "*":
-					hotbar.remove_item(unlocked_with)
-				if delete_after_open:
-					self.queue_free()
-				if not interactable_after_open:
-					set_script(null)
-				
+					hotbar.remove_item(unlocked_with)				
 			elif open_lockable and open_state != open_states.open_locked:
 				open_state = open_states.open_locked
 				felix.think(open_locked_thought)
 				animator.play("open_locked")
-				if sound: sound.play()
+				
+				if open_locked_sound: sound.stream = open_locked_sound
+				if sound and sound.stream: sound.play()
 				
 		else:
 			if open_state == open_states.open:
-				open_state = open_states.closed
-				animator.play_backwards("open")
-				if sound: sound.play()
-				add_open()
-				interaction_type = "Open"
+				close()
 			else:
-				open_state = open_states.open
-				animator.play("open")
-				if sound: sound.play()
-				add_open()
-				interaction_type = "Close"
-				
-				if not interactable_after_open:
-					set_script(null)
+				open()
+					
+func open():
+	locked = false
+	open_state = open_states.open
+	interaction_type = "Close"
+	
+	if animator: animator.play("open")
+	
+	if open_sound: sound.stream = open_sound
+	if sound and sound.stream: sound.play()
+	
+	add_open()
+	if delete_after_open: self.queue_free()
+	if not interactable_after_open: set_script(null)
+	
+func close():
+	open_state = open_states.closed
+	if animator: animator.play_backwards("open")
+	
+	if close_sound: sound.stream = close_sound
+	if sound and sound.stream: sound.play()
+	add_open()
+	interaction_type = "Open"
+	
 func add_open():
 	if is_instance_valid(additional_open):
 		#await get_tree().create_timer(2.0).timeout 

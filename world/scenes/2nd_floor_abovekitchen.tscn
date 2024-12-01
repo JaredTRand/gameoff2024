@@ -256,6 +256,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.7, 1
 
 [node name="bathroomCabinetDrawer" parent="furniture" instance=ExtResource("5_x6vbs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20, 13, -35.6)
+interaction_name = "Cabinet"
+openable = true
 
 [node name="bathroomMirror" parent="furniture" instance=ExtResource("5_43udq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.8, 19, -39.6)

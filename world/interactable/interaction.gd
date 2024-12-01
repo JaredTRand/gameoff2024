@@ -27,6 +27,7 @@ extends MeshInstance3D
 @export var open_lockable:bool = false
 @export var open_locked_thought:String = ""
 @export var additional_open:Node3D
+@export var add_open_wait_time:float = 0.0
 
 @export var animator:AnimationPlayer
 @export var sound:AudioStreamPlayer3D
@@ -168,11 +169,10 @@ func close():
 	
 func add_open():
 	if is_instance_valid(additional_open) and additional_open.has_method("open"):
-		await get_tree().create_timer(5.0).timeout 
-		#var add_anim = additional_open.find_child("AnimationPlayer")
-		#if add_anim:
-			#add_anim.play("open")
+		if add_open_wait_time > 0:
+			await get_tree().create_timer(add_open_wait_time).timeout 
 		additional_open.open()
+		
 func check_is_active():
 	if is_active: 
 		return true

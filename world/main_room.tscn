@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_qns0x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_vxnf4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_7tyqq"]
-[ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="2_tbhhi"]
+[ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://Felix/felix_test.tscn" id="2_tbhhi"]
 [ext_resource type="PackedScene" uid="uid://y8encr4rb4df" path="res://world/scenes/LivingRoom.tscn" id="2_w5bkr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="3_27eo0"]
 [ext_resource type="PackedScene" uid="uid://bygkp6m5pu0fp" path="res://world/scenes/kitchen.tscn" id="3_pohuf"]
@@ -42,7 +42,7 @@ far = 4000.0
 dof_blur_far_distance = 5.99
 dof_blur_near_distance = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_86cqg"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0ybkk"]
 dof_blur_far_enabled = true
 dof_blur_far_distance = 5.99
 dof_blur_near_enabled = true
@@ -152,7 +152,7 @@ metadata/name = "felix"
 [node name="MainCamera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 0, 0, 0.99076, 0.135628, 0, 0.135628, -0.99076, 28.3864, 23.7424, -33.3659)
-attributes = SubResource("CameraAttributesPractical_86cqg")
+attributes = SubResource("CameraAttributesPractical_0ybkk")
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera3D"]
 process_priority = 300

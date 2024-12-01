@@ -1,11 +1,13 @@
-[gd_scene load_steps=41 format=4 uid="uid://ovvdhs1wpji7"]
+[gd_scene load_steps=43 format=4 uid="uid://ovvdhs1wpji7"]
 
-[ext_resource type="Script" path="res://addons/TPC_test/Scenes/Characters/felix.gd" id="1_yxq00"]
+[ext_resource type="Script" path="res://Felix/felix.gd" id="1_yxq00"]
 [ext_resource type="Material" uid="uid://lhbweyif244p" path="res://Felix/model/cat001.tres" id="2_4s7ui"]
 [ext_resource type="Script" path="res://smoother.gd" id="2_qoree"]
 [ext_resource type="AnimationLibrary" uid="uid://bfr6icn3uihx3" path="res://Felix/animations/animations.res" id="3_4dcp1"]
 [ext_resource type="PackedScene" uid="uid://b0xx0p7kdhbma" path="res://Felix/UI/UIanddebugPanel.tscn" id="5_5lnlg"]
+[ext_resource type="AudioStream" uid="uid://datnrjxtc1vn4" path="res://world/sounds/felixfootstep.wav" id="5_qulqt"]
 [ext_resource type="Script" path="res://Felix/scripts/state_machine/state_machine.gd" id="6_3wa72"]
+[ext_resource type="Script" path="res://Felix/footstep.gd" id="6_wsjks"]
 [ext_resource type="Script" path="res://Felix/scripts/state_machine/walking.gd" id="7_ir35k"]
 [ext_resource type="Texture2D" uid="uid://b3kx2md7ubkqx" path="res://Felix/assets/thoughtbubs.png" id="8_5ws5c"]
 [ext_resource type="PackedScene" uid="uid://b3aus3ceccucv" path="res://Felix/assets/thought_bubble.tscn" id="9_bou7y"]
@@ -513,6 +515,7 @@ input_1/reset = true
 [sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_v0rff"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_h8fbi"]
+graph_offset = Vector2(-675.665, 437.047)
 nodes/Air/node = SubResource("AnimationNodeAnimation_r8sh6")
 nodes/Air/position = Vector2(-416, 1216)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_6050g")
@@ -1486,6 +1489,17 @@ target_position = Vector3(0, 0, 1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.33552, 0)
 target_position = Vector3(0, 0, 1.5)
 
+[node name="sounds" type="AudioStreamPlayer3D" parent="felix"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="footstep" type="AudioStreamPlayer3D" parent="felix"]
+unique_name_in_owner = true
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+stream = ExtResource("5_qulqt")
+volume_db = -4.0
+max_db = -4.0
+script = ExtResource("6_wsjks")
+
 [node name="interact_area" type="Area3D" parent="felix"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 
@@ -1504,6 +1518,7 @@ shape = SubResource("CapsuleShape3D_k6p7c")
 unique_name_in_owner = true
 
 [node name="STATE_MACHINE" type="Node" parent="." node_paths=PackedStringArray("felix")]
+unique_name_in_owner = true
 script = ExtResource("6_3wa72")
 felix = NodePath("..")
 

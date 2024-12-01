@@ -16,6 +16,7 @@ extends MeshInstance3D
 @export_group("Openable")
 @export var openable:bool = false
 @export var interactable_after_open:bool = true
+@export var delete_after_open:bool = false
 @export var locked:bool = false
 @export var open_sound:AudioStreamWAV
 @export var unlocked_with:String = "*"
@@ -25,7 +26,7 @@ extends MeshInstance3D
 @export var additional_open:Node3D
 
 @export var animator:AnimationPlayer
-@onready var sound:AudioStreamPlayer3D = find_child("AudioStreamPlayer3D")
+@export var sound:AudioStreamPlayer3D
 
 var hover_text_canbevisible = true
 
@@ -53,6 +54,9 @@ func _ready():
 	if not animator:
 		animator = find_child("AnimationPlayer")
 	
+	if not sound:
+		sound = find_child("AudioStreamPlayer3D")
+		
 	if hover_text == null:
 		hover_text = load("res://Felix/assets/hover_text.tscn").instantiate()
 		add_child(hover_text)
@@ -106,8 +110,11 @@ func interact():
 				
 				if unlocked_with != "*":
 					hotbar.remove_item(unlocked_with)
+				if delete_after_open:
+					self.queue_free()
 				if not interactable_after_open:
 					set_script(null)
+				
 			elif open_lockable and open_state != open_states.open_locked:
 				open_state = open_states.open_locked
 				felix.think(open_locked_thought)

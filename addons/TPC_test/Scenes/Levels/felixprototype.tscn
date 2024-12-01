@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://gwt4mrbmdv01" path="res://addons/TPC_test/Assets/Textures/Orange.png" id="3_imn7q"]
 [ext_resource type="Script" path="res://world/interactable/interaction.gd" id="3_k7mp0"]
 [ext_resource type="Texture2D" uid="uid://dkpqh8de7tb3n" path="res://addons/TPC_test/Assets/Textures/Green.png" id="4_bptv0"]
-[ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://addons/TPC_test/Scenes/Characters/felix_test.tscn" id="5_htbjo"]
+[ext_resource type="PackedScene" uid="uid://ovvdhs1wpji7" path="res://Felix/felix_test.tscn" id="5_htbjo"]
 [ext_resource type="PackedScene" uid="uid://dumv7xay0qg6r" path="res://Felix/assets/hover_text.tscn" id="8_ss1mk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6c4vd"]

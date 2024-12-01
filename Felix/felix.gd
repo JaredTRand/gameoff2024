@@ -38,6 +38,7 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var hotbar = %UserInterface/HotBar
 @onready var debug_panel = $UserInterface/DebugPanel
+@onready var sounds:AudioStreamPlayer3D = $felix/sounds
 
 @onready var _player_pcam: PhantomCamera3D
 
@@ -45,6 +46,7 @@ const ANIMATION_BLEND : float = 7.0
 
 var jump_count:int = 0
 var jump_count_max:int = 1
+var was_on_floor:bool = true
 
 var cur_interactable_obj
 var pre_pos
@@ -127,23 +129,30 @@ func _physics_process(delta):
 				cur_interactable_obj.interact()
 				cur_interactable_obj = null
 			
-		var just_landed := is_on_floor() and snap_vector == Vector3.ZERO
+		var just_landed := is_on_floor() and was_on_floor #snap_vector == Vector3.ZERO
 		var is_jumping := is_on_floor() and Input.is_action_just_pressed("player_jump")
+		was_on_floor = is_on_floor()
 		
 		if is_jumping:
 			jump_count += 1
 			if jump_count <= jump_count_max:
+				play_sound(load("res://world/sounds/felixjump.wav"))
 				velocity.y = jump_strength
 				snap_vector = Vector3.ZERO
 		elif not is_on_floor() and Input.is_action_just_pressed("player_jump") and jump_count <= jump_count_max:
+			play_sound(load("res://world/sounds/felixdoublejump.wav"))
 			jump_count += 1
 			dust_effect.restart()
 			velocity.y = jump_strength
 			snap_vector = Vector3.ZERO
+		#elif not is_on_floor() and jump_count == 0:
+			#jump_count += 1
 		elif just_landed:
 			debug_panel.add_property("last y speed", (global_position.y - pre_pos.y))
 			if (global_position.y - pre_pos.y) < -.15:
 				dust_effect.restart()
+				play_sound(load("res://world/sounds/felixlandhard.wav"))
+			play_sound(load("res://world/sounds/felixland.wav"), false)
 			jump_count = 0
 			snap_vector = Vector3.DOWN
 			
@@ -157,7 +166,12 @@ func _physics_process(delta):
 		animate(delta)
 		_process_raycasts()
 
-
+func play_sound(soundFile:AudioStreamWAV, interrupt:bool=true):
+	if not interrupt and sounds.is_playing(): return
+	
+	sounds.stream = soundFile
+	sounds.play()
+	
 func animate(delta):
 	if is_on_floor():
 		animator.set("parameters/ground_air_transition/transition_request", "grounded")

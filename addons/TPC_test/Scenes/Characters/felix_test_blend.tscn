@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fcoq2kw4j4mj"]
 
-[ext_resource type="Script" path="res://addons/TPC_test/Scenes/Characters/felix.gd" id="1_uqdop"]
+[ext_resource type="Script" path="res://Felix/felix.gd" id="1_uqdop"]
 [ext_resource type="PackedScene" uid="uid://cp6yxnovk8uel" path="res://felixblend.tscn" id="3_gbb1p"]
 [ext_resource type="Script" path="res://addons/TPC_test/Scripts/Characters/SpringArmPivot.gd" id="4_6mfkb"]
 

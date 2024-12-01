@@ -217,9 +217,10 @@ func _on_interact_area_body_entered(body):
 	can_interact = true
 	body.get_parent().interact_with_on()
 	
-	if cur_interactable_obj:
-		_on_interact_area_body_exited(cur_interactable_obj)
-	cur_interactable_obj = body.get_parent()
+	if body.get_parent().openable or body.get_parent().pickup_able:
+		if cur_interactable_obj:
+			_on_interact_area_body_exited(cur_interactable_obj)
+		cur_interactable_obj = body.get_parent()
 
 
 func _on_interact_area_body_exited(body):

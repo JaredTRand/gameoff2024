@@ -1,9 +1,8 @@
-[gd_scene load_steps=38 format=4 uid="uid://b8f81824g182q"]
+[gd_scene load_steps=29 format=4 uid="uid://b8f81824g182q"]
 
 [ext_resource type="PackedScene" uid="uid://c2ay7srqs1ndy" path="res://addons/Kenney/Furniture/scenes/wall.tscn" id="1_qv4wp"]
 [ext_resource type="PackedScene" uid="uid://d4gprrw881y3p" path="res://addons/Kenney/Furniture/scenes/floor_full.tscn" id="2_25jco"]
 [ext_resource type="PackedScene" uid="uid://cyyg6wuedfbl7" path="res://world/scenes/doorway_withbear.tscn" id="3_f8fci"]
-[ext_resource type="Script" path="res://world/interactable/interaction.gd" id="4_nhthn"]
 [ext_resource type="PackedScene" uid="uid://sascje00svta" path="res://addons/Kenney/Furniture/FBX format/wallDoorway.fbx" id="4_y4y6m"]
 [ext_resource type="PackedScene" uid="uid://cuq1m8pa54gkx" path="res://world/scenes/bathroom_mirror.tscn" id="5_43udq"]
 [ext_resource type="PackedScene" uid="uid://dktqjau4nbxdk" path="res://world/scenes/bathroom_cabinet_drawer.tscn" id="5_x6vbs"]
@@ -14,8 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://j24mm758lorq" path="res://world/scenes/table_cloth.tscn" id="10_tkqr0"]
 [ext_resource type="PackedScene" uid="uid://dyexehmwqh3r5" path="res://world/scenes/potted_plant.tscn" id="11_8fjyb"]
 [ext_resource type="PackedScene" uid="uid://btsa0jndauq1s" path="res://world/assets/scissors/scissors.tscn" id="13_plood"]
-[ext_resource type="AudioStream" uid="uid://f1mcvim7l3ux" path="res://world/sounds/grateopen.wav" id="15_3gfse"]
-[ext_resource type="Material" uid="uid://tc4ni315gc1k" path="res://world/assets/ductmetal.tres" id="16_iaefi"]
+[ext_resource type="PackedScene" uid="uid://bostd4fyeholt" path="res://world/scenes/grate.tscn" id="14_7jkgs"]
 [ext_resource type="PackedScene" uid="uid://bev14i8g048ol" path="res://world/scenes/duct.tscn" id="16_t2t5f"]
 [ext_resource type="PackedScene" uid="uid://h0gwt40qtp5i" path="res://world/scenes/duct_hcurve.tscn" id="18_n1kwj"]
 [ext_resource type="PackedScene" uid="uid://cpb6ju30vop3g" path="res://world/scenes/duct_vcurve.tscn" id="19_x2xco"]
@@ -110,54 +108,6 @@ points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_npm87"]
 points = PackedVector3Array(-4, -1, -1.2, -4, 1, -1.2, 4, -1, -1.2, -4, -1, 1.2, -4, 1, 1.2, 4, 1, -1.2, 4, -1, 1.2, 4, 1, 1.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rbrs0"]
-size = Vector3(0.1, 3.4, 2.525)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kxdnl"]
-size = Vector3(0.1, 1.3, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tvnfm"]
-size = Vector3(0.1, 1.3, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_uy07n"]
-size = Vector3(0.01, 1.3, 1)
-
-[sub_resource type="Animation" id="Animation_cco50"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-7.54979e-08, -1.5708, 3.55271e-15)]
-}
-
-[sub_resource type="Animation" id="Animation_dq16h"]
-resource_name = "open"
-length = 2.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation:z")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 1, 1, 1, 1, 1),
-"points": PackedFloat32Array(0, 0, 0, 0, 0, -0.174533, -0.25, 0, 0.615, 0, -1.5708, 0, 0, 0, 0, -1.39626, 0, 0, 0, 0, -1.5708, 0, 0, 0, 0, -1.48353, 0, 0, 0, 0, -1.5708, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.6, 1.4, 1.6, 1.73333, 1.83333, 2)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_y5fgy"]
-_data = {
-"RESET": SubResource("Animation_cco50"),
-"open": SubResource("Animation_dq16h")
-}
 
 [node name="Node3D" type="Node3D"]
 
@@ -405,145 +355,12 @@ skeleton = NodePath("")
 transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_npm87")
 
-[node name="grate" type="MeshInstance3D" parent="ducts/duct with grate"]
-transform = Transform3D(-3.48862e-08, 6.11534e-08, -1.15, 2.83544e-15, 0.810001, 8.68226e-08, 0.798104, -2.04603e-16, -5.02681e-08, -0.22666, -1.485, -1.139)
-script = ExtResource("4_nhthn")
-is_active = false
-hvr_txt_size = 150
-openable = true
-interactable_after_open = false
-open_sound = ExtResource("15_3gfse")
-unlock_thought = "It opened! Must have been loose"
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ducts/duct with grate/grate" groups=["interactable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ducts/duct with grate/grate/StaticBody3D"]
-shape = SubResource("BoxShape3D_rbrs0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ducts/duct with grate/grate"]
-transform = Transform3D(1, 0, 0, 0, 2.6, 0, 0, 0, 0.14, 0, 1.7, -1.2)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_kxdnl")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="ducts/duct with grate/grate"]
-transform = Transform3D(1, 0, 0, 0, 2.6, 0, 0, 0, 0.14, 0, 1.7, 1.2)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_kxdnl")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="ducts/duct with grate/grate"]
-transform = Transform3D(1, 0, 0, 0, -7.59704e-08, 0.14, 0, -1.738, -6.11959e-09, 0, 3.32, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_tvnfm")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="ducts/duct with grate/grate"]
-transform = Transform3D(1, 0, 0, 0, -7.59704e-08, 0.14, 0, -1.738, -6.11959e-09, 0, 0.08, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_tvnfm")
-
-[node name="slats" type="Node3D" parent="ducts/duct with grate/grate"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0.2, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0.4, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D15" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0.6, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D16" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0.8, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 1, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D18" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 1.2, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D19" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 1.4, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -1.01781e-08, 0.0700002, -0.5, -3.79852e-08, 0.121244, 5.85622e-09, -1.738, -3.05981e-09, 0, -0.2, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -0.4, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -0.6, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -0.8, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -1, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -1.2, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="ducts/duct with grate/grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -1.4, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ducts/duct with grate/grate"]
-libraries = {
-"": SubResource("AnimationLibrary_y5fgy")
-}
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ducts/duct with grate/grate"]
-stream = ExtResource("15_3gfse")
-
 [node name="duct8" parent="ducts/duct with grate" instance=ExtResource("16_t2t5f")]
 transform = Transform3D(4.46662e-09, 8.23326e-09, -0.03, -8.3203e-09, 0.999999, 6.78799e-10, 0.100173, -1.49012e-07, 1.22198e-09, -1.75014, -0.0150585, -0.0240976)
+
+[node name="grate" parent="ducts/duct with grate" instance=ExtResource("14_7jkgs")]
+transform = Transform3D(-4.37114e-08, 9.5309e-08, 1.18461, 0, 0.752254, -1.50087e-07, -1, -4.16609e-15, -5.17808e-08, -0.202433, -1.3, -1.2)
+thought = ""
 
 [node name="duct with grate2" type="Node3D" parent="ducts"]
 transform = Transform3D(-1.25297, -1.49011e-07, 9.04017e-08, 1.04071e-07, 0.999999, -2.26267e-08, -1.08439e-07, -8.23328e-09, -1, -4.45914, 24.0844, -68.1933)
@@ -592,6 +409,12 @@ skeleton = NodePath("")
 transform = Transform3D(1, 1.77636e-15, -5.43153e-15, -5.68434e-14, 1, -5.68434e-14, 3.83669e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_npm87")
 
+[node name="grate" parent="ducts/duct with grate2" instance=ExtResource("14_7jkgs")]
+transform = Transform3D(-4.37114e-08, -8.91947e-08, 1.19716, 0, 0.750001, 1.42373e-07, -1, 3.89883e-15, -5.23293e-08, -0.206819, -1.28443, -1.1933)
+skeleton = NodePath("../../..")
+thought = ""
+unlock_thought = "Huh! Opens pretty easy from this side"
+
 [node name="duct_hcurve" parent="ducts" instance=ExtResource("18_n1kwj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 46.314, 27.6783, -1.07918)
 
@@ -621,141 +444,3 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 50.319
 
 [node name="duct8" parent="ducts" instance=ExtResource("16_t2t5f")]
 transform = Transform3D(4.46662e-09, 8.23326e-09, -0.03, -8.3203e-09, 0.999999, 6.78799e-10, 0.100173, -1.49012e-07, 1.22198e-09, -21.1501, 24.0849, -68.2241)
-
-[node name="grate" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 5.73308e-08, -1.5015, 3.55271e-15, 0.759369, 1.1336e-07, 1, -1.91813e-16, -6.56326e-08, -4.2, 22.7346, -67)
-script = ExtResource("4_nhthn")
-interaction_name = "Grate"
-hvr_txt_size = 150
-openable = true
-interactable_after_open = false
-locked = true
-open_sound = ExtResource("15_3gfse")
-unlock_thought = "Opens easy from the inside, I guess..."
-
-[node name="StaticBody3D" type="StaticBody3D" parent="grate" groups=["interactable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="grate/StaticBody3D"]
-shape = SubResource("BoxShape3D_rbrs0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="grate"]
-transform = Transform3D(1, 0, 0, 0, 2.6, 0, 0, 0, 0.14, 0, 1.7, -1.2)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_kxdnl")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="grate"]
-transform = Transform3D(1, 0, 0, 0, 2.6, 0, 0, 0, 0.14, 0, 1.7, 1.2)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_kxdnl")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="grate"]
-transform = Transform3D(1, 0, 0, 0, -7.59704e-08, 0.14, 0, -1.738, -6.11959e-09, 0, 3.32, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_tvnfm")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="grate"]
-transform = Transform3D(1, 0, 0, 0, -7.59704e-08, 0.14, 0, -1.738, -6.11959e-09, 0, 0.08, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_tvnfm")
-
-[node name="slats" type="Node3D" parent="grate"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0.2, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0.4, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D15" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0.6, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D16" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 0.8, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 1, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D18" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 1.2, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D19" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, 1.4, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -0.2, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -0.4, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -0.6, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -0.8, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -1, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -1.2, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="grate/slats"]
-transform = Transform3D(0.866025, -3.79852e-08, 0.07, -0.5, -6.57923e-08, 0.121244, 0, -1.738, -6.11959e-09, 0, -1.4, 0)
-material_override = ExtResource("16_iaefi")
-mesh = SubResource("BoxMesh_uy07n")
-skeleton = NodePath("../..")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="grate"]
-libraries = {
-"": SubResource("AnimationLibrary_y5fgy")
-}
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="grate"]
-stream = ExtResource("15_3gfse")

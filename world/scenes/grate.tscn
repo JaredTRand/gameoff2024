@@ -57,6 +57,9 @@ interaction_type = "Open"
 interaction_name = "Grate"
 thought = "It won't budge"
 hvr_txt_size = 150
+openable = true
+interactable_after_open = false
+open_sound = ExtResource("3_21hql")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)

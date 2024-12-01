@@ -7,6 +7,7 @@ var fish_introduction = false
 var first_flake = false
 var fish_intro_completed = false
 
+
 var numOfFlakes:int = 0
 @onready var phantom_cams
 @onready var look_at:PhantomCamera3D

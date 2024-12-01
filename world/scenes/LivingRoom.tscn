@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://y8encr4rb4df"]
+[gd_scene load_steps=40 format=4 uid="uid://y8encr4rb4df"]
 
 [ext_resource type="PackedScene" uid="uid://brtq66og04p34" path="res://addons/Kenney/Furniture/scenes/table_coffee.tscn" id="1_x61qm"]
 [ext_resource type="Material" uid="uid://ba7pb56tubdai" path="res://world/assets/materials/couchblue.tres" id="2_pg81f"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_dg21a"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="13_pnrbp"]
 [ext_resource type="PackedScene" uid="uid://c74iskyrbxix1" path="res://world/assets/fish/fishflakes.tscn" id="16_03m3k"]
+[ext_resource type="Texture2D" uid="uid://bl53fbaewx2gx" path="res://world/dialogue/potraits/ferdinand.jpg" id="20_n8nhw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nguq6"]
 resource_name = "carpetBlue"
@@ -437,6 +438,8 @@ follow_distance = 1.2
 spring_length = 1.2
 metadata/name = "fish"
 metadata/sounds = PackedStringArray("res://world/sounds/ferdinandtalk.wav")
+metadata/portrait = ExtResource("20_n8nhw")
+metadata/stagename = "ferdinand"
 
 [node name="tipfish1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -29)

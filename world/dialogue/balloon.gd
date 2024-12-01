@@ -42,11 +42,18 @@ var dialogue_line: DialogueLine:
 
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
-		var potrait_path:String = "res://world/dialogue/potraits/%s.jpg" % dialogue_line.character.to_lower()
-		if FileAccess.file_exists(potrait_path):
-			portrait.texture = load(potrait_path)
-		else:
-			portrait.texture = null
+		
+		var new_cam 
+		for cam in GameState.phantom_cams:
+			if is_instance_valid(cam) and cam.has_meta("stagename") and cam.has_meta("portrait"):
+				if cam.get_meta("stagename") == dialogue_line.character.to_lower():
+					portrait.texture = cam.get_meta("portrait")
+			
+		#var potrait_path:String = "res://world/dialogue/potraits/%s.jpg" % dialogue_line.character.to_lower()
+		#if FileAccess.file_exists(potrait_path):
+			#portrait.texture = load(potrait_path)
+		#else:
+			#portrait.texture = null
 		
 		dialogue_label.hide()
 		dialogue_label.dialogue_line = dialogue_line

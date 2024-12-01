@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="GameOff2024"
+config/name="KidnappedCatNap"
 config/description="Your owner locked you in the house! Find your way out and reclaim your stolen cat nap."
 run/main_scene="res://world/main_room.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://felix_ico.png"
+config/windows_native_icon="res://Felix/felix.ico"
 
 [autoload]
 
